@@ -4,9 +4,9 @@ patch.dim <- 10
 
 # world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
 # A <- world$landscape
-x <- array(0:2, dim = c(patch.dim, patch.dim))
-# x <- array(sample(0:2, 100, prob = c(1,2,1), replace = TRUE),
-#           dim = c(patch.dim, patch.dim))
+
+# x <- array(0:2, dim = c(patch.dim, patch.dim))
+x <- array(sample(0:2, 100, prob = c(0.5,2,1), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- x
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
@@ -75,7 +75,7 @@ drop.dead <- array(dim = c(pop.size, 2))
 
 for (i in 2:time){
   
-  mvt.par <- 0.9
+  mvt.par <- 0.3
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
@@ -148,9 +148,12 @@ for (i in 2:time){
     landing <- round(cbind(x,y))
     
     tmp.mvt <- locations[i-1,,j] + landing
-    
-    locations[i,,j] <- cbind(tmp.mvt[,1] %% ncol(A),
-                           tmp.mvt[,2] %% nrow(A))
+      
+      tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
+      tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
+      
+    locations[i,,j] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
+                           tmp.mvt[,2] %% (nrow(A) + 1))
     
     ## change invidiauls landing at '0' index to the edge
     locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))

@@ -33,12 +33,12 @@ landing <- round(cbind(x,y))
 
 tmp.mvt <- locations[i-1,,] + t(landing)
 
+  tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
+  tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
 
-locations[i,,] <- t(cbind(tmp.mvt[1,] %% ncol(A),
-                       tmp.mvt[2,] %% nrow(A)))
+locations[i,,j] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
+                         tmp.mvt[,2] %% (nrow(A) + 1))
 
-
-locations[which(locations %in% 0)] <- sample(length(which(locations %in% 0)), c(1, nrow(A)))
 }
 
 

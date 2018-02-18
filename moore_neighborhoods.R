@@ -1,7 +1,4 @@
-# source('generateLandscape_function.R')
-# 
-# world <- generateLandscape(20, 200, 50)
-# A <- world$landscape
+### takes information from a simulation (population)
 
 ## egg landscape
 E <- egg.landscape
@@ -78,6 +75,9 @@ for (j in 1:length(range.vec)){
     egg.moore.safe <- egg.moore[tmp.moore == 1]
     egg.moore.risk <- egg.moore[tmp.moore == 2]
     
+    ## mean eggs
+
+    
     #### fill in  neighborhood table
     neighborhood.totals[i, 2:3, j] <- which(index == i, arr.ind=TRUE)
     neighborhood.totals[i, 4, j] <- sum(egg.moore.safe, na.rm = TRUE)
@@ -85,8 +85,8 @@ for (j in 1:length(range.vec)){
     neighborhood.totals[i, 6, j] <- length(egg.moore.safe)
     neighborhood.totals[i, 7, j] <- length(egg.moore.risk)
     neighborhood.totals[i, 8, j] <- length(egg.moore.empty)
-    neighborhood.totals[i, 9, j] <- tapply(c(egg.moore), c(tmp.moore), mean, na.rm = TRUE)[2]
-    neighborhood.totals[i, 10, j] <- tapply(c(egg.moore), c(tmp.moore), mean, na.rm = TRUE)[3]
+    neighborhood.totals[i, 9, j] <- tapply(c(egg.moore), c(tmp.moore), mean, na.rm = TRUE)["1"]
+    neighborhood.totals[i, 10, j] <- tapply(c(egg.moore), c(tmp.moore), mean, na.rm = TRUE)["2"]
     
     }
 }
@@ -155,5 +155,5 @@ for (k in 1:length(range.vec)){
 t.test(neighborhood.totals[,9,1] - neighborhood.totals[,10,1], rep(0,100), alternative = 'greater')
 
 for (k in 1:length(range.vec)){
-  boxplot((neighborhood.totals[,4,k] / neighborhood.totals[,6,k]) ~ neighborhood.totals[,7,k])
+  boxplot((neighborhood.totals[,"total.eggs.safe",k] / neighborhood.totals[,'n.safe.patches',k]) ~ neighborhood.totals[,'n.risk.patches',k])
 }

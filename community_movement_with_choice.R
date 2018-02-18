@@ -166,11 +166,14 @@ for (i in 2:time){
         
         tmp.mvt <- locations[i-1,,j,k] + landing
         
-        locations[i,,j,k] <- cbind(tmp.mvt[,1] %% ncol(A),
-                                   tmp.mvt[,2] %% nrow(A))
+          tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
+          tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
+    
+        locations[i,,j,k] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
+                                   tmp.mvt[,2] %% (nrow(A) + 1))
         
         ## change invidiauls landing at '0' index to the edge
-        locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
+        # locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
         
         encounter[i,j,k] <- A[locations[i,1,j,k], locations[i,2,j,k]]  
         

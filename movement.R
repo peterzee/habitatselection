@@ -28,10 +28,13 @@ for (i in 2:time){
     
     tmp.mvt <- locations[i-1,] + landing
     
-    locations[i,] <- cbind(tmp.mvt[,1] %% ncol(A),
-                     tmp.mvt[,2] %% nrow(A))
+      tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
+      tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
     
-    locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
+    locations[i,] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
+                           tmp.mvt[,2] %% (nrow(A) + 1))
+    
+    # locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
 
     encounter[i] <- A[locations[i,1], locations[i,2]]  
 
