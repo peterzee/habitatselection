@@ -1,0 +1,35 @@
+#Habitat selection in structured landscapes
+
+##*compression*: 
+-increased colonization rate caused by proximity of perceived low quality patches
+
+-essentially, this makes the relatively higher quality patch even more likely to be colonized
+
+-colonists are *compressed* into the patch
+
+##*contagion*:
+-colonization rate impacted by surrounding perceived patch quality
+
+-can be positive (**reward contagion**) or negative (**risk contagion**)
+
+
+
+Both compression and contagion can operate on local and regional scales
+
+
+## Questions
+
+
+Do the relative importance of contagion and compression change in different landscape structures?
+Does this effect depend on risk vs reward contagion?
+
+
+Landscape structures:random <-> gradient
+
+relative rates of colonization dispersal between predator and prey?
+
+aquatic systems vs terrestrial system?
+
+Directionality of dispersal/colonization? Propagule rain (all patches) vs directional (flow)
+
+Priority effects during assembly of a prey community?

@@ -1,0 +1,24 @@
+## ESA abstract (2018 // New Orleans)
+## Peter C Zee
+###University of Mississippi
+
+## Background/Question/Methods
+Selecting a habitat is a critical demographic decision for many organisms. 
+
+Patch quality with
+Context dependencies ...
+
+In a metacommunity context, this habitat selection can have
+
+## Results/Conclusions
+In this
+
+This modeling frameworks integrates across behavior, community ecology, and evolution. 
+
+
+
+<!--
+The body of the abstract is up to 400 words, split between the two sections (up to 200 words each): Background/Question/Methods, in which the objective of the study is clearly identified and the methods are described; and Results/Conclusions, in which specific results of the study are explicitly reported and their implications for ecology are briefly discussed.
+The abstract must report specific results. The results may be preliminary but they may not be vague. Abstracts without explicitly stated results will be rejected.
+It is understandable that abstracts describing non-traditional work may lack quantitative data; however, it is still expected that the abstract will address some question and have a “take-home message” describing specific findings.
+-->
