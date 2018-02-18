@@ -127,33 +127,31 @@ risk.sites <- which(big.table[,1,1] == 2)
 
 
 #########
-par(mfrow=c(1,3), mar = c(4,4,1,1))
-for (k in 1:length(range.vec)){
-  plot(neighborhood.totals[,'n.risk.patches',k], 
-       (neighborhood.totals[,'total.eggs.safe',k]) ,
-       xlab = '# risky patches', ylab = 'neighborhood eggs in safe') 
-}     
 
 par(mfrow=c(1,3), mar = c(4,4,1,1))
 for (k in 1:length(range.vec)){
   plot(neighborhood.totals[,'n.risk.patches',k], 
-       (neighborhood.totals[,'total.eggs.safe',k] / sum(neighborhood.totals[,'n.safe.patches',k])) ,
-       xlab = '# risky patches', ylab = 'neighborhood eggs in safe') 
+       (neighborhood.totals[,'total.eggs.safe',k] / neighborhood.totals[,'n.safe.patches',k]),
+       xlab = '# risky patches', ylab = '# eggs / safe patch') 
 }     
-
 
 par(mfrow=c(1,3), mar = c(4,4,1,1))
 for (k in 1:length(range.vec)){
-  plot(neighborhood.totals[,7,k], 
-       (neighborhood.totals[,4,k] / neighborhood.totals[,6,k]),
-       xlab = '# risky patches', ylab = 'neighborhood eggs in safe') 
+  plot(neighborhood.totals[,'n.safe.patches',k], 
+       (neighborhood.totals[,'total.eggs.risk',k] / neighborhood.totals[,'n.risk.patches',k]),
+       xlab = '# safe patches', ylab = '# eggs / risky patch') 
 }     
 
 
+summary(lm((neighborhood.totals[,'total.eggs.safe',k] / neighborhood.totals[,'n.safe.patches',k]) ~ neighborhood.totals[,'n.risk.patches',k]))
 
 
-t.test(neighborhood.totals[,9,1] - neighborhood.totals[,10,1], rep(0,100), alternative = 'greater')
+
+t.test(neighborhood.totals[,'mean.eggs.safe',1] - neighborhood.totals[,'mean.eggs.risk',1], rep(0,100), alternative = 'greater')
+t.test(neighborhood.totals[,'mean.eggs.safe',2] - neighborhood.totals[,'mean.eggs.risk',2], rep(0,100), alternative = 'greater')
+t.test(neighborhood.totals[,'mean.eggs.safe',3] - neighborhood.totals[,'mean.eggs.risk',3], rep(0,100), alternative = 'greater')
 
 for (k in 1:length(range.vec)){
-  boxplot((neighborhood.totals[,"total.eggs.safe",k] / neighborhood.totals[,'n.safe.patches',k]) ~ neighborhood.totals[,'n.risk.patches',k])
+  boxplot((neighborhood.totals[,"total.eggs.safe",k] / neighborhood.totals[,'n.safe.patches',k]) ~ neighborhood.totals[,'n.risk.patches',k],
+          xlab = "number of risky patches", ylab = "# eggs / safe patch")
 }

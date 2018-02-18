@@ -6,8 +6,9 @@ patch.dim <- 10
 # A <- world$landscape
 
 # x <- array(0:2, dim = c(patch.dim, patch.dim))
-x <- array(sample(0:2, 100, prob = c(0.5,2,1), replace = TRUE), dim = c(patch.dim, patch.dim))
+x <- array(sample(0:2, patch.dim^2, prob = c(0,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- x
+# plotLandscape(A)
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -17,7 +18,7 @@ index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
 
 
 ## Effect of risk (deterrence baseline)
-risk.mag <- 0.4
+risk.mag <- 0.8
 
 ## Signal of risk across the landscape
 risk.landscape <- A
@@ -75,7 +76,7 @@ drop.dead <- array(dim = c(pop.size, 2))
 
 for (i in 2:time){
   
-  mvt.par <- 0.3
+  mvt.par <- 0.9
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
