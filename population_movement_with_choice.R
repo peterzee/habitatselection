@@ -8,7 +8,7 @@ patch.dim <- 10
 # A <- world$landscape
 # x <- array(0:2, dim = c(patch.dim, patch.dim))
 
-x <- array(sample(0:2, patch.dim^2, prob = c(0,5,1), replace = TRUE), dim = c(patch.dim, patch.dim))
+x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- x
 plotLandscape(A)
 
@@ -78,7 +78,7 @@ drop.dead <- array(dim = c(pop.size, 2))
 
 for (i in 2:time){
   
-  mvt.par <- 0.9
+  mvt.par <- 0.3
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
