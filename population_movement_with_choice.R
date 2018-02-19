@@ -78,7 +78,7 @@ drop.dead <- array(dim = c(pop.size, 2))
 
 for (i in 2:time){
   
-  mvt.par <- 0.3
+  mvt.par <- 0.9
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
