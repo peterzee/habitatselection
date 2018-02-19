@@ -34,12 +34,8 @@ for (i in 2:time){
     locations[i,] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
                            tmp.mvt[,2] %% (nrow(A) + 1))
     
-    # locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
-
     encounter[i] <- A[locations[i,1], locations[i,2]]  
 
-  
-    
     }
 
 
@@ -47,7 +43,7 @@ for (i in 2:time){
 
 
 ### Trace plot of individual movement
-plot(1,1, cex=0, xlim=c(0,ncol(A)), ylim=c(0,ncol(A)))
+plot(1,1, cex=0, xlim=c(0,ncol(A)), ylim=c(0,ncol(A)), ann=FALSE, axes=FALSE)
 points(locations[1,1], locations[1,2], pch = 19)
 points(locations[time,1], locations[time,2], pch = 19, col = 2)
 for (i in 2:time){
@@ -56,5 +52,10 @@ for (i in 2:time){
          x1 = locations[i,1], y1 = locations[i,2],
         length = 0)
 }
+box()
 
 
+
+
+
+### 
