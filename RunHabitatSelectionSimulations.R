@@ -20,9 +20,10 @@ COUNT <- 0
 
 for ( eye in 1:length(LANDSCAPE.RATIO) ){
 
-      patch.dim <- 10
+      patch.dim <- 25
       x <- array(sample(0:2, patch.dim^2, prob = c(0,1,LANDSCAPE.RATIO[eye]), replace = TRUE), dim = c(patch.dim, patch.dim))
- 
+      index <- array(1:(patch.dim^2), dim = c(patch.dim, patch.dim))
+      
       for ( jay in 1:length(MVT.VEC) ){
         for ( kay in 1:length(RISK.VEC) ){
       
