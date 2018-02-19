@@ -8,7 +8,7 @@ patch.dim <- 10
 # A <- world$landscape
 # x <- array(0:2, dim = c(patch.dim, patch.dim))
 
-x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
+# x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- quilted
 plotLandscape(A)
 
