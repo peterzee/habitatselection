@@ -1,14 +1,16 @@
 library(philentropy)
 source('generateLandscape_function.R')
+
+
 patch.dim <- 10
 
 # world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
 # A <- world$landscape
-
 # x <- array(0:2, dim = c(patch.dim, patch.dim))
-x <- array(sample(0:2, patch.dim^2, prob = c(0,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
+
+x <- array(sample(0:2, patch.dim^2, prob = c(0,5,1), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- x
-# plotLandscape(A)
+plotLandscape(A)
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -129,7 +131,7 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.2
+        mvt.mod <- 0.1
         
       }
     }

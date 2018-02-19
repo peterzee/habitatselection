@@ -1,12 +1,13 @@
 library(philentropy)
 source('generateLandscape_function.R')
+
 patch.dim <- 10
 
-world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
-A <- world$landscape
+# world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
+# A <- world$landscape
 
-# x <- array(c(0:2), dim = c(10,10))
-# A <- x
+x <- array(sample(0:2, patch.dim^2, prob = c(0,10,1), replace = TRUE), dim = c(patch.dim, patch.dim))
+A <- x
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -15,11 +16,11 @@ patch.breakdown
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
 
 ## Number of species
-num.spp <- 1
+num.spp <- 10
 
 ## Effect of risk (deterrence baseline)
-# risk.mag <- rep(0.4, num.spp)
-risk.mag <- runif(num.spp)
+risk.mag <- rep(0.8, num.spp)
+# risk.mag <- runif(num.spp)
 
 ## Signal of risk across the landscape
 risk.landscape <- A
@@ -37,7 +38,7 @@ egg.landscape <- array(0, dim = c(nrow(A), ncol(A), num.spp))
 
 #####
 ## Movement for multiple individuals (population)
-pop.size <- 50
+pop.size <- 100
 pop.start.ind <- array(dim = c(pop.size, 2, num.spp))
 for (j in 1:num.spp){
     pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)

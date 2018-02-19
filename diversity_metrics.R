@@ -20,3 +20,5 @@ for (i in 1:length(index)){
 
 
 tapply(c(aDiv), c(A), mean)
+
+
