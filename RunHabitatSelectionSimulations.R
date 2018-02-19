@@ -20,8 +20,8 @@ COUNT <- 0
 
 for ( eye in 1:length(LANDSCAPE.RATIO) ){
 
-      patch.dim <- 25
-      x <- array(sample(0:2, patch.dim^2, prob = c(0,1,LANDSCAPE.RATIO[eye]), replace = TRUE), dim = c(patch.dim, patch.dim))
+      patch.dim <- 10
+      x <- array(sample(0:2, patch.dim^2, prob = c(1,1,LANDSCAPE.RATIO[eye]), replace = TRUE), dim = c(patch.dim, patch.dim))
       index <- array(1:(patch.dim^2), dim = c(patch.dim, patch.dim))
       
       for ( jay in 1:length(MVT.VEC) ){
@@ -37,7 +37,7 @@ for ( eye in 1:length(LANDSCAPE.RATIO) ){
                                           RISK.MAG = RISK.VEC[ kay ],
                                           PERCEPTION = 0.1,
                                           MVT = MVT.VEC[ jay ],
-                                          MVT.MOD = 0.1)
+                                          MVT.MOD = 0.19)
               
               ## Moore neighborhoods
               moore.out <- moore.summary(LANDSCAPE = sim.out$A,

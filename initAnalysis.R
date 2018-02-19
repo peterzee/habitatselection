@@ -5,19 +5,19 @@ par(mfrow=c(7,5), mar = c(0,0,0,0))
 for (EMM in 1:3){
 for (eye in 1:length(unique(meta.table[,"landscape.ratio"]))){
 
-  for (jay in 1:length(unique(meta.table[,"risk"]))){
+      for (kay in 1:length(unique(meta.table[,"movement"]))){
   
-    plot(1,1, cex = 0, xlim= c(0,10), ylim=c(0,20), ann = FALSE, axes = FALSE)
+    plot(1,1, cex = 0, xlim= c(0,10), ylim=c(0, 30), ann = FALSE, axes = FALSE)
     box()
 
-      for (kay in 1:length(unique(meta.table[,"movement"]))){
+  for (jay in 1:length(unique(meta.table[,"risk"]))){
 
       sim.subset <- which(meta.table[,'landscape.ratio'] == unique(meta.table[,"landscape.ratio"])[eye] & 
                           meta.table[,"risk"] == unique(meta.table[,"risk"])[jay] &
                           meta.table[,"movement"] == unique(meta.table[,"movement"])[kay]) 
 
       L <- length(sim.subset)
-      means.table <- array(dim=c(L, 20))
+      means.table <- array(dim=c(L, ((2*3+1)^2)))
 
       for (i in 1:L){
           
@@ -31,17 +31,13 @@ for (eye in 1:length(unique(meta.table[,"landscape.ratio"]))){
           means.table[i,1:length(means)] <- means
       }
 
-      points(colMeans(means.table, na.rm = TRUE), type = 'b', pch = 19, col = kay)
-      abline(h=3, lty=3, lwd=0.5)
+      points(colMeans(means.table, na.rm = TRUE), type = 'l', col = jay)
+      abline(h = 3, lty = 3, lwd = 0.5)
+      legend('topright', legend = c(EMM, 
+                                    unique(meta.table[,"landscape.ratio"])[eye],
+                                    unique(meta.table[,"movement"])[kay]))
       
     }
   }
 }
 }
-# plot(colMeans(means.table), type = 'b', ylim = c(0,10))
-
-
-# plot(means.table[,1])
-
-# plot(c, (a/b))
-# points(as.numeric(names(means)), means, col=2, cex=2,pch=19)
