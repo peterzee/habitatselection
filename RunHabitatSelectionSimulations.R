@@ -60,5 +60,5 @@ for ( eye in 1:length(LANDSCAPE.RATIO) ){
 }
 
 
-save(meta.table, OUTPUT.LIST, file = 'testRun.RData')
+#save(meta.table, OUTPUT.LIST, file = 'testRun.RData')
 
