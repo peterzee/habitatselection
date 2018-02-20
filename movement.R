@@ -1,6 +1,6 @@
 source('generateLandscape_function.R')
 
-world <- generateLandscape(10, 75, 50)
+world <- generateLandscape(25, 75, 50)
 
 A <- world$landscape
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
@@ -17,16 +17,24 @@ locations[1,] <- start.ind
 
 encounter <- rep(NA, time)
 
+wrap <- rep(0, time)
+
+
 for (i in 2:time){
     ## Dispersal kernal
-    dist <- rgeom(1, prob = 0.6) + 1
+    dist <- rgeom(1, prob = 0.9) + 1
     theta <- runif(1, 0, 2*pi)
       x <- cos(theta) * dist
       y <- sin(theta) * dist
       
     landing <- round(cbind(x,y))
     
+    
     tmp.mvt <- locations[i-1,] + landing
+    
+      if(sum((tmp.mvt > dim(A)[1] | tmp.mvt < 1)) > 0){
+        wrap[i] <- 1
+      }
     
       tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
       tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
@@ -48,9 +56,27 @@ points(locations[1,1], locations[1,2], pch = 19)
 points(locations[time,1], locations[time,2], pch = 19, col = 2)
 for (i in 2:time){
   points(locations[i,1], locations[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
+
+  ## stays 'inbounds'
+  if (wrap[i] == 0){
   arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
          x1 = locations[i,1], y1 = locations[i,2],
         length = 0)
+
+  } else {
+    ## wraps around ('out of bounds')
+    #outgoing arrow
+    arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+           x1 = locations[i,1], y1 = locations[i,2],
+           length = 0)
+    
+    #incoming arrow
+    arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+           x1 = locations[i,1], y1 = locations[i,2],
+           length = 0)
+    
+    
+  }
 }
 box()
 
