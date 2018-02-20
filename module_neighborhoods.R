@@ -69,12 +69,17 @@ plot(mean.module.risk, module.table[,"mean.egg.safe"],
      xlab = 'mean risk of surrounding modules', ylab = 'eggs / safe patch in focal module')
 
 
-## module tracking (location)
-module.tracker <- array(dim = c(time, pop.size))
+## Module Tracking (location)
+## module id through time
+module.tracker <- array(dim = c(time, pop.size))    
+## changes in module id (within / among)
 change.module <- rep(NA, pop.size) 
+prop.habitable <- c(NA, pop.size)
 for (j in 1:pop.size){
   for (i in 1:time){
     module.tracker[i,j] <- which(module.extract == index[locations[i,1,j], locations[i,2,j]], arr.ind = TRUE)[3]
     }
     change.module[j] <- sum(!is.na(rle(module.tracker[,j])$values))-1
+    prop.habitable[j] <- sum(encounter[,j] > 0) / sum(!is.na(module.tracker[,j]))
 }
+
