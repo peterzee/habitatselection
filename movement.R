@@ -17,8 +17,8 @@ locations[1,] <- start.ind
 
 encounter <- rep(NA, time)
 
-wrap <- rep(0, time)
-
+wrap.info <- array(dim = c(time, 6))
+wrap.info[,1] <- rep(0,time)
 
 for (i in 2:time){
     ## Dispersal kernal
@@ -31,9 +31,9 @@ for (i in 2:time){
     
     
     tmp.mvt <- locations[i-1,] + landing
-    
+    wrap.info[i,2:3] <- tmp.mvt
       if(sum((tmp.mvt > dim(A)[1] | tmp.mvt < 1)) > 0){
-        wrap[i] <- 1
+        wrap.info[i,1] <- 1
       }
     
       tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
@@ -51,32 +51,116 @@ for (i in 2:time){
 
 
 ### Trace plot of individual movement
-plot(1,1, cex=0, xlim=c(0,ncol(A)), ylim=c(0,ncol(A)), ann=FALSE, axes=FALSE)
-points(locations[1,1], locations[1,2], pch = 19)
-points(locations[time,1], locations[time,2], pch = 19, col = 2)
+plot(1,1, cex=0, 
+     xlim=c(1,ncol(A)), 
+     ylim=c(1,nrow(A)), 
+     ann=FALSE, axes=FALSE)
 for (i in 2:time){
   points(locations[i,1], locations[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
 
   ## stays 'inbounds'
-  if (wrap[i] == 0){
+  if (wrap.info[i,1] == 0){
+    
   arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
          x1 = locations[i,1], y1 = locations[i,2],
         length = 0)
 
   } else {
+    
     ## wraps around ('out of bounds')
-    #outgoing arrow
-    arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-           x1 = locations[i,1], y1 = locations[i,2],
-           length = 0)
+    category.sort <- c(
+      wrap.info[i,2] < 1,
+      wrap.info[i,2] > ncol(A),
+      wrap.info[i,3] < 1,
+      wrap.info[i,3] > nrow(A)
+    )
+    x <- category.sort
+    if ( sum(x == c(1,0,0,0)) == 4 ){ category <- 'lr' }
+    if ( sum(x == c(0,1,0,0)) == 4 ){ category <- 'rl' }
+    if ( sum(x == c(0,0,1,0)) == 4 ){ category <- 'bt' }
+    if ( sum(x == c(0,0,0,1)) == 4 ){ category <- 'tb' }
+    if ( sum(x == c(1,0,1,0)) == 4 ){ category <- 'lrbt' }
+    if ( sum(x == c(1,0,0,1)) == 4 ){ category <- 'lrtb' }
+    if ( sum(x == c(0,1,1,0)) == 4 ){ category <- 'rlbt' }
+    if ( sum(x == c(0,1,0,1)) == 4 ){ category <- 'rltb' }
     
-    #incoming arrow
-    arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-           x1 = locations[i,1], y1 = locations[i,2],
-           length = 0)
+    ## LEFT TO RIGHT
+    if (category == 'lr') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = 0, y1 = mean(locations[i-1,2], locations[i,2]),
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = ncol(A) + 1, y0 = mean(locations[i-1,2], locations[i,2]),
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
+    ## RIGHT TO LEFT
+    if (category == 'rl') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = ncol(A) + 1, y1 = mean(locations[i-1,2], locations[i,2]),
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = 0, y0 = mean(locations[i-1,2], locations[i,2]),
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
+    ## BOTTOM TO TOP
+    if (category == 'bt') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = mean(locations[i-1,1], locations[i,1]), y1 = 0,
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = nrow(A) + 1,
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
+    ## BOTTOM TO TOP
+    if (category == 'tb') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = mean(locations[i-1,1], locations[i,1]), y1 = nrow(A) + 1,
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = 0,
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
+    ## LEFT TO RIGHT, plus vertical wrap
+          if (category == 'lrbt' || category == 'lrtb') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = 0, y1 = locations[i-1,2],
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = ncol(A) + 1, y1 = locations[i-1,2],
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
+    ## RIGHT TO LEFT, plus vertical wrap
+    if (category == 'rlbt' || category == 'rltb') {
+            #outgoing arrow
+            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
+                   x1 = ncol(A) + 1, y1 = locations[i-1,2],
+                   length = 0)
+            
+            #incoming arrow
+            arrows(x0 = 0, y1 = locations[i-1,2],
+                   x1 = locations[i,1], y1 = locations[i,2],
+                   length = 0)
+          }
     
-    
-  }
+    }
+
+  points(locations[1,1], locations[1,2], pch = 19, col ='forestgreen', cex = 2)
+  points(locations[time,1], locations[time,2], pch = 19, col = 'red', cex = 2)
 }
 box()
 
