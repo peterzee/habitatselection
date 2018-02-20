@@ -166,8 +166,8 @@ for (i in 2:time){
         ## Dispersal kernal
         dist <- rgeom(1, prob = mvt.par[k] - mvt.mod) + 1
         theta <- runif(1, 0, 2*pi)
-        x <- cos(theta) * dist
-        y <- sin(theta) * dist
+          x <- cos(theta) * dist
+          y <- sin(theta) * dist
         
         landing <- round(cbind(x,y))
         
@@ -185,7 +185,7 @@ for (i in 2:time){
                                    tmp.mvt[,2] %% (nrow(A) + 1))
         
         ## change invidiauls landing at '0' index to the edge
-        # locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
+        locations[which(locations == 0)] <- sample(length(which(locations==0)), c(1, nrow(A)))
         
         encounter[i,j,k] <- A[locations[i,1,j,k], locations[i,2,j,k]]  
         

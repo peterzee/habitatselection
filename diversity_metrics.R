@@ -16,5 +16,7 @@ gamma <- sum(apply(egg.landscape, 3, function(x) sum(x) > 0))
 
 beta <- gamma / mean.alpha
 
-
+mean.alpha
+beta
+gamma
 
