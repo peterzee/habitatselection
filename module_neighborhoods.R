@@ -72,5 +72,5 @@ for (j in 1:pop.size){
                              sum(encounter[,j] == 2) / sum(!is.na(module.tracker[,j])))
 }
 
-plot(prop.habitable[,1], change.module)
-plot(prop.habitable[,4], change.module)
+# plot(prop.habitable[,1], change.module)
+# plot(prop.habitable[,4], change.module)

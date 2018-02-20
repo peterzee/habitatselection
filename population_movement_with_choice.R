@@ -82,7 +82,7 @@ wrap.info[,1,] <- rep(0,time)
 
 for (i in 2:time){
   
-  mvt.par <- 0.3
+  mvt.par <- 0.2
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
@@ -135,7 +135,7 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.1
+        mvt.mod <- 0.19
         
       }
     }

@@ -3,20 +3,20 @@
 traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
     
   IND <- individual
-  locations <- trace.data
+  loc <- trace.data
   A <- landscape
   
   if (overlay == TRUE){
   
     points(1,1, cex=0)
     for (i in 2:time){
-      points(locations[i,1], locations[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
+      points(loc[i,1], loc[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
       
       ## stays 'inbounds'
       if (wrap.info[i,1,IND] == 0){
         
-        arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-               x1 = locations[i,1], y1 = locations[i,2],
+        arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+               x1 = loc[i,1], y1 = loc[i,2],
                length = 0)
         
       } else {
@@ -41,80 +41,81 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
         ## LEFT TO RIGHT
         if (category == 'lr') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = 0, y1 = mean(locations[i-1,2], locations[i,2]),
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = 0, y1 = mean(loc[i-1,2], loc[i,2]),
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = ncol(A) + 1, y0 = mean(locations[i-1,2], locations[i,2]),
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = ncol(A) + 1, y0 = mean(loc[i-1,2], loc[i,2]),
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
         ## RIGHT TO LEFT
         if (category == 'rl') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = ncol(A) + 1, y1 = mean(locations[i-1,2], locations[i,2]),
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = ncol(A) + 1, y1 = mean(loc[i-1,2], loc[i,2]),
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = 0, y0 = mean(locations[i-1,2], locations[i,2]),
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = 0, y0 = mean(loc[i-1,2], loc[i,2]),
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
         ## BOTTOM TO TOP
         if (category == 'bt') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = mean(locations[i-1,1], locations[i,1]), y1 = 0,
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = mean(loc[i-1,1], loc[i,1]), y1 = 0,
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = nrow(A) + 1,
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = mean(loc[i-1,1], loc[i,1]), y0 = nrow(A) + 1,
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
         ## BOTTOM TO TOP
         if (category == 'tb') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = mean(locations[i-1,1], locations[i,1]), y1 = nrow(A) + 1,
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = mean(loc[i-1,1], loc[i,1]), y1 = nrow(A) + 1,
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = 0,
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = mean(loc[i-1,1], loc[i,1]), y0 = 0,
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
+        
         ## LEFT TO RIGHT, plus vertical wrap
         if (category == 'lrbt' || category == 'lrtb') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = 0, y1 = locations[i-1,2],
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = loc[i-1,1], y1 = 0,
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = ncol(A) + 1, y1 = locations[i-1,2],
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = loc[i-1,1] + 1, y0 = nrow(A) + 1,
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
         ## RIGHT TO LEFT, plus vertical wrap
         if (category == 'rlbt' || category == 'rltb') {
           #outgoing arrow
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = ncol(A) + 1, y1 = locations[i-1,2],
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = ncol(A) + 1, y1 = loc[i-1,2],
                  length = 0)
           
           #incoming arrow
-          arrows(x0 = 0, y1 = locations[i-1,2],
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = loc[i-1,1], y0 = 0,
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
         }
         
       }
       
-      points(locations[1,1], locations[1,2], pch = 19, col ='forestgreen', cex = 2)
-      points(locations[max(which(!is.na(locations[,1]))),1], locations[max(which(!is.na(locations[,1]))),2], pch = 19, col = 'red', cex = 2)
+      points(loc[1,1], loc[1,2], pch = 19, col ='forestgreen', cex = 2)
+      points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 19, col = 'red', cex = 2)
     }
     box()
     
@@ -126,13 +127,13 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
            ylim=c(1,nrow(A)), 
            ann=FALSE, axes=FALSE)
       for (i in 2:time){
-        points(locations[i,1], locations[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
+        points(loc[i,1], loc[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
         
         ## stays 'inbounds'
         if (wrap.info[i,1,IND] == 0){
           
-          arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                 x1 = locations[i,1], y1 = locations[i,2],
+          arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                 x1 = loc[i,1], y1 = loc[i,2],
                  length = 0)
           
         } else {
@@ -157,80 +158,80 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
           ## LEFT TO RIGHT
           if (category == 'lr') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = 0, y1 = mean(locations[i-1,2], locations[i,2]),
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = 0, y1 = mean(loc[i-1,2], loc[i,2]),
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = ncol(A) + 1, y0 = mean(locations[i-1,2], locations[i,2]),
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = ncol(A) + 1, y0 = mean(loc[i-1,2], loc[i,2]),
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           ## RIGHT TO LEFT
           if (category == 'rl') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = ncol(A) + 1, y1 = mean(locations[i-1,2], locations[i,2]),
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = ncol(A) + 1, y1 = mean(loc[i-1,2], loc[i,2]),
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = 0, y0 = mean(locations[i-1,2], locations[i,2]),
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = 0, y0 = mean(loc[i-1,2], loc[i,2]),
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           ## BOTTOM TO TOP
           if (category == 'bt') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = mean(locations[i-1,1], locations[i,1]), y1 = 0,
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = mean(loc[i-1,1], loc[i,1]), y1 = 0,
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = nrow(A) + 1,
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = mean(loc[i-1,1], loc[i,1]), y0 = nrow(A) + 1,
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           ## BOTTOM TO TOP
           if (category == 'tb') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = mean(locations[i-1,1], locations[i,1]), y1 = nrow(A) + 1,
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = mean(loc[i-1,1], loc[i,1]), y1 = nrow(A) + 1,
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = mean(locations[i-1,1], locations[i,1]), y0 = 0,
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = mean(loc[i-1,1], loc[i,1]), y0 = 0,
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           ## LEFT TO RIGHT, plus vertical wrap
           if (category == 'lrbt' || category == 'lrtb') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = 0, y1 = locations[i-1,2],
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = 0, y1 = loc[i-1,2],
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = ncol(A) + 1, y1 = locations[i-1,2],
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = ncol(A) + 1, y1 = loc[i-1,2],
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           ## RIGHT TO LEFT, plus vertical wrap
           if (category == 'rlbt' || category == 'rltb') {
             #outgoing arrow
-            arrows(x0 = locations[i-1,1], y0 = locations[i-1,2],
-                   x1 = ncol(A) + 1, y1 = locations[i-1,2],
+            arrows(x0 = loc[i-1,1], y0 = loc[i-1,2],
+                   x1 = ncol(A) + 1, y1 = loc[i-1,2],
                    length = 0)
             
             #incoming arrow
-            arrows(x0 = 0, y1 = locations[i-1,2],
-                   x1 = locations[i,1], y1 = locations[i,2],
+            arrows(x0 = 0, y1 = loc[i-1,2],
+                   x1 = loc[i,1], y1 = loc[i,2],
                    length = 0)
           }
           
         }
         
-        points(locations[1,1], locations[1,2], pch = 19, col ='forestgreen', cex = 2)
-        points(locations[max(which(!is.na(locations[,1]))),1], locations[max(which(!is.na(locations[,1]))),2], pch = 19, col = 'red', cex = 2)
+        points(loc[1,1], loc[1,2], pch = 19, col ='forestgreen', cex = 2)
+        points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 19, col = 'red', cex = 2)
       }
       box()
     
