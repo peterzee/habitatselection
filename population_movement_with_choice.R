@@ -1,6 +1,7 @@
 library(philentropy)
 source('generateLandscape_function.R')
-
+source('plotLandscape_function.R')
+source('movement_plot_functions.R')
 
 patch.dim <- 10
 

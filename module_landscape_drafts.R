@@ -1,8 +1,8 @@
 source('plotLandscape_function.R')
 
-  hab.matrix <- 4
+  hab.matrix <- 2
   patch.dim <- 4
-  module.dim <- 6
+  module.dim <- 6     ## must be even number
   
     
   mod.index <- array(1:module.dim^2, dim = c(module.dim, module.dim))
@@ -19,7 +19,8 @@ source('plotLandscape_function.R')
     
   count <- 0
   
-  risk.vector <- c(seq(0, 2, length.out = module.dim/2), rev(seq(0, 2, length.out = module.dim/2)))
+  risk.vector <- c(seq(0, 2, length.out = (module.dim/2) - 1), NA, NA,
+                   rev(seq(0, 2, length.out = (module.dim/2) - 1)))
     
   for (i in 1:length(mod.index)){
     
@@ -27,14 +28,23 @@ source('plotLandscape_function.R')
     
     hab.module <- array(0, dim = c(hab.matrix + patch.dim, hab.matrix + patch.dim))
     
-    
+    ##########################################
     # x <- array(sample(0:2, patch.dim^2, prob = c(0,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
     
     ### heterogeneity among modules
     module.col <- (which(unique(quilted.index[,2]) == quilted.index[i,2]))
-    x <- array(sample(0:2, patch.dim^2, prob = c(0, 1, risk.vector[module.col]), replace = TRUE), dim = c(patch.dim, patch.dim))
-    
+      if (module.col == (module.dim/2) || module.col == ((module.dim/2) + 1)){
+        
+            x <- array(sample(0:2, patch.dim^2, prob = c(0, 0, 1), replace = TRUE), dim = c(patch.dim, patch.dim))
+      
+        } else {
+            
+            x <- array(sample(0:2, patch.dim^2, prob = c(0, 1, risk.vector[module.col]), replace = TRUE), dim = c(patch.dim, patch.dim))
+        }
 
+    ##########################################
+    
+    
     hab.module[((hab.matrix / 2) + 1) : (((hab.matrix / 2)) + patch.dim), ((hab.matrix / 2) + 1) : (((hab.matrix / 2)) + patch.dim) ] <- x
     
     A <- hab.module

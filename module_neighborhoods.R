@@ -1,18 +1,4 @@
-## module neighborhoods
-# quilted
-# A
-# module.extract
-# module.dim
-# 
-# egg.landscape
-# 
-# 
-# tapply(c(egg.landscape), c(A), mean)
-# 
-# tapply(egg.landscape[module.extract[,,6]], A[module.extract[,,6]], mean)
-
-
-
+## Module neighborhoods
 ## module summary
 module.table <- array(dim = c(module.dim^2, 9))
 colnames(module.table) <- c('id', 'n.empty', 'n.safe', 'n.risky', 'n.egg.safe', 'n.egg.risky', 'mean.egg.safe', 'mean.egg.risky', 'module.risk')
