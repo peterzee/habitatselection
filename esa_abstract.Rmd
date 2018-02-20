@@ -1,7 +1,7 @@
-## ESA abstract (2018 // New Orleans)
-## Peter C Zee // University of Mississippi
+## Ecological and evolutionary consequences of habitat selection
+### Peter C. Zee // University of Mississippi
 
-## Background/Question/Methods
+### Background/Question/Methods
 Selecting a habitat is a critical demographic decision for many organisms. 
 
 Patch quality with
@@ -14,7 +14,7 @@ In a metacommunity context, this habitat selection can have consequences for the
 
 
 
-## Results/Conclusions
+### Results/Conclusions ##
 In this
 We found that a hetergenous environment, where perception matters....
 

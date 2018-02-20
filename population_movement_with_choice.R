@@ -11,7 +11,7 @@ patch.dim <- 10
 
 # x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
 A <- quilted
-plotLandscape(A)
+# plotLandscape(A)
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -216,6 +216,6 @@ prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
 #          length = 0)
 # }
 
-tapply(c(egg.landscape), c(A), mean)
-t.test(egg.landscape[A == 1], egg.landscape[A == 2])
+# tapply(c(egg.landscape), c(A), mean)
+# t.test(egg.landscape[A == 1], egg.landscape[A == 2])
 boxplot(egg.landscape[A == 1], egg.landscape[A == 2])
