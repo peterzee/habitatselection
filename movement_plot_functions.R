@@ -8,9 +8,9 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
   
   if (overlay == TRUE){
   
-    points(1,1, cex=0)
+    points(1,1, cex = 0)
     for (i in 2:time){
-      points(loc[i,1], loc[i,2], pch = 19, col =rgb(0,0,0,0.5), cex = 0.5)
+      points(loc[i,1], loc[i,2], pch = 19, col = rgb(0,0,0,0.5), cex = 0.5)
       
       ## stays 'inbounds'
       if (wrap.info[i,1,IND] == 0){
@@ -114,15 +114,15 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
         
       }
       
-      points(loc[1,1], loc[1,2], pch = 19, col ='forestgreen', cex = 2)
-      points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 19, col = 'red', cex = 2)
+      points(loc[1,1], loc[1,2], pch = 13, col ='forestgreen', cex = 2)
+      points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 13, col = 'red', cex = 2)
     }
     box()
     
     
     } else {
        
-      plot(1,1, cex=0, 
+      plot(1,1, cex = 0, 
            xlim=c(1,ncol(A)), 
            ylim=c(1,nrow(A)), 
            ann=FALSE, axes=FALSE)
@@ -230,8 +230,8 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
           
         }
         
-        points(loc[1,1], loc[1,2], pch = 19, col ='forestgreen', cex = 2)
-        points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 19, col = 'red', cex = 2)
+        points(loc[1,1], loc[1,2], pch = 13, col ='forestgreen', cex = 2)
+        points(loc[max(which(!is.na(loc[,1]))),1], loc[max(which(!is.na(loc[,1]))),2], pch = 13, col = 'red', cex = 2)
       }
       box()
     

@@ -1,8 +1,11 @@
 source('plotLandscape_function.R')
 
+is.structured <- FALSE
+
+
   hab.matrix <- 2
   patch.dim <- 4
-  module.dim <- 6     ## must be even number
+  module.dim <- 10     ## must be even number
   
     
   mod.index <- array(1:module.dim^2, dim = c(module.dim, module.dim))
@@ -29,19 +32,22 @@ source('plotLandscape_function.R')
     hab.module <- array(0, dim = c(hab.matrix + patch.dim, hab.matrix + patch.dim))
     
     ##########################################
-    x <- array(sample(0:2, patch.dim^2, prob = c(0,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
     
     ### heterogeneity among modules
     module.col <- (which(unique(quilted.index[,2]) == quilted.index[i,2]))
-      # if (module.col == (module.dim/2) || module.col == ((module.dim/2) + 1)){
-      #   
-      #       x <- array(sample(0:2, patch.dim^2, prob = c(0, 0, 1), replace = TRUE), dim = c(patch.dim, patch.dim))
-      # 
-      #   } else {
-      #       
-      #       x <- array(sample(0:2, patch.dim^2, prob = c(0, 1, risk.vector[module.col]), replace = TRUE), dim = c(patch.dim, patch.dim))
-      #   }
+    if (is.structured == TRUE){
+          if (module.col == (module.dim/2) || module.col == ((module.dim/2) + 1)){
 
+            x <- array(sample(0:2, patch.dim^2, prob = c(0, 0, 1), replace = TRUE), dim = c(patch.dim, patch.dim))
+
+        } else {
+
+            x <- array(sample(0:2, patch.dim^2, prob = c(0, 1, risk.vector[module.col]), replace = TRUE), dim = c(patch.dim, patch.dim))
+        }
+    } else {
+        x <- array(sample(0:2, patch.dim^2, prob = c(0,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
+    }
+    
     ##########################################
     
     
