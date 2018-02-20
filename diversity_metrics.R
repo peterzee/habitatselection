@@ -1,13 +1,6 @@
 ###  diversity_metrics
 
 
-
-A
-egg.landscape[1,2,]
-
-
-which(index == 2, arr.ind =TRUE)
-
 aDiv <- array(NA, dim = c(nrow(A), ncol(A)))
 for (i in 1:length(index)){
   
@@ -15,10 +8,13 @@ for (i in 1:length(index)){
   loc.comm <- egg.landscape[id[1], id[2],]
   aDiv[i] <- sum(loc.comm > 0)
   
-  
   }
 
 
-tapply(c(aDiv), c(A), mean)
+mean.alpha <- tapply(c(aDiv), c(A), mean)
+gamma <- sum(apply(egg.landscape, 3, function(x) sum(x) > 0))
+
+beta <- gamma / mean.alpha
+
 
 

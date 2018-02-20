@@ -5,9 +5,11 @@ patch.dim <- 10
 
 # world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
 # A <- world$landscape
+# x <- array(0:2, dim = c(patch.dim, patch.dim))
 
-x <- array(sample(0:2, patch.dim^2, prob = c(0,10,1), replace = TRUE), dim = c(patch.dim, patch.dim))
-A <- x
+# x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
+A <- quilted
+# plotLandscape(A)
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -87,6 +89,10 @@ distance.tracker <- array(NA, dim = c(time, pop.size, num.spp))
   
 drop.dead <- array(dim = c(pop.size, 2, num.spp))
 
+wrap.info <- array(dim = c(time, 6, pop.size, num.spp))
+wrap.info[,1,,] <- 0
+
+
 for (i in 2:time){
   
   mvt.par <- rep(0.9, num.spp)
@@ -146,7 +152,7 @@ for (i in 2:time){
             
             egg.check <- 0
             risk.choices.time[i-1,j,k] <- 0
-            mvt.mod <- 0.2
+            mvt.mod <- 0.19
             
           }
         }
@@ -166,6 +172,11 @@ for (i in 2:time){
         landing <- round(cbind(x,y))
         
         tmp.mvt <- locations[i-1,,j,k] + landing
+        
+        wrap.info[i,2:3,j,k] <- tmp.mvt
+        if(sum((tmp.mvt > dim(A)[1] | tmp.mvt < 1)) > 0){
+          wrap.info[i,1,j,k] <- 1
+        }
         
           tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
           tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
@@ -201,7 +212,7 @@ for (i in 2:time){
 
 
 ## proportion of initial population who lay eggs ('drop dead)
-prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
+# prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
 # plot(sort(drop.dead[,2], decreasing = TRUE), 
 #      xlab = "individual", ylab = "time before laying",
 #      type ='l' ,lwd = 2, col = 4)
@@ -222,17 +233,17 @@ prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
 #          x1 = locations[j,1], y1 = locations[j,2],
 #          length = 0)
 # }
-
-tapply(c(egg.landscape), c(A), mean)
-t.test(egg.landscape[A == 1], egg.landscape[A == 2])
-boxplot(egg.landscape[A == 1], egg.landscape[A == 2])
-
-
-risk.mag
-p.values <- c()
-for (i in 1:num.spp){
-  p.values[i] <- (t.test(egg.landscape[,,i][A==1], egg.landscape[,,i][A == 2])$p.value)
-}
-
-
-plot(risk.mag, p.values)
+# 
+# tapply(c(egg.landscape), c(A), mean)
+# t.test(egg.landscape[A == 1], egg.landscape[A == 2])
+# boxplot(egg.landscape[A == 1], egg.landscape[A == 2])
+# 
+# 
+# risk.mag
+# p.values <- c()
+# for (i in 1:num.spp){
+#   p.values[i] <- (t.test(egg.landscape[,,i][A==1], egg.landscape[,,i][A == 2])$p.value)
+# }
+# 
+# 
+# plot(risk.mag, p.values)
