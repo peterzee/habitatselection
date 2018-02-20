@@ -76,6 +76,9 @@ energy <- rbind(rep(1, pop.size), array(NA, dim = c(time-1, pop.size)))
 
 drop.dead <- array(dim = c(pop.size, 2))
 
+wrap.info <- array(dim = c(time, 6, pop.size))
+wrap.info[,1,] <- rep(0,time)
+
 for (i in 2:time){
   
   mvt.par <- 0.3
@@ -151,6 +154,11 @@ for (i in 2:time){
     landing <- round(cbind(x,y))
     
     tmp.mvt <- locations[i-1,,j] + landing
+    
+    wrap.info[i,2:3,j] <- tmp.mvt
+    if(sum((tmp.mvt > dim(A)[1] | tmp.mvt < 1)) > 0){
+      wrap.info[i,1,j] <- 1
+    }
       
       tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
       tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
