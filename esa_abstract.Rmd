@@ -7,7 +7,10 @@ Selecting a habitat is a critical demographic decision for many organisms.
 Patch quality with
 Context dependencies ...
 Local and regional effects
-In a metacommunity context, this habitat selection can have
+
+Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
+
+In a metacommunity context, this habitat selection can have consequences for the pattern of diversity seen across a landscape (beta vs alpha).
 
 
 
