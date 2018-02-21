@@ -19,7 +19,6 @@ names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
 
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
 
-
 ## Effect of risk (deterrence baseline)
 risk.mag <- 0.8
 
@@ -39,7 +38,7 @@ egg.landscape <- array(0, dim(A))
 
 #####
 ## Movement for multiple individuals (population)
-pop.size <- 500
+pop.size <- 2000
 pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
 pop.start.ind <- array(dim = c(pop.size, 2))
 for (i in 1:pop.size){
@@ -135,12 +134,11 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.19
+        mvt.mod <- 0.0
         
       }
     }
-    
-    
+  
     # ### If adults layed egg, drop out of simulation (eg die, stop moving, etc)
     if (egg.check == 1){
       drop.dead[j,] <- c(1,i)

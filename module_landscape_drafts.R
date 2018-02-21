@@ -5,7 +5,7 @@ is.structured <- TRUE
 
   hab.matrix <- 2
   patch.dim <- 3
-  module.dim <- 8     ## must be even number
+  module.dim <- 6     ## must be even number
   
     
   mod.index <- array(1:module.dim^2, dim = c(module.dim, module.dim))
