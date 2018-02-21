@@ -1,11 +1,11 @@
 source('plotLandscape_function.R')
 
-is.structured <- TRUE
+is.structured <- FALSE
 
 
   hab.matrix <- 2
-  patch.dim <- 3
-  module.dim <- 6     ## must be even number
+  patch.dim <- 5
+  module.dim <- 10     ## must be even number
   
     
   mod.index <- array(1:module.dim^2, dim = c(module.dim, module.dim))

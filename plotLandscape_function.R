@@ -3,7 +3,7 @@ plotLandscape <- function(landscape){
   
   A <- landscape
   
-  col.vec <- c(0,'dodgerblue', 'tomato')
+  col.vec <- c(0, rgb(0,0,1, 0.5), rgb(1,0,0, 0.5))
     
   
   
