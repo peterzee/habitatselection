@@ -25,7 +25,7 @@ generateModular <- function(MOD.DIM, MATRIX.SIZE, PATCH.DIM){
     hab.module <- array(0, dim = c(hab.matrix + patch.dim, hab.matrix + patch.dim))
   
     # x <- array(sample(0:2, patch.dim^2, prob = c(1,1,1), replace = TRUE), dim = c(patch.dim, patch.dim))
-    x <- array(sample(0:2, patch.dim^2, prob = c(1, 1, runif(1, 0, 5)), replace = TRUE), dim = c(patch.dim, patch.dim))
+    x <- array(sample(0:2, patch.dim^2, prob = c(0, 1, runif(1, 0, 5)), replace = TRUE), dim = c(patch.dim, patch.dim))
     
     hab.module[((hab.matrix / 2) + 1) : (((hab.matrix / 2)) + patch.dim), ((hab.matrix / 2) + 1) : (((hab.matrix / 2)) + patch.dim) ] <- x
     

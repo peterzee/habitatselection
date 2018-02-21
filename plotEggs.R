@@ -39,5 +39,5 @@ plotEggs <- function(EGG.LANDSCAPE, LANDSCAPE){
   
 }
 
-plotEggs(egg.landscape, quilted)
+# plotEggs(egg.landscape, quilted)
 

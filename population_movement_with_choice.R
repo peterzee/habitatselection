@@ -39,7 +39,7 @@ egg.landscape <- array(0, dim(A))
 
 #####
 ## Movement for multiple individuals (population)
-pop.size <- 500
+pop.size <- 250
 pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
 pop.start.ind <- array(dim = c(pop.size, 2))
 for (i in 1:pop.size){
@@ -67,7 +67,6 @@ safe.choices.time <-  array(NA, dim = c(time, pop.size))
 risk.choices.time <-  array(NA, dim = c(time, pop.size))
 
 ## Perception cutoff
-# p <- 0.8
 p.vec <- rep(0.1, pop.size)
 
 distance.tracker <- array(NA, dim = c(time, pop.size))
@@ -135,7 +134,7 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.0
+        mvt.mod <- 0.7
         
       }
     }
