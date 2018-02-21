@@ -2,15 +2,20 @@
 ### Peter C. Zee // University of Mississippi
 
 ### Background/Question/Methods
-Selecting a habitat is a critical demographic decision for many organisms. 
+Habitat selection is a critical demographic event for many organisms.  
 
 Patch quality with
 Context dependencies ...
 Local and regional effects
+obligate vs facultative dispersal
 
 Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
 
 In a metacommunity context, this habitat selection can have consequences for the pattern of diversity seen across a landscape (beta vs alpha).
+
+This model tracks movement of individuals, , changes in community structure, and evolutionary changes.
+
+
 
 
 
@@ -19,11 +24,19 @@ In this
 We found that a hetergenous environment, where perception matters....
 
 Spatially explicit
+At both the local and regional level,  find regional 
+increased colonization in suitabable habitats in proximity to unsuitable habitats ('compression').
 
-Further, generalizing the model to the community level, we find that the context dependencies of habitat selection result in . In particular, we find that results in ... beta diversity.
+At the community (and metacommunity) level, we find that the context dependencies of habitat selection result in . In particular, we find that results in ... beta diversity.
 
+Categorizing community structures by interactions between landscape structure and patterns of individual dispersal. Preliminary analyses show ...
 
-This modeling frameworks integrates across behavior, community ecology, and evolution. 
+Beta diversity increasesd in unsuitable patches, as decease
+
+Results from the simulation framework will be able to give predictions for habitat selection
+
+Ongoing work aims to investigate how habitat selection evolves in populations encountering environments with heterogeneity in suitability in space and time.
+
 
 
 
