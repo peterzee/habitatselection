@@ -1,7 +1,9 @@
 source('plotLandscape_function.R')
+source('shuffleLandscape.R')
+
 
 is.structured <- TRUE
-
+is.shuffled <- FALSE
 
   hab.matrix <- 2
   patch.dim <- 5
@@ -65,7 +67,15 @@ is.structured <- TRUE
   }
   
 
-plotLandscape(quilted)
+  if (is.shuffled == TRUE){
+    
+    quilted <- shuffleLandscape(quilted)
+    
+  }
+  
+  plotLandscape(quilted)
+
+
 
 
 

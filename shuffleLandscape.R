@@ -17,6 +17,8 @@ shuffleLandscape <- function(module.landscape){
     shuffled <- shuffle.quilt      
     return(shuffled)
     }
-a <- shuffleLandscape(quilted)
 
-plotLandscape(a)
+
+# a <- shuffleLandscape(quilted)
+# 
+# plotLandscape(a)

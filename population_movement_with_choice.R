@@ -39,7 +39,7 @@ egg.landscape <- array(0, dim(A))
 
 #####
 ## Movement for multiple individuals (population)
-pop.size <- 250
+pop.size <- 500
 pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
 pop.start.ind <- array(dim = c(pop.size, 2))
 for (i in 1:pop.size){
