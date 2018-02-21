@@ -2,7 +2,7 @@ source('plotLandscape_function.R')
 source('shuffleLandscape.R')
 
 
-is.structured <- TRUE
+is.structured <- FALSE
 is.shuffled <- TRUE
 
   hab.matrix <- 2

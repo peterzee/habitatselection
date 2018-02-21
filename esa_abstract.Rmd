@@ -8,21 +8,15 @@ Habitat selection is a critical demographic event for many organisms.
 Patch quality with
 Context dependencies ...
 
-I haev built stochastic, individual-based simulation model . In this spatially explicit model, individual organisms move across a landscape and make .. . Across a wide range of parameters . 
+I haev built stochastic, individual-based simulation model . In this spatially explicit model, individual organisms move across a landscape and make .. .  . 
 
 
-Further, the model can be exapnded to a community framework, where individuals of different species
+Further, the model can a community framework, where individuals of different species
 
 
-In this way, I can study how 
+Across a range of 
 
 
-
-
-
-In a metacommunity context, this habitat selection can have consequences for the pattern of diversity seen across a landscape (beta vs alpha).
-
-This model tracks movement of individuals, , changes in community structure, and evolutionary changes.
 
 
 
@@ -53,7 +47,7 @@ Beta diversity increasesd in unsuitable patches, as decease
 
 Together, these results identify interactions among across multiple levels of organizition (inviduals to communities).
 
-At the community level, I find that habitat selection leads to . 
+At the community level, I find that habitat selection in structured landscapes leads to increased beta diversity in low quality patches. 
 
 Results from the simulation framework will be able to give predictions for habitat selection
 

@@ -19,3 +19,5 @@ mean.alpha
 beta
 gamma
 
+
+10 /mean(tapply(c(aDiv[A > 0]), which(c(A > 0)), mean))
