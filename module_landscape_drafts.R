@@ -1,11 +1,13 @@
 source('plotLandscape_function.R')
+source('shuffleLandscape.R')
+
 
 is.structured <- TRUE
-
+is.shuffled <- TRUE
 
   hab.matrix <- 2
-  patch.dim <- 3
-  module.dim <- 8     ## must be even number
+  patch.dim <- 5
+  module.dim <- 6     ## must be even number
   
     
   mod.index <- array(1:module.dim^2, dim = c(module.dim, module.dim))
@@ -65,7 +67,15 @@ is.structured <- TRUE
   }
   
 
-plotLandscape(quilted)
+  if (is.shuffled == TRUE){
+    
+    quilted <- shuffleLandscape(quilted)
+    
+  }
+  
+  plotLandscape(quilted)
+
+
 
 
 

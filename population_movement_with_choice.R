@@ -2,6 +2,7 @@ library(philentropy)
 source('generateLandscape_function.R')
 source('plotLandscape_function.R')
 source('movement_plot_functions.R')
+source('plotEggs.R')
 
 patch.dim <- 10
 
@@ -18,7 +19,6 @@ names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
 # patch.breakdown
 
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
-
 
 ## Effect of risk (deterrence baseline)
 risk.mag <- 0.8
@@ -67,7 +67,6 @@ safe.choices.time <-  array(NA, dim = c(time, pop.size))
 risk.choices.time <-  array(NA, dim = c(time, pop.size))
 
 ## Perception cutoff
-# p <- 0.8
 p.vec <- rep(0.1, pop.size)
 
 distance.tracker <- array(NA, dim = c(time, pop.size))
@@ -135,12 +134,11 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.19
+        mvt.mod <- 0.7
         
       }
     }
-    
-    
+  
     # ### If adults layed egg, drop out of simulation (eg die, stop moving, etc)
     if (egg.check == 1){
       drop.dead[j,] <- c(1,i)
@@ -219,3 +217,4 @@ for (i in 2:time){
 # tapply(c(egg.landscape), c(A), mean)
 # t.test(egg.landscape[A == 1], egg.landscape[A == 2])
 boxplot(egg.landscape[A == 1], egg.landscape[A == 2])
+plotEggs(egg.landscape, quilted)

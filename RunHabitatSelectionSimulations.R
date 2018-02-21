@@ -13,7 +13,7 @@ replicates <- 10
 
 LANDSCAPE.STRUCTURE <- c(FALSE, TRUE)
 MVT.VEC <- c(0.2, 0.5, 0.9)
-RISK.VEC <- c(0,  0.4, 0.8)
+RISK.VEC <- c(0, 0.4, 0.8)
 
 
 meta.table <- array(dim = c(length(LANDSCAPE.STRUCTURE) * length(MVT.VEC) * length(RISK.VEC) * replicates, 5))

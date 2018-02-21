@@ -3,7 +3,7 @@ plotLandscape <- function(landscape){
   
   A <- landscape
   
-  col.vec <- c(0,'dodgerblue', 'tomato')
+  col.vec <- c(0, rgb(0,0,1, 0.5), rgb(1,0,0, 0.5))
     
   
   
@@ -12,11 +12,13 @@ plotLandscape <- function(landscape){
        axes = FALSE, ann = FALSE)
     points(rep(1, ncol(A)), 1:nrow(A),
          pch = 19,
-         col = col.vec[A[,1]+1])
+         col = col.vec[A[,1]+1],
+         cex =2)
     for (i in 2:nrow(A)){
       points(rep(i, ncol(A)), 1:nrow(A),
              pch = 19,
-             col = col.vec[A[,i]+1])
+             col = col.vec[A[,i]+1],
+             cex = 2)
     }
   box()
   
