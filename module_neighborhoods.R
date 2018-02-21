@@ -20,8 +20,8 @@ plot(module.table[,"n.risky"], module.table[,"mean.egg.safe"],
      xlab = 'number of risky patches in module', ylab = 'mean eggs / safe patch in module')
 
 
-## adjacnt modules (basically a moore neighborhood for modules)
 
+## adjacnt modules (basically a moore neighborhood for modules)
 range <- 1
 module.moore <-array(dim = c((2*range + 1), (2*range + 1), length(mod.index)))
 for (i in 1:length(mod.index)){

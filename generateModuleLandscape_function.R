@@ -68,13 +68,19 @@ generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTUR
                                        quilted.index[i,2] : (quilted.index[i,2] + (hab.matrix + patch.dim - 1))]
   }
   
+  inputs <- list(MATRIX.SIZE = MATRIX.SIZE, 
+                 PATCH.DIM = PATCH.DIM, 
+                 MODULE.DIM = MODULE.DIM)
   
-  out <- list(module.landscape = quilted)
+  out <- list(inputs = inputs,
+              module.landscape = quilted,
+              module.extract = module.extract,
+              mod.index = mod.index)
   
 return(out)
 }
 
-#
-a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE)
-a$module.landscape
-plotLandscape(a$module.landscape)
+# #
+# a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE)
+# a$module.landscape
+# plotLandscape(a$module.landscape)

@@ -1,6 +1,8 @@
 ## Running
+source('generateModuleLandscape_function.R')
 source('population_function.R')
 source('moore_function.R')
+source('module_neighborhood_function.R')
 
 
 ## storage for simulation output
@@ -9,13 +11,13 @@ OUTPUT.LIST <- list()
 
 replicates <- 10
 
-LANDSCAPE.RATIO <- c(0.1, 0.2, 0.5, 1, 2, 5, 10)
-MVT.VEC <- c(0.2, 0.3, 0.5, 0.7, 0.9)
-RISK.VEC <- c(0, 0.2, 0.4, 0.6, 0.8)
+# LANDSCAPE.RATIO <- c(0.1, 0.2, 0.5, 1, 2, 5, 10)
+MVT.VEC <- c(0.2, 0.5, 0.9)
+RISK.VEC <- c(0,  0.4, 0.8)
 
 
-meta.table <- array(dim = c(length(LANDSCAPE.RATIO) * length(MVT.VEC) * length(RISK.VEC) * replicates, 5))
-colnames(meta.table) <- c('id', 'landscape.ratio', 'movement', 'risk', 'replicate')
+meta.table <- array(dim = c(length(MVT.VEC) * length(RISK.VEC) * replicates, 5))
+colnames(meta.table) <- c('id', 'movement', 'risk', 'replicate')
 
 COUNT <- 0
 
