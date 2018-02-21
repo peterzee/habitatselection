@@ -82,7 +82,7 @@ wrap.info[,1,] <- rep(0,time)
 
 for (i in 2:time){
   
-  mvt.par <- 0.2
+  mvt.par <- 0.9
 
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1])){
@@ -194,7 +194,7 @@ for (i in 2:time){
 
 
 ## proportion of initial population who lay eggs ('drop dead)
-prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
+# prop.laying <- sum(drop.dead[,1], na.rm=TRUE) / nrow(drop.dead)
 # plot(sort(drop.dead[,2], decreasing = TRUE), 
 #      xlab = "individual", ylab = "time before laying",
 #      type ='l' ,lwd = 2, col = 4)

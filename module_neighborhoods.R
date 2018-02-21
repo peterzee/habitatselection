@@ -21,13 +21,13 @@ plot(module.table[,"n.risky"], module.table[,"mean.egg.safe"],
 
 
 ## adjacnt modules (basically a moore neighborhood for modules)
-module.moore <-array(dim = c(nrow(mod.index), ncol(mod.index), length(mod.index)))
+
+range <- 1
+module.moore <-array(dim = c((2*range + 1), (2*range + 1), length(mod.index)))
 for (i in 1:length(mod.index)){
   
   ROW <- which(mod.index == i, arr.ind = TRUE)[1]
   COL <- which(mod.index == i, arr.ind = TRUE)[2]
-  
-  range <- 1
   
   row.range <- (ROW - range):(ROW + range)
     row.range[row.range <= 0] <- row.range[row.range <= 0] - 1
@@ -38,8 +38,8 @@ for (i in 1:length(mod.index)){
     col.range[col.range <= 0] <- col.range[col.range <= 0] - 1
     col.range[col.range > (ncol(mod.index))] <- col.range[col.range > (ncol(mod.index))] + 1
   
-  v.range <- row.range %% (nrow(mod.index)+1)
-  h.range <- col.range %% (ncol(mod.index)+1)
+  v.range <- row.range %% (nrow(mod.index) + 1)
+  h.range <- col.range %% (ncol(mod.index) + 1)
   
   module.moore[,,i] <- mod.index[v.range, h.range]
   module.moore[range + 1, range + 1,i] <- NA  
