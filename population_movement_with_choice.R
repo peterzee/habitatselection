@@ -15,7 +15,7 @@ A <- quilted
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
-patch.breakdown
+# patch.breakdown
 
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
 

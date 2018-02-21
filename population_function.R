@@ -68,6 +68,9 @@
       
       drop.dead <- array(dim = c(pop.size, 2))
       
+      wrap.info <- array(dim = c(time, 6, pop.size))
+      wrap.info[,1,] <- rep(0,time)
+      
       for (i in 2:time){
         
         mvt.par <- MVT
@@ -144,6 +147,11 @@
             
             tmp.mvt <- locations[i-1,,j] + landing
             
+            wrap.info[i,2:3,j] <- tmp.mvt
+            if(sum((tmp.mvt > dim(A)[1] | tmp.mvt < 1)) > 0){
+              wrap.info[i,1,j] <- 1
+            }
+            
             tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
             tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
             
@@ -188,7 +196,8 @@
       output <- list(inputs = inputs,
                      A = A,
                      egg.landscape = egg.landscape,
-                     distance.tracker = distance.tracker)
+                     distance.tracker = distance.tracker,
+                     wrap.info = wrap.info)
       
       return(output)
    }
@@ -198,9 +207,9 @@
    # x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
    # 
    # sim <- pop.habitatselection(POP.SIZE = 100,
-   #                             LANDSCAPE = x,
-   #                             RISK.MAG = 0.8,
+   #                             LANDSCAPE = quilted,
+   #                             RISK.MAG = 0.9,
    #                             PERCEPTION = 0.1,
-   #                             MVT = 0.9,
+   #                             MVT = 0.5,
    #                             MVT.MOD = 0.1)
-   # 
+
