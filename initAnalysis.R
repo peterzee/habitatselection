@@ -7,7 +7,7 @@ for (eye in 1:length(unique(meta.table[,"landscape.structure"]))){
 
       for (kay in 1:length(unique(meta.table[,"movement"]))){
   
-    plot(1,1, cex = 0, xlim= c(0,10), ylim=c(0, 30), ann = FALSE, axes = FALSE)
+    plot(1,1, cex = 0, xlim= c(0,10), ylim=c(0, 3), ann = FALSE, axes = FALSE)
     box()
 
   for (jay in 1:length(unique(meta.table[,"risk"]))){

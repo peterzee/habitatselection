@@ -42,7 +42,7 @@ for ( eye in 1:length(LANDSCAPE.STRUCTURE) ){
               COUNT <- COUNT + 1
       
               ## Habitat selection simulation
-              sim.out <- pop.habitatselection(POP.SIZE = 500,
+              sim.out <- pop.habitatselection(POP.SIZE = 250,
                                           LANDSCAPE = a$module.landscape,
                                           RISK.MAG = RISK.VEC[ kay ],
                                           PERCEPTION = 0.1,
@@ -56,7 +56,7 @@ for ( eye in 1:length(LANDSCAPE.STRUCTURE) ){
               
               ## Module moore neighborhoods
               module.out <- module.neighborhood(LANDSCAPE = a$module.landscape, 
-                                                EGG.LANDSCAPE = sim$egg.landscape, 
+                                                EGG.LANDSCAPE = sim.out$egg.landscape, 
                                                 MODULE.DIM = a$inputs$MODULE.DIM, 
                                                 MOD.EXTRACT = a$module.extract, 
                                                 MOD.INDEX = a$mod.index)
