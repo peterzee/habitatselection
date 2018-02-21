@@ -1,15 +1,24 @@
 ## Ecological and evolutionary consequences of habitat selection
-### Peter C. Zee // University of Mississippi
+### Peter C. Zee (University of Mississippi)
 
 ### Background/Question/Methods
-Habitat selection is a critical demographic event for many organisms.  
 
+Understanding how environmental spatial heterogeneity impacts  .. 
+Habitat selection is a critical demographic event for many organisms.  
 Patch quality with
 Context dependencies ...
-Local and regional effects
-obligate vs facultative dispersal
 
-Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
+I haev built stochastic, individual-based simulation model . In this spatially explicit model, individual organisms move across a landscape and make .. . Across a wide range of parameters . 
+
+
+Further, the model can be exapnded to a community framework, where individuals of different species
+
+
+In this way, I can study how 
+
+
+
+
 
 In a metacommunity context, this habitat selection can have consequences for the pattern of diversity seen across a landscape (beta vs alpha).
 
@@ -23,8 +32,17 @@ This model tracks movement of individuals, , changes in community structure, and
 In this
 We found that a hetergenous environment, where perception matters...
 
+Preliminary analyses show that interactions between the spatial scales of individual movement (local vs global dispersal) and the structure patch quality determine patterns of colonization. IN particular, we find
+
+
+Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
+Local and regional effects
+
+
 Spatially explicit
+
 At both the local and regional level,  find regional 
+
 increased colonization in suitabable habitats in proximity to unsuitable habitats ('compression').
 
 At the community (and metacommunity) level, we find that the context dependencies of habitat selection result in . In particular, we find that results in ... beta diversity.
@@ -33,9 +51,13 @@ Categorizing community structures by interactions between landscape structure an
 
 Beta diversity increasesd in unsuitable patches, as decease
 
+Together, these results identify interactions among across multiple levels of organizition (inviduals to communities).
+
+At the community level, I find that habitat selection leads to . 
+
 Results from the simulation framework will be able to give predictions for habitat selection
 
-Ongoing work aims to investigate how habitat selection evolves in populations encountering environments with heterogeneity in suitability in space and time.
+Ongoing work is investigating how the population and community structures that influence subsequent evolution of organismal traits involve in habitat selection.
 
 
 
