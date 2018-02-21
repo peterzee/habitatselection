@@ -21,7 +21,7 @@ This model tracks movement of individuals, , changes in community structure, and
 
 ### Results/Conclusions ##
 In this
-We found that a hetergenous environment, where perception matters....
+We found that a hetergenous environment, where perception matters...
 
 Spatially explicit
 At both the local and regional level,  find regional 

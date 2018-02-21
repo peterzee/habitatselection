@@ -3,7 +3,7 @@ source('shuffleLandscape.R')
 
 
 is.structured <- TRUE
-is.shuffled <- FALSE
+is.shuffled <- TRUE
 
   hab.matrix <- 2
   patch.dim <- 5
