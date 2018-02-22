@@ -134,7 +134,7 @@ for (i in 2:time){
       } else {    
         egg.check <- 0
         risk.choices.time[i-1,j] <- 0
-        mvt.mod <- 0.7
+        mvt.mod <- 0.1
         
       }
     }

@@ -1,10 +1,13 @@
 # generateModuleLandscape
 source('plotLandscape_function.R')
+source('shuffleLandscape.R')
 
-generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTURE = TRUE){
+
+generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTURE = TRUE, SHUFFLE = FALSE){
   
   
   is.structured <- STRUCTURE
+  is.shuffled <- SHUFFLE
   
   
   hab.matrix <- MATRIX.SIZE
@@ -68,6 +71,12 @@ generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTUR
                                        quilted.index[i,2] : (quilted.index[i,2] + (hab.matrix + patch.dim - 1))]
   }
   
+  if (is.shuffled == TRUE){
+    
+    quilted <- shuffleLandscape(quilted)
+    
+  }
+  
   inputs <- list(MATRIX.SIZE = MATRIX.SIZE, 
                  PATCH.DIM = PATCH.DIM, 
                  MODULE.DIM = MODULE.DIM)
@@ -81,6 +90,6 @@ return(out)
 }
 
 # #
-# a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE)
+# a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = TRUE)
 # a$module.landscape
 # plotLandscape(a$module.landscape)

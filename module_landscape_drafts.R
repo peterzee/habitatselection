@@ -2,11 +2,11 @@ source('plotLandscape_function.R')
 source('shuffleLandscape.R')
 
 
-is.structured <- FALSE
-is.shuffled <- TRUE
+is.structured <- TRUE
+is.shuffled <- FALSE
 
   hab.matrix <- 2
-  patch.dim <- 5
+  patch.dim <- 4
   module.dim <- 6     ## must be even number
   
     

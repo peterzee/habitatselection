@@ -201,11 +201,8 @@
       
       return(output)
    }
-   #  
-   # 
-   # patch.dim <- 10
-   # x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
-   # 
+
+   
    sim <- pop.habitatselection(POP.SIZE = 100,
                                LANDSCAPE = a$module.landscape,
                                RISK.MAG = 0.9,
