@@ -17,7 +17,7 @@ perception.vec <- c(0.1, 0.9)
 mvt.vec <- c(0.2, 0.9)
 mvt.mod.vec <- c(0.19, 0.7)
 
-replicates <- 10
+replicates <- 25
 
 directions.table <- array(dim = c((2^6) * replicates, 12))
 names(directions.table) <- c('id', 
@@ -129,35 +129,36 @@ for (i in seq(1, nrow(directions.table), by = 10)){
 
 
 ######
-
+par(mfrow=c(1,2))
 local.estimates <- x[,9,]
 local.pvalues <- x[,10,]
 which(local.pvalues <= 0.05, arr.ind = TRUE)
-barplot(table(which(local.pvalues <= 0.05, arr.ind = TRUE)[,2]) / 10,
+barplot(table(which(local.pvalues <= 0.05, arr.ind = TRUE)[,2]) / dim(x)[1],
         main = 'number significant/local/')
 
 
 local.estimates[which(local.pvalues > 0.05)] <- NA
-barplot(colMeans(local.estimates, na.rm = TRUE),
+# barplot(colMeans(local.estimates, na.rm = TRUE),
+#         main = 'mean of sig estimates/local')
+boxplot(local.estimates, col = 'thistle',
         main = 'mean of sig estimates/local')
+abline(h = 0, lty = 2, lwd = 0.5)
 
 regional.estimates <- x[,11,]
 regional.pvalues <- x[,12,]
 which(regional.pvalues <= 0.05, arr.ind = TRUE)
-barplot(table(which(regional.pvalues <= 0.05, arr.ind = TRUE)[,2]) / 10,
+barplot(table(which(regional.pvalues <= 0.05, arr.ind = TRUE)[,2]) / dim(x)[1],
         main = 'number significant/regional/')
 
-local.estimates[which(regional.pvalues > 0.05)] <- NA
+regional.estimates[which(regional.pvalues > 0.05)] <- NA
 barplot(colMeans(regional.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/regional')
+boxplot(regional.estimates, col = 'thistle',
+        main = 'mean of sig estimates/regional')
+abline(h = 0, lty = 2, lwd = 0.5)
 
 
 
-
-which(x[,12,] <= 0.05, arr.ind = TRUE)
-barplot(table(which(x[,12,] <= 0.05, arr.ind = TRUE)[,2]) / 10)
-
-
-
-hist(x[,9,][which(x[,10,] <= 0.05)])
-hist(x[,11,][which(x[,12,] <= 0.05)])
+# par(mfrow=c(1,2))
+hist(local.estimates[which(local.pvalues <= 0.05)])
+hist(regional.estimates[which(regional.pvalues <= 0.05)])
