@@ -1,56 +1,12 @@
-## Ecological and evolutionary consequences of habitat selection
+## Interactive habitat selection on spatially explicit landscapes 
 ### Peter C. Zee (University of Mississippi)
 
 ### Background/Question/Methods
 
-Understanding how environmental spatial heterogeneity impacts  .. 
-Habitat selection is a critical demographic event for many organisms.  
-Patch quality with
-Context dependencies ...
-
-I haev built stochastic, individual-based simulation model . In this spatially explicit model, individual organisms move across a landscape and make .. .  . 
-
-
-Further, the model can a community framework, where individuals of different species
-
-
-Across a range of 
-
-
-
-
-
-
+Habitat selection is a critical demographic event for many organisms. While some species colonize habitat patches at random, others can opt to colonize patches based on perceived  quality. Patch quality can vary in many ways (e.g., resource availability, presence of competitors and/or predators). Variation in these patch qualities across a landscape may result in context dependencies in whether organisms decide to colonize. These can lead to distinct patterns of population density across landscape. I am interested in quantifying how this spatial variation in habitat patch quality affects the patterns of population density. Here, I present a stochastic, indiviudal-based simulation model of habitat selection in variable landscape. This work integrates scales of organization from behavioral choices of individuals to community structure. In each simulation, individuals can move on a spatial array of habitat patches of variable quality, and make choices whether or not to colonize a given patch. I simulated across a wide range of parameter values (e.g., spatial heterogeneity, organimsal dispersal, disparity in patch quality) and tracked colonization. In addition, to assess the influence of interactive habitat selection on community structure, I simulated multispecies communities and calculated patterns of local and regional diversity.
 
 ### Results/Conclusions ##
-I found that a hetergenous environment, where perception matters...
-
-Preliminary analyses show that interactions between the spatial scales of individual movement (local vs global dispersal) and the structure patch quality determine patterns of colonization. In particular, ... .
-
-
-Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
-Local and regional effects
-
-
-Spatially explicit
-
-At both the local and regional level,  find regional 
-
-increased colonization in suitabable habitats in proximity to unsuitable habitats ('compression').
-
-At the community (and metacommunity) level, we find that the context dependencies of habitat selection result in . In particular, we find that results in ... beta diversity.
-
-Categorizing community structures by interactions between landscape structure and patterns of individual dispersal. Preliminary analyses show ...
-
-Beta diversity increasesd in unsuitable patches, as decease
-
-Together, these results identify interactions among across multiple levels of organizition (inviduals to communities).
-
-At the community level, I find that habitat selection in structured landscapes leads to increased beta diversity in low quality patches. 
-
-Results from the simulation framework will be able to give predictions for habitat selection
-
-Ongoing work is investigating how the population and community structures that influence subsequent evolution of organismal traits involve in habitat selection.
+At both the local and regional level, I find that habitat selection depends on spatial context. Ultimately, the patch that any individual chooses to colonize is a function both its own dispersal ability, and the quality of the nearby patches. Preliminary analyses show that this ratio between the spatial scale of individual movement (local vs. global dispersal) and the spatial structure of patch quality (local vs. regional) is a critical determinant of patterns of colonization. In particular, we find that local dispersal leads to compression (i.e., increased colonization in high quality patches in proximity to poor quality patches), but that this effect is magnified as spatial structure increases. At the community level, this spatially dependent habitat selection affects patterns of local and regional diversity. Together, these results identify how interactions across multiple levels of organization determine patterns of abundance. This modeling framework aims to identify empirical predictions for habitat selection in difference natural systems (e.g., landscape structures, organismal dispersal syndromes). Ongoing work is investigating how the population and community structures that result from this interactive habitat selection can influence the subsequent evolution of traits involved in habitat selection.
 
 
 
