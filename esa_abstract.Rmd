@@ -23,10 +23,9 @@ Across a range of
 
 
 ### Results/Conclusions ##
-In this
-We found that a hetergenous environment, where perception matters...
+I found that a hetergenous environment, where perception matters...
 
-Preliminary analyses show that interactions between the spatial scales of individual movement (local vs global dispersal) and the structure patch quality determine patterns of colonization. IN particular, we find
+Preliminary analyses show that interactions between the spatial scales of individual movement (local vs global dispersal) and the structure patch quality determine patterns of colonization. In particular, ... .
 
 
 Structure of heterogeneity -- can be locally unstructured, but regionally structured (or vice versa)
