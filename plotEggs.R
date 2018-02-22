@@ -2,7 +2,7 @@ plotEggs <- function(EGG.LANDSCAPE, LANDSCAPE){
   
   A <- LANDSCAPE
   E <- EGG.LANDSCAPE
-  
+  par(mar = c(1,1,1,1))
   plot(1,1, cex=0, 
        xlim = c(1,nrow(E)), 
        ylim = c(1,ncol(E)),

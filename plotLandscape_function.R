@@ -6,7 +6,7 @@ plotLandscape <- function(landscape){
   col.vec <- c(0, rgb(0,0,1, 0.5), rgb(1,0,0, 0.5))
     
   
-  
+  par(mar = c(1,1,1,1))
   plot(1,1, cex = 0, xlim = c(1,nrow(A)), 
                      ylim=c(1,ncol(A)),
        axes = FALSE, ann = FALSE)

@@ -72,7 +72,22 @@ generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTUR
   }
   
   if (is.shuffled == TRUE){
-    
+    shuffleLandscape <- function(module.landscape){
+      
+      quilted <- module.landscape  
+      
+      shuffle.quilt <- array(dim = c(nrow(quilted), ncol(quilted)))
+      shuffle.sample <- sample(mod.index, max(mod.index))
+      for (i in 1:max(mod.index)){
+        
+        shuffle.quilt[module.extract[,,i]] <- quilted[module.extract[,,shuffle.sample[i]]] 
+        
+      }
+      
+      
+      shuffled <- shuffle.quilt      
+      return(shuffled)
+    }
     quilted <- shuffleLandscape(quilted)
     
   }
