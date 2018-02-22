@@ -138,7 +138,11 @@
             }
             
             ## Dispersal kernal
-            dist <- rgeom(1, prob = mvt.par - mvt.mod) + 1
+            realized.disp.prob <- mvt.par - mvt.mod
+              if (realized.disp.prob < 0.01){
+                realized.disp.prob <- 0.01
+              }
+            dist <- rgeom(1, prob = realized.disp.prob) + 1
             theta <- runif(1, 0, 2*pi)
             x <- cos(theta) * dist
             y <- sin(theta) * dist

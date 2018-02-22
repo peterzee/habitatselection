@@ -12,7 +12,7 @@ source('plotEggs.R')
 a <- generateModuleLandscape(MATRIX.SIZE = 1, 
                              PATCH.DIM = 4, 
                              MODULE.DIM = 6, 
-                             STRUCTURE = TRUE,
+                             STRUCTURE = FALSE,
                              SHUFFLE = TRUE)
 
 ## Simulation the population
@@ -20,8 +20,8 @@ sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
-                            MVT = 0.5,
-                            MVT.MOD = 0.1)
+                            MVT = 0.9,
+                            MVT.MOD = 0.19)
 
 ## Moore neighborhoods
 # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
@@ -48,13 +48,23 @@ boxplot(sim$egg.landscape[a$module.landscape == 1],
         ylab = 'eggs per patch',
         col = 'thistle')
 
+
+## Plots for local and regional context dependencies
+
+## Local (mean number of eggs in safe patches as function of patches within module)
 par(mfrow = c(2,1), mar = c(4,4,1,1))
 plot(module.out$module.table[,"n.risky"], module.out$module.table[,"mean.egg.safe"],
      xlab = 'Number of risky patches in module', ylab = 'Mean eggs / safe patch in module')
+  
+  fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
+  summary(fit.local)
+  if (summary(fit.local)$coefficients[2,4] < 0.05) { abline(fit.local) }
 
-
-
+## Regional (mean number of eggs in safe patches as function of surrounding modules)  
 plot(module.out$mean.module.risk, module.out$module.table[,"mean.egg.safe"],
      xlab = 'mean risk of surrounding modules', ylab = 'eggs / safe patch in focal module')
 
+  fit.regional <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$mean.module.risk)
+  summary(fit.regional)
+  if (summary(fit.regional)$coefficients[2,4] < 0.05) { abline(fit.regional) }
 
