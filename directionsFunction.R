@@ -111,7 +111,7 @@ if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
   }
 
 
-print(count)
+print(count / nrow(directions.table))
             }
           }
         }
@@ -135,7 +135,7 @@ for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
   count <- count + 1
   x[,,count] <- directions.table[i:(i + (dim(x)[1] - 1)),]
 }
-
+colnames(x) <-colnames(directions.table)
 
 ######
 # par(mfrow=c(1,2))
@@ -149,12 +149,20 @@ barplot(table(local.sig.ind[,2]) / dim(x)[1],
 
 local.estimates[which(local.pvalues > 0.05)] <- NA
 
+n.sig.local <- colSums(!is.na(local.estimates))
 barplot(colMeans(local.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/local')
-boxplot(local.estimates, col = 'thistle',
-        main = 'mean of sig estimates/local')
-abline(h = 0, lty = 2, lwd = 0.5)
 
+
+boxplot(local.estimates, col = 'thistle',
+        main = 'mean of sig estimates/local', width = n.sig.local)
+abline(h = 0, lty = 2, lwd = 0.5)
+points(1:16, colMeans(local.estimates, na.rm = TRUE), pch = 19, col = 4)
+local.t.test.sig <- rep(NA, 16)
+for (i in which(n.sig.local > 1)){
+  local.t.test.sig[i] <- t.test(local.estimates[,i], rep(0, replicates))$p.value < 0.05
+  if (local.t.test.sig[i] == TRUE){text(i, 0 , '*', cex = 4)}
+}
 
 
 regional.estimates <- x[,11,]
@@ -166,11 +174,21 @@ barplot(table(regional.sig.ind[,2]) / dim(x)[1],
         ylim = c(0,1))
 
 regional.estimates[which(regional.pvalues > 0.05)] <- NA
+
+n.sig.regional <- colSums(!is.na(regional.estimates))
 barplot(colMeans(regional.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/regional')
+
+
 boxplot(regional.estimates, col = 'thistle',
-        main = 'mean of sig estimates/regional')
+        main = 'mean of sig estimates/regional', width = n.sig.regional)
 abline(h = 0, lty = 2, lwd = 0.5)
+points(1:16, colMeans(regional.estimates, na.rm = TRUE), pch = 19, col = 4)
+regional.t.test.sig <- c(NA, rep(16))
+for (i in which(n.sig.regional > 1)){
+  regional.t.test.sig[i] <- t.test(regional.estimates[,i], rep(0, replicates))$p.value < 0.05
+  if (regional.t.test.sig[i] == TRUE){text(i, 0 , '*', cex = 4)}
+}
 
 
 
