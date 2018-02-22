@@ -1,6 +1,8 @@
 ## Dispersal kernal
-disp.kernal <- function(N, MVT.PAR, MVT.MOD){
-    
+disp.kernal <- function(N, MVT.PAR, MVT.MOD, LANDSCAPE){
+  
+    A <- LANDSCAPE  
+  
     mvt.par <- MVT.PAR
     mvt.mod <- MVT.MOD
     

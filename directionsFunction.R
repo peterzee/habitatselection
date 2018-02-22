@@ -12,10 +12,10 @@ source('plotEggs.R')
 ##############################################################################
 structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
-risk.vec <- c(0.0, 0.8)
+risk.vec <- c(0.8)
 perception.vec <- c(0.1)
-mvt.vec <- c(0.2, 0.9)
-mvt.mod.vec <- c(0.7)
+mvt.vec <- c(0.4, 0.9)
+mvt.mod.vec <- c(0, 0.4)
 
 replicates <- 100
 
@@ -154,7 +154,7 @@ barplot(colMeans(local.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/local')
 
 ## Local boxplot
-boxplot(local.estimates, col = 'thistle',
+boxplot(local.estimates, col = rgb(0,0,1,0.6),
         main = 'mean of sig estimates/local', width = n.sig.local)
 abline(h = 0, lty = 2, lwd = 0.5)
 points(1:16, colMeans(local.estimates, na.rm = TRUE), pch = 19, col = 4)
@@ -180,7 +180,7 @@ barplot(colMeans(regional.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/regional')
 
 ## Regional boxplot
-boxplot(regional.estimates, col = 'thistle',
+boxplot(regional.estimates, col = rgb(1,0,0,0.6),
         main = 'mean of sig estimates/regional', width = n.sig.regional)
 abline(h = 0, lty = 2, lwd = 0.5)
 points(1:16, colMeans(regional.estimates, na.rm = TRUE), pch = 19, col = 4)
