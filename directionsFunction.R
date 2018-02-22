@@ -17,7 +17,7 @@ perception.vec <- c(0.1)
 mvt.vec <- c(0.2, 0.9)
 mvt.mod.vec <- c(0.7)
 
-replicates <- 50
+replicates <- 100
 
 directions.table <- array(dim = c( length(structure.vec)*
                                    length(shuffle.vec)*
@@ -153,7 +153,7 @@ n.sig.local <- colSums(!is.na(local.estimates))
 barplot(colMeans(local.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/local')
 
-
+## Local boxplot
 boxplot(local.estimates, col = 'thistle',
         main = 'mean of sig estimates/local', width = n.sig.local)
 abline(h = 0, lty = 2, lwd = 0.5)
@@ -179,7 +179,7 @@ n.sig.regional <- colSums(!is.na(regional.estimates))
 barplot(colMeans(regional.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/regional')
 
-
+## Regional boxplot
 boxplot(regional.estimates, col = 'thistle',
         main = 'mean of sig estimates/regional', width = n.sig.regional)
 abline(h = 0, lty = 2, lwd = 0.5)
@@ -194,4 +194,7 @@ for (i in which(n.sig.regional > 1)){
 
 # par(mfrow=c(1,2))
 hist(local.estimates[which(local.pvalues <= 0.05)], col = rgb(0,0,1,0.5))
+sum(local.estimates[which(local.pvalues <= 0.05)] > 0) / length(local.estimates[which(local.pvalues <= 0.05)])
+
 hist(regional.estimates[which(regional.pvalues <= 0.05)], col = rgb(1,0,0,0.5))
+sum(regional.estimates[which(regional.pvalues <= 0.05)] > 0) / length(regional.estimates[which(regional.pvalues <= 0.05)])
