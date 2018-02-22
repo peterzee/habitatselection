@@ -13,14 +13,23 @@ source('plotEggs.R')
 structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
 risk.vec <- c(0.0, 0.8)
-perception.vec <- c(0.1, 0.9)
+perception.vec <- c(0.1)
 mvt.vec <- c(0.2, 0.9)
-mvt.mod.vec <- c(0.19, 0.7)
+mvt.mod.vec <- c(0.7)
 
-replicates <- 25
+replicates <- 50
 
-directions.table <- array(dim = c((2^6) * replicates, 12))
-names(directions.table) <- c('id', 
+directions.table <- array(dim = c( length(structure.vec)*
+                                   length(shuffle.vec)*
+                                   length(risk.vec)*
+                                   length(perception.vec)*
+                                   length(mvt.vec)*
+                                   length(mvt.mod.vec) * 
+                                   replicates, 12) )
+
+
+
+colnames(directions.table) <- c('id', 
                              'replicate',
                              'structure.vec', 
                              'shuffle.vec', 
@@ -39,9 +48,9 @@ for (ay in 1:length(structure.vec) ) {
   for (be in 1:length(shuffle.vec) ) {
     
     
-    ## Generate the landscape
-    a <- generateModuleLandscape(MATRIX.SIZE = 1, 
-                                 PATCH.DIM = 4, 
+    # Generate the landscape
+    a <- generateModuleLandscape(MATRIX.SIZE = 2, 
+                                 PATCH.DIM = 3, 
                                  MODULE.DIM = 6, 
                                  STRUCTURE = structure.vec[ ay ],
                                  SHUFFLE = shuffle.vec[ be ])
@@ -120,7 +129,7 @@ directions.table[which(directions.table[,11] < 0.05), 1:8]
 directions.table[which(directions.table[,12] < 0.05), 1:8]
 
 
-x <- array(dim = c(10,12,nrow(directions.table) / replicates))
+x <- array(dim = c(replicates,12,nrow(directions.table) / replicates))
 count <- 0
 for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
   count <- count + 1
@@ -129,26 +138,32 @@ for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
 
 
 ######
-par(mfrow=c(1,2))
+# par(mfrow=c(1,2))
 local.estimates <- x[,9,]
 local.pvalues <- x[,10,]
-which(local.pvalues <= 0.05, arr.ind = TRUE)
-barplot(table(which(local.pvalues <= 0.05, arr.ind = TRUE)[,2]) / dim(x)[1],
-        main = 'number significant/local/')
+local.sig.ind <- which(local.pvalues <= 0.05, arr.ind = TRUE)
 
+barplot(table(local.sig.ind[,2]) / dim(x)[1],
+        main = 'number significant/local/', 
+        ylim = c(0,1))
 
 local.estimates[which(local.pvalues > 0.05)] <- NA
+
 barplot(colMeans(local.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/local')
 boxplot(local.estimates, col = 'thistle',
         main = 'mean of sig estimates/local')
 abline(h = 0, lty = 2, lwd = 0.5)
 
+
+
 regional.estimates <- x[,11,]
 regional.pvalues <- x[,12,]
-which(regional.pvalues <= 0.05, arr.ind = TRUE)
-barplot(table(which(regional.pvalues <= 0.05, arr.ind = TRUE)[,2]) / dim(x)[1],
-        main = 'number significant/regional/')
+regional.sig.ind <- which(regional.pvalues <= 0.05, arr.ind = TRUE)
+
+barplot(table(regional.sig.ind[,2]) / dim(x)[1],
+        main = 'number significant/regional/', 
+        ylim = c(0,1))
 
 regional.estimates[which(regional.pvalues > 0.05)] <- NA
 barplot(colMeans(regional.estimates, na.rm = TRUE),
@@ -160,5 +175,5 @@ abline(h = 0, lty = 2, lwd = 0.5)
 
 
 # par(mfrow=c(1,2))
-hist(local.estimates[which(local.pvalues <= 0.05)])
-hist(regional.estimates[which(regional.pvalues <= 0.05)])
+hist(local.estimates[which(local.pvalues <= 0.05)], col = rgb(0,0,1,0.5))
+hist(regional.estimates[which(regional.pvalues <= 0.05)], col = rgb(1,0,0,0.5))

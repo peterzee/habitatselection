@@ -10,11 +10,11 @@ source('plotEggs.R')
 
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 1, 
-                             PATCH.DIM = 4, 
+a <- generateModuleLandscape(MATRIX.SIZE = 2, 
+                             PATCH.DIM = 3, 
                              MODULE.DIM = 6, 
-                             STRUCTURE = FALSE,
-                             SHUFFLE = TRUE)
+                             STRUCTURE = TRUE,
+                             SHUFFLE = FALSE)
 
 ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
@@ -38,13 +38,13 @@ module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
 
 
 ## Community simulations
-comm.out <- community.habselection(NUM.SPP = 10,
-                                   POP.SIZE = 250,
-                                   LANDSCAPE = a$module.landscape,
-                                   RISK.MAG = 0.8,
-                                   PERCEPTION = 0.1,
-                                   MVT = 0.9,
-                                   MVT.MOD = 0.19)
+# comm.out <- community.habselection(NUM.SPP = 10,
+#                                    POP.SIZE = 250,
+#                                    LANDSCAPE = a$module.landscape,
+#                                    RISK.MAG = 0.8,
+#                                    PERCEPTION = 0.1,
+#                                    MVT = 0.9,
+#                                    MVT.MOD = 0.19)
 
 ####################################################################################
 
