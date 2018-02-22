@@ -57,12 +57,12 @@ for (ay in 1:length(structure.vec) ) {
 count <- count + 1            
 directions.table[count, 1:8] <- c(count, 
                                   ge,
-                                  ay, 
-                                  be, 
-                                  ce, 
-                                  de, 
-                                  ee, 
-                                  ef) 
+                                  structure.vec[ ay ] * 1, 
+                                  shuffle.vec[ be ] * 1, 
+                                  risk.vec[ ce ], 
+                                  perception.vec[ de ], 
+                                  mvt.vec[ ee ], 
+                                  mvt.mod.vec[ ef ]) 
 
 
 ## Simulation the population
