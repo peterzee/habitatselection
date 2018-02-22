@@ -1,15 +1,7 @@
-library(philentropy)
-source('generateLandscape_function.R')
+community.habselection <- function(NUM.SPP, POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD){
 
-patch.dim <- 10
+  A <- LANDSCAPE
 
-# world <- generateLandscape(patch.dim, (patch.dim^2) * 0.8, 50)
-# A <- world$landscape
-# x <- array(0:2, dim = c(patch.dim, patch.dim))
-
-# x <- array(sample(0:2, patch.dim^2, prob = c(0,1,5), replace = TRUE), dim = c(patch.dim, patch.dim))
-A <- quilted
-# plotLandscape(A)
 
 patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
 names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
@@ -18,10 +10,10 @@ patch.breakdown
 index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
 
 ## Number of species
-num.spp <- 10
+num.spp <- NUM.SPP
 
 ## Effect of risk (deterrence baseline)
-risk.mag <- rep(0.8, num.spp)
+risk.mag <- rep(RISK.MAG, num.spp)
 # risk.mag <- runif(num.spp)
 
 ## Signal of risk across the landscape
@@ -40,10 +32,10 @@ egg.landscape <- array(0, dim = c(nrow(A), ncol(A), num.spp))
 
 #####
 ## Movement for multiple individuals (population)
-pop.size <- 100
+pop.size <- POP.SIZE
 pop.start.ind <- array(dim = c(pop.size, 2, num.spp))
 for (j in 1:num.spp){
-    pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
+  pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
   for (i in 1:pop.size){
     pop.start.ind[i,,j] <- which(index == pop.starts[i], arr.ind = TRUE)
   }
@@ -79,14 +71,14 @@ risk.choices.time <-  array(NA, dim = c(time, pop.size, num.spp))
 ## Perception cutoff
 # p <- 0.8
 # p.vec <- rep(0.1, pop.size)
-p.array <- array(0.1, dim = c(pop.size, num.spp))
+p.array <- array(PERCEPTION, dim = c(pop.size, num.spp))
 
 distance.tracker <- array(NA, dim = c(time, pop.size, num.spp))
 
 ## Energy 
 # energy <- rbind(rep(1, pop.size), array(NA, dim = c(time-1, pop.size)))
 # comm.energy <- 
-  
+
 drop.dead <- array(dim = c(pop.size, 2, num.spp))
 
 wrap.info <- array(dim = c(time, 6, pop.size, num.spp))
@@ -95,8 +87,8 @@ wrap.info[,1,,] <- 0
 
 for (i in 2:time){
   
-  mvt.par <- rep(0.9, num.spp)
-
+  mvt.par <- rep(MVT, num.spp)
+  
   for (k in 1:num.spp){
     for (j in 1:pop.size){
       if (is.na(drop.dead[j,1,k])){
@@ -152,7 +144,7 @@ for (i in 2:time){
             
             egg.check <- 0
             risk.choices.time[i-1,j,k] <- 0
-            mvt.mod <- 0.19
+            mvt.mod <- MVT.MOD
             
           }
         }
@@ -164,14 +156,10 @@ for (i in 2:time){
         }
         
         ## Dispersal kernal
-        realized.disp.prob <- mvt.par[k] - mvt.mod
-          if (realized.disp.prob < 0.01){
-            realized.disp.prob <- 0.01
-          }
-        dist <- rgeom(1, prob = realized.disp.prob) + 1
+        dist <- rgeom(1, prob = mvt.par[k] - mvt.mod) + 1
         theta <- runif(1, 0, 2*pi)
-          x <- cos(theta) * dist
-          y <- sin(theta) * dist
+        x <- cos(theta) * dist
+        y <- sin(theta) * dist
         
         landing <- round(cbind(x,y))
         
@@ -182,9 +170,9 @@ for (i in 2:time){
           wrap.info[i,1,j,k] <- 1
         }
         
-          tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
-          tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
-    
+        tmp.mvt[tmp.mvt <= 0] <- tmp.mvt[tmp.mvt <= 0] - 1
+        tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
+        
         locations[i,,j,k] <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
                                    tmp.mvt[,2] %% (nrow(A) + 1))
         
@@ -214,4 +202,32 @@ for (i in 2:time){
   } ## species 
 } ## time
 
+## output
+inputs <- list(NUM.SPP = NUM.SPP,
+               POP.SIZE = POP.SIZE,
+               LANDSCAPE = LANDSCAPE,
+               RISK.MAG = RISK.MAG,
+               PERCEPTION = PERCEPTION,
+               MVT = MVT,
+               MVT.MOD = MVT.MOD)
 
+output <- list(inputs = inputs,
+               A = A,
+               egg.landscape = egg.landscape,
+               distance.tracker = distance.tracker,
+               wrap.info = wrap.info)
+
+return(output)
+
+}
+
+
+
+# comm.out <- community.habselection(NUM.SPP = 5, 
+#                                    POP.SIZE = 50, 
+#                                    LANDSCAPE = quilted, 
+#                                    RISK.MAG = 0.5, 
+#                                    PERCEPTION = 0.1, 
+#                                    MVT = 0.9, 
+#                                    MVT.MOD = 0.7)
+  

@@ -3,6 +3,7 @@ source('generateModuleLandscape_function.R')
 source('plotLandscape_function.R')
 source('shuffleLandscape.R')
 source('population_function.R')
+source('community_function.R')
 source('moore_function.R')
 source('module_neighborhood_function.R')
 source('plotEggs.R')
@@ -36,7 +37,16 @@ module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
                                   MOD.INDEX = a$mod.index)
 
 
+## Community simulations
+comm.out <- community.habselection(NUM.SPP = 10,
+                                   POP.SIZE = 250,
+                                   LANDSCAPE = a$module.landscape,
+                                   RISK.MAG = 0.8,
+                                   PERCEPTION = 0.1,
+                                   MVT = 0.9,
+                                   MVT.MOD = 0.19)
 
+####################################################################################
 
 plotLandscape(a$module.landscape)
 plotEggs(EGG.LANDSCAPE = sim$egg.landscape, LANDSCAPE = a$module.landscape)
