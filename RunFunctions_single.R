@@ -14,14 +14,14 @@ a <- generateModuleLandscape(MATRIX.SIZE = 2,
                              PATCH.DIM = 3, 
                              MODULE.DIM = 6, 
                              STRUCTURE = TRUE,
-                             SHUFFLE = FALSE)
+                             SHUFFLE = TRUE)
 
 ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
-                            MVT = 0.4,
+                            MVT = 0.9,
                             MVT.MOD = 0.4)
 
 ## Moore neighborhoods
