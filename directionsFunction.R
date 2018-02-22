@@ -122,9 +122,9 @@ directions.table[which(directions.table[,12] < 0.05), 1:8]
 
 x <- array(dim = c(10,12,nrow(directions.table) / replicates))
 count <- 0
-for (i in seq(1, nrow(directions.table), by = 10)){
+for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
   count <- count + 1
-  x[,,count] <- directions.table[i:(i+9),]
+  x[,,count] <- directions.table[i:(i + (dim(x)[1] - 1)),]
 }
 
 
@@ -138,8 +138,8 @@ barplot(table(which(local.pvalues <= 0.05, arr.ind = TRUE)[,2]) / dim(x)[1],
 
 
 local.estimates[which(local.pvalues > 0.05)] <- NA
-# barplot(colMeans(local.estimates, na.rm = TRUE),
-#         main = 'mean of sig estimates/local')
+barplot(colMeans(local.estimates, na.rm = TRUE),
+        main = 'mean of sig estimates/local')
 boxplot(local.estimates, col = 'thistle',
         main = 'mean of sig estimates/local')
 abline(h = 0, lty = 2, lwd = 0.5)
