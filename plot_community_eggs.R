@@ -1,47 +1,65 @@
-###### IN PROGRESS ######
+# ###### IN PROGRESS ######
+# A <- a$module.landscape
+# E <- comm.out$egg.landscape
 
+# index <- array(1:length(A), dim = c(nrow(A), ncol(A)))
+# aDiv <- array(NA, dim = c(nrow(A), ncol(A)))
+# 
+# shannon.div <- array(NA, dim = c(nrow(A), ncol(A)))
+# 
+# for (i in 1:length(index)){
+#   
+#   id <- which(index == i, arr.ind =TRUE)  
+#   loc.comm <- E[id[1], id[2],]
+#   aDiv[i] <- sum(loc.comm > 0)
+#   shannon.div[i] <- diversity(loc.comm, index = 'shannon')
+#   
+# }
 
-plot.community.eggs <- function(EGG.LANDSCAPE, LANDSCAPE){
+  plot.community.eggs <- function(EGG.LANDSCAPE, LANDSCAPE, overlay = TRUE){
   
+  if (overlay == TRUE){
+    par(new = TRUE)
+  }
+    
   A <- LANDSCAPE
   E <- EGG.LANDSCAPE
   
+  index <- array(1:length(A), dim = c(nrow(A), ncol(A)))
+  aDiv <- array(NA, dim = c(nrow(A), ncol(A)))
+  
+  shannon.div <- array(NA, dim = c(nrow(A), ncol(A)))
+  
+  for (i in 1:length(index)){
+    
+    id <- which(index == i, arr.ind =TRUE)  
+    loc.comm <- E[id[1], id[2],]
+    aDiv[i] <- sum(loc.comm > 0)
+    shannon.div[i] <- diversity(loc.comm, index = 'shannon')
+    
+  }
+  
   par(mar = c(1,1,1,1))
   plot(1,1, cex=0, 
-       xlim = c(1,nrow(E)), 
-       ylim = c(1,ncol(E)),
+       xlim = c(1,nrow(A)), 
+       ylim = c(1,ncol(A)),
        ann = FALSE,
        axes = FALSE)
   box()
   
-  gradient <- c(0, 1/ seq(max(E), 1, length.out = max(E)))
-  # gradient <- rep(0, max(E) + 1)
-  
-  points(which(A[1,] == 1), rep(1, sum(A[1,] == 1)), pch = 19, col = rgb(0,0,1, gradient[E[1,which(A[1,] == 1)]+1]), cex = 2)
-  points(which(A[1,] == 2), rep(1, sum(A[1,] == 2)), pch = 19, col = rgb(1,0,0, gradient[E[1,which(A[1,] == 2)]+1]), cex = 2)
-  
-  points(which(A[1,] == 1), rep(1, sum(A[1,] == 1)), pch = 1, col = rgb(0,0,1, 0.6), cex = 2)  
-  points(which(A[1,] == 2), rep(1, sum(A[1,] == 2)), pch = 1, col = rgb(1,0,0, 0.6), cex = 2)  
-  
-  if (sum(E[1, which(A[1,] > 0)]) > 0){
-    text(which(A[1,] > 0), rep(1, sum(A[1,] > 0)), labels = E[1, which(A[1,] > 0)], cex = 0.7)
-  }
-  
-  for (i in 2:ncol(E)){
+
+  points(which(A[1,] > 0), rep(1, sum(A[1,] > 0)), pch = 19, col = rgb(0,0,1, shannon.div[1,]/max(shannon.div)), cex = 2)
+  points(which(A[1,] > 0), rep(1, sum(A[1,] > 0)), pch = 1, cex = 2)
+
+    for (i in 2:ncol(A)){
     
-    points(which(A[i,] == 1), rep(i, sum(A[i,] == 1)), pch = 19, col = rgb(0,0,1, gradient[E[i,which(A[i,] == 1)]+1]), cex = 2)
-    points(which(A[i,] == 2), rep(i, sum(A[i,] == 2)), pch = 19, col = rgb(1,0,0, gradient[E[i,which(A[i,] == 2)]+1]), cex = 2)
-    
-    points(which(A[i,] == 1), rep(i, sum(A[i,] == 1)), pch = 1, col = rgb(0,0,1, 0.6), cex = 2)  
-    points(which(A[i,] == 2), rep(i, sum(A[i,] == 2)), pch = 1, col = rgb(1,0,0, 0.6), cex = 2)  
-    
-    if (sum(E[i, which(A[i,] > 0)]) > 0){
-      text(which(A[i,] > 0), rep(i, sum(A[i,] > 0)), labels = E[i, which(A[i,] > 0)], cex = 0.7)
-    }
+    points(which(A[i,] > 0), rep(i, sum(A[i,] > 0)), pch = 19, col = rgb(0,0,1, shannon.div[i,]/max(shannon.div)), cex = 2)
+    points(which(A[i,] > 0), rep(i, sum(A[i,] > 0)), pch = 1, cex = 2)
+      
   }
   
   
 }
-
-# plot.community.eggs(egg.landscape, quilted)
+plotLandscape(a$module.landscape)
+plot.community.eggs(comm.out$egg.landscape, a$module.landscape, overlay = FALSE)
 

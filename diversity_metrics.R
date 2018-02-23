@@ -1,5 +1,7 @@
 ###  diversity_metrics
 
+
+
 aDiv <- array(NA, dim = c(nrow(A), ncol(A)))
 for (i in 1:length(index)){
   
