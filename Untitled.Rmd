@@ -1,0 +1,45 @@
+# Habitat selection on spatially explicit landscapes
+### Peter Zee // Feb 2018
+
+### Introduction / Background
+How does perception and choice among individuals influence patterns of colonization across heterogeneous landscapes?
+
+
+### Model
+####  Landscapes
+-amount of uninhabitable matrix
+
+-proportions of risky and safe patches
+
+-spatial structure within local modules
+
+-spatial structure among local modules
+
+####  Individual dispersal 
+-dispersal for each indidual is determined by a dispersal kernal
+
+-the dispersal kernal can be modified at each timestep depending on the type of habitat patch the individual encounters
+
+-dispersal/movement can range from local (within modules) to more global (among local modules)
+
+####  Decision-making behavior
+
+
+#### Colonization
+-depending on the outcome of the decision-making behavior, individuals can colonize a habitat patch (e.g., oviposit)
+
+-colonization can be a single time event, or multiple colonization events may occur
+
+-number of eggs may vary among colonization events (i.e., diminishing returns in fecundity, proportions of total fecundity)
+
+### Populations
+Within species, we can determine patterns of colonization...
+
+
+### Communities
+Among species, at the community level, we can track how colonization dynamics within species influence community structure across the landscape.
+
+
+
+### Evolution
+We can model how population and community structures resulting from interactive habitat selection generate selection pressures on traits of interest. For example, such traits could be involved in individual decision-making behavior (e.g., perception, choice) or the response to stimuli (e.g., dispersal/movement modification with risk), or allocation of reproductive effort (i.e., proportion of total fecundity per patch).
