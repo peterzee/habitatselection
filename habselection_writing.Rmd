@@ -1,5 +1,15 @@
 # Habitat selection on spatially explicit landscapes
 ### Peter Zee // Feb 2018
+```{r, echo = FALSE}
+source('generateModuleLandscape_function.R')
+source('plotLandscape_function.R')
+source('shuffleLandscape.R')
+source('population_function.R')
+source('community_function.R')
+source('moore_function.R')
+source('module_neighborhood_function.R')
+source('plotEggs.R')
+```
 
 ### Introduction / Background
 How does perception and choice among individuals influence patterns of colonization across heterogeneous landscapes?
@@ -7,6 +17,8 @@ How does perception and choice among individuals influence patterns of colonizat
 
 ### Model
 ####  Landscapes
+
+
 -amount of uninhabitable matrix
 
 -proportions of risky and safe patches
@@ -15,8 +27,17 @@ How does perception and choice among individuals influence patterns of colonizat
 
 -spatial structure among local modules
 
+```{r, echo = FALSE}
+a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 3, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = TRUE)
+plotLandscape(a$module.landscape)
+# b <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 3, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = FALSE)
+# plotLandscape(b$module.landscape)
+```
+
+
 ####  Individual dispersal 
 -dispersal for each indidual is determined by a dispersal kernal
+-dispersal kernals: individuals move in a random direction
 
 -the dispersal kernal can be modified at each timestep depending on the type of habitat patch the individual encounters
 

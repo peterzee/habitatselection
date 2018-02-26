@@ -67,4 +67,4 @@ module.neighborhood <- function(LANDSCAPE, EGG.LANDSCAPE, MODULE.DIM, MOD.EXTRAC
 
 #a
 
-blah <- module.neighborhood(sim$A, sim$egg.landscape, a$inputs$MODULE.DIM, MOD.EXTRACT = a$module.extract, MOD.INDEX = a$mod.index)
+# blah <- module.neighborhood(sim$A, sim$egg.landscape, a$inputs$MODULE.DIM, MOD.EXTRACT = a$module.extract, MOD.INDEX = a$mod.index)
