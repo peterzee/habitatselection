@@ -253,7 +253,7 @@ a <- generateModuleLandscape(MATRIX.SIZE = 1,
 
 # ## Plot the disperasl kernal from a focal indidivual
 source('dispersalKernal.R')
-b <- disp.kernal(N = 500, 1, -4, LANDSCAPE = a$module.landscape)
+b <- disp.kernal(N = 500, 3, -5, LANDSCAPE = a$module.landscape)
 kernalPlot <- function(landscape, add = FALSE){
     if (add == TRUE){
       par(new = TRUE)
@@ -279,15 +279,9 @@ kernalPlot <- function(landscape, add = FALSE){
 plotLandscape(a$module.landscape)
 kernalPlot(a$module.landscape, add = FALSE)
 
-draw.circle(ncol(a$module.landscape)/2, 
-            ncol(a$module.landscape)/2, quantile(rgeom(500, 0.2) + 1, 
-            probs = c(0.1,0.5,0.9)), border = 'thistle', lwd = 2)
+draw.circle(ncol(a$module.landscape)/2 + 3, 
+            ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 0.5, 1)), border = 'thistle', lwd = 2)
 
-draw.circle(ncol(a$module.landscape)/2, 
-            ncol(a$module.landscape)/2, quantile(rgeom(500, 0.5) + 1, 
-            probs = c(0.1,0.5,0.9)), border = 'forestgreen', lwd = 2)
-
-
-
-
+draw.circle(ncol(a$module.landscape)/2 + 3, 
+            ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 5, 1)), border = 'forestgreen', lwd = 2)
 

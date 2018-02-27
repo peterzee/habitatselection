@@ -14,8 +14,8 @@ structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
 risk.vec <- c(0.8)
 perception.vec <- c(0.1)
-mvt.vec <- c(0.4, 0.9)
-mvt.mod.vec <- c(0, 0.4)
+mvt.vec <- c(1, 5)
+mvt.mod.vec <- c(0, 3)
 
 replicates <- 100
 
