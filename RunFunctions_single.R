@@ -21,8 +21,8 @@ sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
-                            MVT = 0.8,
-                            MVT.MOD = 0.0)
+                            MVT = 0.5,
+                            MVT.MOD = -4)
 
 # ## Moore neighborhoods
 # # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
