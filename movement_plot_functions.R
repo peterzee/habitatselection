@@ -245,15 +245,15 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
 
 
 
-a <- generateModuleLandscape(MATRIX.SIZE = 2, 
-                        PATCH.DIM = 3, 
+a <- generateModuleLandscape(MATRIX.SIZE = 1, 
+                        PATCH.DIM = 4, 
                         MODULE.DIM = 6, 
                         STRUCTURE = TRUE,
                         SHUFFLE = FALSE)
 
 # ## Plot the disperasl kernal from a focal indidivual
 source('dispersalKernal.R')
-b <- disp.kernal(N = 500, 0.5, 0.1, LANDSCAPE = a$module.landscape)
+b <- disp.kernal(N = 500, 1, -4, LANDSCAPE = a$module.landscape)
 kernalPlot <- function(landscape, add = FALSE){
     if (add == TRUE){
       par(new = TRUE)
@@ -266,11 +266,28 @@ kernalPlot <- function(landscape, add = FALSE){
          ann = FALSE, axes = FALSE)
     points(ncol(A)/2, ncol(A)/2, pch = 4, cex=3)
     
-    points(b$mod.locations[,1], b$mod.locations[,2], col = rgb(1,0,0, 0.25), pch = 19, cex = 2, lwd = 1)
-    points(b$unmod.locations[,1], b$unmod.locations[,2], col = rgb(0,0,1,0.25), pch = 19, cex = 1.5, lwd = 1)
+    points(b$mod.locations[,1], b$mod.locations[,2], col = rgb(0.76, 0 , 0.76, 0.2), pch = 17, cex = 3, lwd = 2)
+    points(b$unmod.locations[,1], b$unmod.locations[,2], col = rgb(0,0.5,0.5,0.2), pch = 15, cex = 2, lwd = 2)
+    
+
+    
+    
     box()
 }
 
 
 plotLandscape(a$module.landscape)
-kernalPlot(a$module.landscape, add = F)
+kernalPlot(a$module.landscape, add = FALSE)
+
+draw.circle(ncol(a$module.landscape)/2, 
+            ncol(a$module.landscape)/2, quantile(rgeom(500, 0.2) + 1, 
+            probs = c(0.1,0.5,0.9)), border = 'thistle', lwd = 2)
+
+draw.circle(ncol(a$module.landscape)/2, 
+            ncol(a$module.landscape)/2, quantile(rgeom(500, 0.5) + 1, 
+            probs = c(0.1,0.5,0.9)), border = 'forestgreen', lwd = 2)
+
+
+
+
+

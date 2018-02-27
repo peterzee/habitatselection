@@ -7,9 +7,10 @@ disp.kernal <- function(N, MVT.PAR, MVT.MOD, LANDSCAPE){
     mvt.mod <- MVT.MOD
     
     
-    ### Unodified!
-
-    dist <- rgeom(N, prob = mvt.par) + 1
+    ## Unmodified 
+    
+    # dist <- rgeom(N, prob = mvt.par) + 1
+    dist <- rgamma(N, shape = mvt.par, scale = 1)
     theta <- runif(N, 0, 2*pi)
     x <- cos(theta) * dist
     y <- sin(theta) * dist
@@ -34,7 +35,8 @@ disp.kernal <- function(N, MVT.PAR, MVT.MOD, LANDSCAPE){
     if (realized.disp.prob < 0.01){
       realized.disp.prob <- 0.01
     }
-    dist <- rgeom(N, prob = realized.disp.prob) + 1
+    # dist <- rgeom(N, prob = realized.disp.prob) + 1
+    dist <- rgamma(N, shape = realized.disp.prob, scale = 1)
     theta <- runif(N, 0, 2*pi)
     x <- cos(theta) * dist
     y <- sin(theta) * dist
