@@ -15,6 +15,8 @@
 #   shannon.div[i] <- diversity(loc.comm, index = 'shannon')
 #   
 # }
+library(vegan)
+
 
   plot.community.eggs <- function(EGG.LANDSCAPE, LANDSCAPE, overlay = TRUE){
   
@@ -51,7 +53,7 @@
   points(which(A[1,] > 0), rep(1, sum(A[1,] > 0)), pch = 19, col = rgb(0,0,1, shannon.div[1,]/max(shannon.div)), cex = 2)
   points(which(A[1,] > 0), rep(1, sum(A[1,] > 0)), pch = 1, cex = 2)
 
-    for (i in 2:ncol(A)){
+    for (i in 2:nrow(A)){
     
     points(which(A[i,] > 0), rep(i, sum(A[i,] > 0)), pch = 19, col = rgb(0,0,1, shannon.div[i,]/max(shannon.div)), cex = 2)
     points(which(A[i,] > 0), rep(i, sum(A[i,] > 0)), pch = 1, cex = 2)
@@ -60,6 +62,8 @@
   
   
 }
+
+par(mfrow=c(2,1))
 plotLandscape(a$module.landscape)
 plot.community.eggs(comm.out$egg.landscape, a$module.landscape, overlay = FALSE)
 
