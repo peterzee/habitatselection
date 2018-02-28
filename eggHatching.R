@@ -1,15 +1,14 @@
-egg.hatched <- function(EGG.LANDSCAPE, P.EMERGE, PENALTY){
-
+egg.hatched <- function(EGG.LANDSCAPE, FECUNDITY, P.EMERGE, PENALTY, K){
+  
     egg.landscape <- EGG.LANDSCAPE
-    
-    hatched <- array(dim = dim(egg.landscape))
-    
+    fec <- FECUNDITY
     p.emerge <- P.EMERGE
     emerge.penalty <- PENALTY
-    
+
+    hatched <- array(dim = dim(egg.landscape))
     for (i in 1:length(c(egg.landscape))){
       
-      eggs <- egg.landscape[i]
+      eggs <- egg.landscape[i] 
       
       if (a$module.landscape[i] < 2){
         tmpEmerge <- p.emerge
@@ -17,7 +16,7 @@ egg.hatched <- function(EGG.LANDSCAPE, P.EMERGE, PENALTY){
         tmpEmerge <- (p.emerge - emerge.penalty)
       }
       
-      hatched[i] <- sum(runif(eggs) < tmpEmerge) 
+      hatched[i] <- sum(runif(eggs) < tmpEmerge) * fec
   
     }
 
@@ -26,3 +25,5 @@ egg.hatched <- function(EGG.LANDSCAPE, P.EMERGE, PENALTY){
 
 # x <- egg.hatched(sim$egg.landscape, P.EMERGE = 1, PENALTY = 0.9)
 # sum(x)
+
+

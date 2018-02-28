@@ -1,5 +1,5 @@
 ## 
-   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD){   
+   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD, RANDOM.START = TRUE){   
       
       A <- LANDSCAPE
       # plotLandscape(A)
@@ -31,12 +31,18 @@
       #####
       ## Movement for multiple individuals (population)
       pop.size <- POP.SIZE
+
       pop.starts <- sample(nrow(A)^2, pop.size, replace = TRUE)
       pop.start.ind <- array(dim = c(pop.size, 2))
       for (i in 1:pop.size){
         pop.start.ind[i,] <- which(index == pop.starts[i], arr.ind = TRUE)
       }
       
+      if (RANDOM.START == FALSE){
+        
+        pop.start.ind <- egg.starts
+        
+      }
       ## Timesteps to move around
       time <- 50
       
@@ -209,11 +215,12 @@
       return(output)
    }
 
-   
-   # sim <- pop.habitatselection(POP.SIZE = 100,
-   #                             LANDSCAPE = a$module.landscape,
-   #                             RISK.MAG = 0.9,
-   #                             PERCEPTION = 0.1,
-   #                             MVT = 0.5,
-   #                             MVT.MOD = 0.1)
+
+   sim <- pop.habitatselection(POP.SIZE = 100,
+                               LANDSCAPE = a$module.landscape,
+                               RISK.MAG = 0.9,
+                               PERCEPTION = 0.1,
+                               MVT = 0.5,
+                               MVT.MOD = 0.1,
+                               RANDOM.START = FALSE)
 

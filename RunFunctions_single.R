@@ -7,7 +7,7 @@ source('community_function.R')
 source('moore_function.R')
 source('module_neighborhood_function.R')
 source('plotEggs.R')
-
+source('eggHatching.R')
 
 ## Generate the landscape
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
