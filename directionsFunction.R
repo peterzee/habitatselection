@@ -14,8 +14,8 @@ structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
 risk.vec <- c(0.8)
 perception.vec <- c(0.1)
-mvt.vec <- c(1, 5)
-mvt.mod.vec <- c(0, 3)
+mvt.vec <- c(1, 8)
+mvt.mod.vec <- c(0, -7)
 
 replicates <- 100
 
@@ -49,9 +49,9 @@ for (ay in 1:length(structure.vec) ) {
     
     
     # Generate the landscape
-    a <- generateModuleLandscape(MATRIX.SIZE = 2, 
-                                 PATCH.DIM = 3, 
-                                 MODULE.DIM = 6, 
+    a <- generateModuleLandscape(MATRIX.SIZE = 1, 
+                                 PATCH.DIM = 4, 
+                                 MODULE.DIM = 10, 
                                  STRUCTURE = structure.vec[ ay ],
                                  SHUFFLE = shuffle.vec[ be ])
     

@@ -10,41 +10,42 @@ source('plotEggs.R')
 
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 1, 
+a <- generateModuleLandscape(MATRIX.SIZE = 2, 
                              PATCH.DIM = 4, 
-                             MODULE.DIM = 6, 
+                             MODULE.DIM = 10, 
                              STRUCTURE = TRUE,
-                             SHUFFLE = FALSE)
+                             SHUFFLE = TRUE)
 # 
-# # ## Simulation the population
-# sim <- pop.habitatselection(POP.SIZE = 250,
-#                             LANDSCAPE = a$module.landscape,
-#                             RISK.MAG = 0.8,
-#                             PERCEPTION = 0.1,
-#                             MVT = 2,
-#                             MVT.MOD = 5)
+# ## Simulation the population
+sim <- pop.habitatselection(POP.SIZE = 250,
+                            LANDSCAPE = a$module.landscape,
+                            RISK.MAG = 0.8,
+                            PERCEPTION = 0.1,
+                            MVT = 1,
+                            MVT.MOD = -4)
+
+# ## Community simulations
+# comm.out <- community.habselection(NUM.SPP = 10,
+#                                    POP.SIZE = 250,
+#                                    LANDSCAPE = a$module.landscape,
+#                                    RISK.MAG = 0.8,
+#                                    PERCEPTION = 0.1,
+#                                    MVT = 0.6,
+#                                    MVT.MOD = 0.2)
 
 # ## Moore neighborhoods
 # # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
 # #                            EGG.LANDSCAPE = sim$egg.landscape,
 # #                            MOORE.RANGE = 3)
 # 
-## Module neighborhoods
-# module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
-#                                   EGG.LANDSCAPE = sim$egg.landscape,
-#                                   MODULE.DIM = a$inputs$MODULE.DIM,
-#                                   MOD.EXTRACT = a$module.extract,
-#                                   MOD.INDEX = a$mod.index)
+# Module neighborhoods
+module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
+                                  EGG.LANDSCAPE = sim$egg.landscape,
+                                  MODULE.DIM = a$inputs$MODULE.DIM,
+                                  MOD.EXTRACT = a$module.extract,
+                                  MOD.INDEX = a$mod.index)
 
-# 
-# ## Community simulations
-comm.out <- community.habselection(NUM.SPP = 10,
-                                   POP.SIZE = 250,
-                                   LANDSCAPE = a$module.landscape,
-                                   RISK.MAG = 0.8,
-                                   PERCEPTION = 0.1,
-                                   MVT = 0.6,
-                                   MVT.MOD = 0.2)
+#
 
 ####################################################################################
 par(mfrow = c(1,1))

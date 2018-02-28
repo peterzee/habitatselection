@@ -203,7 +203,8 @@
                      A = A,
                      egg.landscape = egg.landscape,
                      distance.tracker = distance.tracker,
-                     wrap.info = wrap.info)
+                     wrap.info = wrap.info,
+                     locations = locations)
       
       return(output)
    }

@@ -28,6 +28,7 @@ How does perception and choice among individuals influence patterns of colonizat
 -spatial structure among local modules
 
 ```{r, echo = FALSE}
+par(mfrow=c(1,2))
 a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 3, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = TRUE)
 plotLandscape(a$module.landscape)
 # b <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 3, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = FALSE)
@@ -42,6 +43,8 @@ plotLandscape(a$module.landscape)
 -the dispersal kernal can be modified at each timestep depending on the type of habitat patch the individual encounters
 
 -dispersal/movement can range from local (within modules) to more global (among local modules)
+
+-I use a gamma
 
 ####  Decision-making behavior
 
