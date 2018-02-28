@@ -5,9 +5,7 @@ source('population_function.R')
 source('community_function.R')
 source('plotEggs.R')
 
-
-
-
+## Generate a landscape
 a <- generateModuleLandscape(MATRIX.SIZE = 4, 
                              PATCH.DIM = 4, 
                              MODULE.DIM = 6,
@@ -28,28 +26,31 @@ egg.landscape <- sim$egg.landscape
 plotLandscape(a$module.landscape)
 plotEggs(EGG.LANDSCAPE = sim$egg.landscape, LANDSCAPE = a$module.landscape)
 
+egg.hatched <- function(EGG.LANDSCAPE, P.EMERGE, PENALTY){
 
-hatched <- array(dim = dim(egg.landscape))
-
-p.emerge <- 1
-emerge.penalty <- 0.9
-
-for (i in 1:length(c(egg.landscape))){
-
-  eggs <- egg.landscape[i]
-
-    if (a$module.landscape[i] < 2){
-      tmpEmerge <- p.emerge
-    } else {
-      tmpEmerge <- (p.emerge - emerge.penalty)
+    egg.landscape <- EGG.LANDSCAPE
+    
+    hatched <- array(dim = dim(egg.landscape))
+    
+    p.emerge <- P.EMERGE
+    emerge.penalty <- PENALTY
+    
+    for (i in 1:length(c(egg.landscape))){
       
+      eggs <- egg.landscape[i]
+      
+      if (a$module.landscape[i] < 2){
+        tmpEmerge <- p.emerge
+      } else {
+        tmpEmerge <- (p.emerge - emerge.penalty)
+      }
+      
+      hatched[i] <- sum(runif(eggs) < tmpEmerge) 
+  
     }
-  
-  hatched[i] <- sum(runif(eggs) < tmpEmerge) 
-  
+
+  return(hatched)
 }
 
-
-hatched
-sum(hatched)
-  
+x <- egg.hatched(sim$egg.landscape, P.EMERGE = 1, PENALTY = 0.5)
+sum(x)
