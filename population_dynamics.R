@@ -11,7 +11,7 @@ source('plotEggs.R')
 source('eggHatching.R')
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 1, 
+a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 4, 
                              MODULE.DIM = 6, 
                              STRUCTURE = FALSE,
@@ -19,18 +19,17 @@ a <- generateModuleLandscape(MATRIX.SIZE = 1,
 
 landscape.index <-array(1:length(a$module.landscape), dim = dim(a$module.landscape))
 
-generations <- 10
+generations <- 20
 initial.popsize <- 1
 popsize.time <- rep(NA, generations)
 popsize.time[1] <- initial.popsize
 
-
 for (i in 2:generations){
 
     tmpPopsize <- popsize.time[i - 1]
-  
-  ## Simulation the population
-  if (i ==2) {
+
+      ## Simulation the population
+  if (i == 2) {
     sim <- pop.habitatselection(POP.SIZE = tmpPopsize,
                               LANDSCAPE = a$module.landscape,
                               RISK.MAG = 0.8,
@@ -47,7 +46,7 @@ for (i in 2:generations){
                               RANDOM.START = FALSE)
   }
   
-  hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 2, P.EMERGE = 1, PENALTY = 0.5)
+  hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 2, P.EMERGE = 1, PENALTY = 0, CARRY.CAP = 500)
   
   popsize.time[i] <-   sum(hatched.landscape)
   
