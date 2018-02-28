@@ -12,8 +12,8 @@ source('plotEggs.R')
 ##############################################################################
 structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
-risk.vec <- c(0.8)
-perception.vec <- c(0.1)
+risk.vec <- c(0.2)
+perception.vec <- c(0.6)
 mvt.vec <- c(1, 8)
 mvt.mod.vec <- c(0, -7)
 

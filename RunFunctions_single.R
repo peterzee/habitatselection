@@ -10,7 +10,7 @@ source('plotEggs.R')
 
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 2, 
+a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 4, 
                              MODULE.DIM = 10, 
                              STRUCTURE = TRUE,
