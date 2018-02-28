@@ -52,6 +52,10 @@ par(mfrow = c(1,1))
 plotLandscape(a$module.landscape)
 plotEggs(EGG.LANDSCAPE = sim$egg.landscape, LANDSCAPE = a$module.landscape)
 
+hatched.landscape <- egg.hatched(sim$egg.landscape, P.EMERGE = 0.8, PENALTY = 0.4)
+sum(hatched.landscape)
+prop.hatched <- sum(hatched.landscape) / sim$inputs$POP.SIZE
+
 par(mfrow = c(1,1), mar = c(3,4,1,1))
 boxplot(sim$egg.landscape[a$module.landscape == 1],
         sim$egg.landscape[a$module.landscape == 2],
