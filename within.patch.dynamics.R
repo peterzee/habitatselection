@@ -16,10 +16,15 @@ pred.death <- 0.4
 
 
 
-
-
-
 time.in.patch <- 10
 
 
 runif(time.in.patch) < 0.1
+
+
+
+RESOURCE <- 100
+
+
+
+
