@@ -1,4 +1,4 @@
-egg.hatched <- function(EGG.LANDSCAPE, FECUNDITY, P.EMERGE, PENALTY, CARRY.CAP){
+egg.hatched <- function(EGG.LANDSCAPE, FECUNDITY, P.EMERGE, PENALTY, CARRY.CAP = 10){
   
     egg.landscape <- EGG.LANDSCAPE
     fec <- FECUNDITY
@@ -27,7 +27,7 @@ egg.hatched <- function(EGG.LANDSCAPE, FECUNDITY, P.EMERGE, PENALTY, CARRY.CAP){
       hatched[i] <- sum(runif(eggs) < tmpEmerge) * fec
   
     }
-    print(tmpEmerge)
+    # print(tmpEmerge)
     
   return(hatched)
 }

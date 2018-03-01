@@ -10,11 +10,11 @@ source('plotEggs.R')
 source('eggHatching.R')
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 0, 
+a <- generateModuleLandscape(MATRIX.SIZE = 2, 
                              PATCH.DIM = 4, 
-                             MODULE.DIM = 10, 
-                             STRUCTURE = TRUE,
-                             SHUFFLE = TRUE)
+                             MODULE.DIM = 6, 
+                             STRUCTURE = FALSE,
+                             SHUFFLE = FALSE)
 # 
 # ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
@@ -52,7 +52,7 @@ par(mfrow = c(1,1))
 plotLandscape(a$module.landscape)
 plotEggs(EGG.LANDSCAPE = sim$egg.landscape, LANDSCAPE = a$module.landscape)
 
-hatched.landscape <- egg.hatched(sim$egg.landscape, P.EMERGE = 0.8, PENALTY = 0.4)
+hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 1, P.EMERGE = 1, PENALTY = 0.5)
 sum(hatched.landscape)
 prop.hatched <- sum(hatched.landscape) / sim$inputs$POP.SIZE
 

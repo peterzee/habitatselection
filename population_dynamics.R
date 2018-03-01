@@ -19,8 +19,8 @@ a <- generateModuleLandscape(MATRIX.SIZE = 1,
 
 landscape.index <-array(1:length(a$module.landscape), dim = dim(a$module.landscape))
 
-generations <- 20
-initial.popsize <- 110
+generations <- 50
+initial.popsize <- 1
 popsize.time <- rep(NA, generations)
 popsize.time[1] <- initial.popsize
 
@@ -46,7 +46,7 @@ for (i in 2:generations){
                               RANDOM.START = FALSE)
   }
   
-  hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 2, P.EMERGE = 1, PENALTY = 0, CARRY.CAP = 500)
+  hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 2, P.EMERGE = 1, PENALTY = 0.1, CARRY.CAP = 10)
   
   popsize.time[i] <-   sum(hatched.landscape)
   
@@ -65,6 +65,7 @@ for (i in 2:generations){
 }
 
 
-plot(1:generations, popsize.time, type = 'b', pch = 19,
+plot(1:generations, popsize.time, type = 'b', pch = 1,
      ylim = c(0, max(popsize.time, na.rm = TRUE)),
      col = 1)
+
