@@ -17,11 +17,11 @@ egg.hatched <- function(EGG.LANDSCAPE, FECUNDITY, P.EMERGE, PENALTY, CARRY.CAP =
       
           if (a$module.landscape[i] < 2){
             
-            tmpEmerge <- p.emerge * ((K - total.eggs) / K)
+            tmpEmerge <- p.emerge * (1 - (eggs / K ))
             
           } else {
             
-            tmpEmerge <- (p.emerge - emerge.penalty) * ((K - total.eggs) / K)
+            tmpEmerge <- (p.emerge - emerge.penalty) * (1 - (eggs / K ))
           
             }
       hatched[i] <- sum(runif(eggs) < tmpEmerge) * fec

@@ -11,10 +11,10 @@ source('plotEggs.R')
 source('eggHatching.R')
 
 ## Generate the landscape
-a <- generateModuleLandscape(MATRIX.SIZE = 1, 
-                             PATCH.DIM = 4, 
+a <- generateModuleLandscape(MATRIX.SIZE = 0, 
+                             PATCH.DIM = 3, 
                              MODULE.DIM = 6, 
-                             STRUCTURE = FALSE,
+                             STRUCTURE = TRUE,
                              SHUFFLE = FALSE)
 
 landscape.index <-array(1:length(a$module.landscape), dim = dim(a$module.landscape))
@@ -24,6 +24,19 @@ initial.popsize <- 1
 popsize.time <- rep(NA, generations)
 popsize.time[1] <- initial.popsize
 
+#########
+      ## setting population parameters 
+      risk.magnitude <- 0.8
+      perception <- 0.1
+      mvt <- 1
+      mvt.mod <- 0
+      
+      fecundity <- 2
+      prob.emerge <-1
+      penalty <- 0.5
+      carrying.cap <- 10
+#########
+      
 for (i in 2:generations){
 
     tmpPopsize <- popsize.time[i - 1]
@@ -32,22 +45,28 @@ for (i in 2:generations){
   if (i == 2) {
     sim <- pop.habitatselection(POP.SIZE = tmpPopsize,
                               LANDSCAPE = a$module.landscape,
-                              RISK.MAG = 0.8,
-                              PERCEPTION = 0.1,
-                              MVT = 1,
-                              MVT.MOD = -4)
+                              RISK.MAG = risk.magnitude,
+                              PERCEPTION = perception,
+                              MVT = mvt,
+                              MVT.MOD = mvt.mod,
+                              RANDOM.START = TRUE)
   } else {
     sim <- pop.habitatselection(POP.SIZE = tmpPopsize,
                               LANDSCAPE = a$module.landscape,
-                              RISK.MAG = 0.8,
-                              PERCEPTION = 0.1,
-                              MVT = 1,
-                              MVT.MOD = -4,
+                              RISK.MAG = risk.magnitude,
+                              PERCEPTION = perception,
+                              MVT = mvt,
+                              MVT.MOD = mvt.mod,
                               RANDOM.START = FALSE)
   }
   
-  hatched.landscape <- egg.hatched(sim$egg.landscape, FECUNDITY = 2, P.EMERGE = 1, PENALTY = 0.1, CARRY.CAP = 10)
-  
+  hatched.landscape <- egg.hatched(sim$egg.landscape, 
+                                   FECUNDITY = fecundity, 
+                                   P.EMERGE = prob.emerge, 
+                                   PENALTY = penalty, 
+                                   CARRY.CAP = carrying.cap)
+
+    
   popsize.time[i] <-   sum(hatched.landscape)
   
   
@@ -65,7 +84,7 @@ for (i in 2:generations){
 }
 
 
-plot(1:generations, popsize.time, type = 'b', pch = 1,
+plot(1:generations, popsize.time, type = 'l', pch = 1, lwd = 2,
      ylim = c(0, max(popsize.time, na.rm = TRUE)),
      col = 1)
 
