@@ -13,13 +13,13 @@ source('eggHatching.R')
 ## Generate the landscape
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 3, 
-                             MODULE.DIM = 6, 
-                             STRUCTURE = TRUE,
+                             MODULE.DIM = 10, 
+                             STRUCTURE = FALSE,
                              SHUFFLE = FALSE)
 
 landscape.index <-array(1:length(a$module.landscape), dim = dim(a$module.landscape))
 
-generations <- 50
+generations <- 100
 initial.popsize <- 1
 popsize.time <- rep(NA, generations)
 popsize.time[1] <- initial.popsize
@@ -86,5 +86,5 @@ for (i in 2:generations){
 
 plot(1:generations, popsize.time, type = 'l', pch = 1, lwd = 2,
      ylim = c(0, max(popsize.time, na.rm = TRUE)),
-     col = 1)
+     col = 4)
 
