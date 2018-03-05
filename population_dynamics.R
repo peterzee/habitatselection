@@ -13,7 +13,7 @@ source('eggHatching.R')
 ## Generate the landscape
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 3, 
-                             MODULE.DIM = 10, 
+                             MODULE.DIM = 6, 
                              STRUCTURE = FALSE,
                              SHUFFLE = FALSE)
 
@@ -29,7 +29,7 @@ popsize.time[1] <- initial.popsize
       risk.magnitude <- 0.8
       perception <- 0.1
       mvt <- 1
-      mvt.mod <- 0
+      mvt.mod <- -8
       
       fecundity <- 2
       prob.emerge <-1

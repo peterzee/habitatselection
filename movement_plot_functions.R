@@ -245,13 +245,13 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
 
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                         PATCH.DIM = 4, 
-                        MODULE.DIM = 6, 
+                        MODULE.DIM = 10, 
                         STRUCTURE = TRUE,
                         SHUFFLE = FALSE)
 
 # ## Plot the disperasl kernal from a focal indidivual
 source('dispersalKernal.R')
-b <- disp.kernal(N = 500, 1, -7, LANDSCAPE = a$module.landscape)
+b <- disp.kernal(N = 500, 1, -1, LANDSCAPE = a$module.landscape)
 kernalPlot <- function(landscape, add = FALSE){
     if (add == TRUE){
       par(new = TRUE)
