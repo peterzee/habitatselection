@@ -247,11 +247,11 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
                         PATCH.DIM = 4, 
                         MODULE.DIM = 10, 
                         STRUCTURE = TRUE,
-                        SHUFFLE = FALSE)
+                        SHUFFLE = TRUE)
 
 # ## Plot the disperasl kernal from a focal indidivual
 source('dispersalKernal.R')
-b <- disp.kernal(N = 500, 1, -1, LANDSCAPE = a$module.landscape)
+b <- disp.kernal(N = 500, 5, -4, LANDSCAPE = a$module.landscape)
 kernalPlot <- function(landscape, add = FALSE){
     if (add == TRUE){
       par(new = TRUE)

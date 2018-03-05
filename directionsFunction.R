@@ -12,10 +12,10 @@ source('plotEggs.R')
 ##############################################################################
 structure.vec <- c(FALSE, TRUE)
 shuffle.vec <- c(FALSE, TRUE)
-risk.vec <- c(0.2)
-perception.vec <- c(0.6)
-mvt.vec <- c(1, 8)
-mvt.mod.vec <- c(0, -7)
+risk.vec <- c(0.8)
+perception.vec <- c(0.1)
+mvt.vec <- c(1, 5)
+mvt.mod.vec <- c(0, -4)
 
 replicates <- 100
 
@@ -49,7 +49,7 @@ for (ay in 1:length(structure.vec) ) {
     
     
     # Generate the landscape
-    a <- generateModuleLandscape(MATRIX.SIZE = 1, 
+    a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                                  PATCH.DIM = 4, 
                                  MODULE.DIM = 10, 
                                  STRUCTURE = structure.vec[ ay ],
@@ -154,7 +154,17 @@ barplot(colMeans(local.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/local')
 
 ## Local boxplot
-boxplot(local.estimates, col = rgb(0,0,1,0.6),
+boxplot( x[,9,], col = rgb(0,0,1,0.3))
+abline(h = 0, lty = 2, lwd = 0.5)
+for (i in 1:16){
+ if (t.test(x[,9,i], rep(0, replicates))$p.value <= 0.05){
+      text(i, 0 , '*', cex = 4)
+     }
+}
+
+        
+## (SIGNIFICANT REPLCIATES ONLY)        
+boxplot(local.estimates, col = rgb(0,0,1,0.3),
         main = 'mean of sig estimates/local', width = n.sig.local)
 abline(h = 0, lty = 2, lwd = 0.5)
 points(1:16, colMeans(local.estimates, na.rm = TRUE), pch = 19, col = 4)
@@ -180,6 +190,11 @@ barplot(colMeans(regional.estimates, na.rm = TRUE),
         main = 'mean of sig estimates/regional')
 
 ## Regional boxplot
+boxplot(x[,11,], col = rgb(1,0,0,0.3),
+        main = 'mean of sig estimates/regional')
+abline(h = 0, lty = 2, lwd = 0.5)
+
+## (SIGNIFICANT REPLCIATES ONLY)        
 boxplot(regional.estimates, col = rgb(1,0,0,0.6),
         main = 'mean of sig estimates/regional', width = n.sig.regional)
 abline(h = 0, lty = 2, lwd = 0.5)
