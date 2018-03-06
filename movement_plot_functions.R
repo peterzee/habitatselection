@@ -6,6 +6,10 @@ traceMovement <- function(individual, trace.data, landscape, overlay = TRUE){
   loc <- trace.data
   A <- landscape
   
+  
+  time <- 50
+  wrap.info <- sim$wrap.info
+  
   if (overlay == TRUE){
   
     points(1,1, cex = 0)
@@ -247,7 +251,7 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
                         PATCH.DIM = 4, 
                         MODULE.DIM = 10, 
                         STRUCTURE = TRUE,
-                        SHUFFLE = TRUE)
+                        SHUFFLE = FALSE)
 
 # ## Plot the disperasl kernal from a focal indidivual
 source('dispersalKernal.R')
@@ -276,10 +280,16 @@ kernalPlot <- function(landscape, add = FALSE){
 
 plotLandscape(a$module.landscape)
 kernalPlot(a$module.landscape, add = FALSE)
+# draw.circle(ncol(a$module.landscape)/2 + 3, 
+#             ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 0.5, 1)), border = 'thistle', lwd = 2)
+# 
+# draw.circle(ncol(a$module.landscape)/2 + 3, 
+#             ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 5, 1)), border = 'forestgreen', lwd = 2)
 
-draw.circle(ncol(a$module.landscape)/2 + 3, 
-            ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 0.5, 1)), border = 'thistle', lwd = 2)
 
-draw.circle(ncol(a$module.landscape)/2 + 3, 
-            ncol(a$module.landscape)/2 + 3, quantile(rgamma(500, 5, 1)), border = 'forestgreen', lwd = 2)
+blah <- sample(250, 10)
+for (i in 1:length(blah)){
+  traceMovement(individual = blah[ i ], trace.data = sim$locations[,,blah[ i ]], landscape = a$module.landscape, overlay = TRUE)
+}
+
 
