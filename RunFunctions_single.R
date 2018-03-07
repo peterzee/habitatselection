@@ -21,7 +21,7 @@ sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
-                            MVT = 1,
+                            MVT = 9,
                             MVT.MOD = -4)
 
 # ## Community simulations
