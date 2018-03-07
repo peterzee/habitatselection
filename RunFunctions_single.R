@@ -13,25 +13,25 @@ source('eggHatching.R')
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 4, 
                              MODULE.DIM = 10, 
-                             STRUCTURE = FALSE,
-                             SHUFFLE = FALSE)
+                             STRUCTURE = TRUE,
+                             SHUFFLE = TRUE)
 # 
 # ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
-                            MVT = 9,
+                            MVT = 1,
                             MVT.MOD = -4)
 
-# ## Community simulations
+## Community simulations
 # comm.out <- community.habselection(NUM.SPP = 10,
 #                                    POP.SIZE = 250,
 #                                    LANDSCAPE = a$module.landscape,
-#                                    RISK.MAG = 0.8,
+#                                    RISK.MAG = 0.0,
 #                                    PERCEPTION = 0.1,
-#                                    MVT = 0.6,
-#                                    MVT.MOD = 0.2)
+#                                    MVT = 1,
+#                                    MVT.MOD = -4)
 
 # ## Moore neighborhoods
 # # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,

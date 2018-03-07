@@ -208,8 +208,10 @@ for (i in which(n.sig.regional > 1)){
 
 
 # par(mfrow=c(1,2))
-hist(local.estimates[which(local.pvalues <= 0.05)], col = rgb(0,0,1,0.5))
+hist(local.estimates[which(local.pvalues <= 0.05)], col = rgb(0,0,1,0.5), 
+     xlab = "Estimates", main = "Local")
 sum(local.estimates[which(local.pvalues <= 0.05)] > 0) / length(local.estimates[which(local.pvalues <= 0.05)])
 
-hist(regional.estimates[which(regional.pvalues <= 0.05)], col = rgb(1,0,0,0.5))
+hist(regional.estimates[which(regional.pvalues <= 0.05)], col = rgb(1,0,0,0.5), 
+     xlab = "Estimates", main = "Regional")
 sum(regional.estimates[which(regional.pvalues <= 0.05)] > 0) / length(regional.estimates[which(regional.pvalues <= 0.05)])
