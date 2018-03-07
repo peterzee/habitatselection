@@ -154,9 +154,14 @@ for (i in 2:time){
         if (egg.check == 1){
           drop.dead[j,,k] <- c(1,i)
         }
-        
         ## Dispersal kernal
-        dist <- rgeom(1, prob = mvt.par[k] - mvt.mod) + 1
+        realized.disp.prob <- mvt.par[k] - mvt.mod
+        if (realized.disp.prob < 0.01){
+          realized.disp.prob <- 0.01
+        }
+        # dist <- rgeom(1, prob = realized.disp.prob) + 1
+        dist <- rgamma(1, shape = realized.disp.prob, scale = 1)
+        
         theta <- runif(1, 0, 2*pi)
         x <- cos(theta) * dist
         y <- sin(theta) * dist

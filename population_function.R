@@ -149,7 +149,7 @@
                 realized.disp.prob <- 0.01
               }
             # dist <- rgeom(1, prob = realized.disp.prob) + 1
-            dist <- rgamma(1, shape = mvt.par, scale = 1)
+            dist <- rgamma(1, shape = realized.disp.prob, scale = 1)
             
             theta <- runif(1, 0, 2*pi)
             x <- cos(theta) * dist
