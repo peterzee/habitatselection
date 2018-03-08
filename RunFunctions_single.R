@@ -22,7 +22,7 @@ sim <- pop.habitatselection(POP.SIZE = 250,
                             RISK.MAG = 0.8,
                             PERCEPTION = 0.1,
                             MVT = 1,
-                            MVT.MOD = -4)
+                            MVT.MOD = 0)
 
 ## Community simulations
 # comm.out <- community.habselection(NUM.SPP = 10,
