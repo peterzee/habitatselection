@@ -100,7 +100,7 @@
             
             
             memory.mod <- mem.weight * (sum(tmp.memory == 2))
-            print(memory.mod)
+            # print(memory.mod)
             
             ### perceiving through time 
             risk.signals.time[i-1,j] <- risk.landscape[locations[i-1,1,j], locations[i-1,2,j]]

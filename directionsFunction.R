@@ -10,11 +10,11 @@ source('plotEggs.R')
 
 ##############################################################################
 ##############################################################################
-structure.vec <- c(FALSE, TRUE)
+structure.vec <- c(TRUE)
 shuffle.vec <- c(FALSE, TRUE)
-risk.vec <- c(0, 0.8)
-perception.vec <- c(0.1)
-mvt.vec <- c(1, 5)
+risk.vec <- c(0)
+perception.vec <- c(0.1, 0.7)
+mvt.vec <- c(1)
 mvt.mod.vec <- c(0)
 
 replicates <- 100
@@ -51,7 +51,7 @@ for (ay in 1:length(structure.vec) ) {
     # Generate the landscape
     a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                                  PATCH.DIM = 4, 
-                                 MODULE.DIM = 10, 
+                                 MODULE.DIM = 6, 
                                  STRUCTURE = structure.vec[ ay ],
                                  SHUFFLE = shuffle.vec[ be ])
     
@@ -80,7 +80,9 @@ sim <- pop.habitatselection(POP.SIZE = 250,
                             RISK.MAG = risk.vec[ ce ],
                             PERCEPTION = perception.vec[ de ],
                             MVT = mvt.vec[ ee ],
-                            MVT.MOD = mvt.mod.vec[ ef ])
+                            MVT.MOD = mvt.mod.vec[ ef ],
+                            MEM.DEPTH = 5,
+                            MEM.WEIGHT = 0.1)
 
 ## Moore neighborhoods
 # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
