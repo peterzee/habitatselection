@@ -15,7 +15,7 @@ shuffle.vec <- c(FALSE, TRUE)
 risk.vec <- c(0.8)
 perception.vec <- c(0.1)
 mvt.vec <- c(1, 5)
-mvt.mod.vec <- c(0, -4)
+mvt.mod.vec <- c(0)
 
 replicates <- 100
 
@@ -215,3 +215,30 @@ sum(local.estimates[which(local.pvalues <= 0.05)] > 0) / length(local.estimates[
 hist(regional.estimates[which(regional.pvalues <= 0.05)], col = rgb(1,0,0,0.5), 
      xlab = "Estimates", main = "Regional")
 sum(regional.estimates[which(regional.pvalues <= 0.05)] > 0) / length(regional.estimates[which(regional.pvalues <= 0.05)])
+
+
+############################################################################################################
+############################################################################################################
+
+### results by treatment
+full.local.estimates <- x[,9,]
+full.regional.estimates <- x[,11,]
+
+par(mfrow=c(1,2))
+boxplot(full.local.estimates, col = rgb(0,0,1,0.6))
+abline(h=0,lty=2)
+boxplot(full.regional.estimates, col = rgb(1,0,0,0.6))
+abline(h=0,lty=2)
+
+
+par(mfrow = c(4,4), mar = c(1,1,0,0))
+for (i in 1:16){
+  hist(full.local.estimates[,i], col = rgb(0,0,1,0.6))
+  abline(v = 0, col = 2, lwd = 2)
+  }
+
+for (i in 1:16){
+  hist(full.regional.estimates[,i], col = rgb(1,0,0,0.6))
+  abline(v = 0, col = 2, lwd = 2)
+}
+
