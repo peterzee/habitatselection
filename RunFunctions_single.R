@@ -19,10 +19,12 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
 # ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
-                            RISK.MAG = 0.8,
+                            RISK.MAG = 0.0,
                             PERCEPTION = 0.1,
-                            MVT = 1,
-                            MVT.MOD = 0)
+                            MVT = 3,
+                            MVT.MOD = 0,
+                            MEM.DEPTH = 10,
+                            MEM.WEIGHT = 0.1)
 
 ## Community simulations
 # comm.out <- community.habselection(NUM.SPP = 10,
@@ -34,9 +36,9 @@ sim <- pop.habitatselection(POP.SIZE = 250,
 #                                    MVT.MOD = -4)
 
 # ## Moore neighborhoods
-# # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
-# #                            EGG.LANDSCAPE = sim$egg.landscape,
-# #                            MOORE.RANGE = 3)
+# moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
+#                            EGG.LANDSCAPE = sim$egg.landscape,
+#                            MOORE.RANGE = 3)
 # 
 # Module neighborhoods
 module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,

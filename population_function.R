@@ -1,5 +1,5 @@
 ## 
-   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD, MEM.DEPTH, RANDOM.START = TRUE){   
+   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD, MEM.DEPTH, MEM.WEIGHT, RANDOM.START = TRUE){   
       
       A <- LANDSCAPE
       # plotLandscape(A)
@@ -77,6 +77,12 @@
       wrap.info <- array(dim = c(time, 6, pop.size))
       wrap.info[,1,] <- rep(0,time)
       
+      
+      ## Memory depth
+      mem.depth <- MEM.DEPTH
+      mem.weight <- MEM.WEIGHT
+      
+    
       for (i in 2:time){
         
         mvt.par <- MVT
@@ -84,6 +90,17 @@
         for (j in 1:pop.size){
           if (is.na(drop.dead[j,1])){
             egg.check <- 0
+            
+            
+            if ((i - mem.depth) < 1){
+              tmp.memory <- encounter[ 1:i, j ]
+            } else {
+              tmp.memory <- encounter[ (i-mem.depth):i, j ]
+            }
+            
+            
+            memory.mod <- mem.weight * (sum(tmp.memory == 2))
+            print(memory.mod)
             
             ### perceiving through time 
             risk.signals.time[i-1,j] <- risk.landscape[locations[i-1,1,j], locations[i-1,2,j]]
@@ -94,7 +111,7 @@
             if (encounter[i-1,j] == 1){
               
               ## random draw to determine choice
-              safe.patchCHOICE <- ((runif(1) * safe.patch[i-1,j]) > p.vec[j])
+              safe.patchCHOICE <- ((runif(1) * safe.patch[i-1,j]) > p.vec[j] + memory.mod)
               
               if (safe.patchCHOICE == TRUE){
                 
@@ -120,7 +137,7 @@
             if (encounter[i-1,j] == 2){
               
               ## random draw to determine choice (modified by both magnitude, and signal)
-              risk.patchCHOICE <- ((runif(1) * (risk.signals.time[i-1,j])) > p.vec[j] + risk.mag)
+              risk.patchCHOICE <- ((runif(1) * (risk.signals.time[i-1,j])) > p.vec[j] + risk.mag + memory.mod)
               
               if (risk.patchCHOICE == TRUE){
                 
@@ -215,13 +232,13 @@
       
       return(output)
    }
-
-
-   sim <- pop.habitatselection(POP.SIZE = 100,
-                               LANDSCAPE = a$module.landscape,
-                               RISK.MAG = 0.9,
-                               PERCEPTION = 0.1,
-                               MVT = 0.5,
-                               MVT.MOD = 0.1,
-                               RANDOM.START = FALSE)
-
+# 
+# 
+#    sim <- pop.habitatselection(POP.SIZE = 100,
+#                                LANDSCAPE = a$module.landscape,
+#                                RISK.MAG = 0.9,
+#                                PERCEPTION = 0.1,
+#                                MVT = 0.5,
+#                                MVT.MOD = 0.1,
+#                                RANDOM.START = FALSE)
+# 
