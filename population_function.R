@@ -1,5 +1,5 @@
 ## 
-   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD, RANDOM.START = TRUE){   
+   pop.habitatselection <- function(POP.SIZE, LANDSCAPE, RISK.MAG, PERCEPTION, MVT, MVT.MOD, MEM.DEPTH, RANDOM.START = TRUE){   
       
       A <- LANDSCAPE
       # plotLandscape(A)
