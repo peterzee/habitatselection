@@ -10,7 +10,7 @@ source('plotEggs.R')
 
 ##############################################################################
 ##############################################################################
-structure.vec <- c(FALSE, TRUE)
+structure.vec <- c(TRUE)
 shuffle.vec <- c(TRUE)
 risk.vec <- c(0, 0.3)
 perception.vec <- c(0.1, 0.6)
@@ -123,6 +123,7 @@ if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
 
 
 print(count / nrow(directions.table))
+
                 }
               }
             }
@@ -135,11 +136,11 @@ print(count / nrow(directions.table))
 
 
 
-directions.table[which(directions.table[,11] < 0), 1:10]
-directions.table[which(directions.table[,12] < 0.05), 1:10]
-
-directions.table[which(directions.table[,13] < 0.05), 1:10]
-directions.table[which(directions.table[,14] < 0.05), 1:10]
+# directions.table[which(directions.table[,11] < 0), 1:10]
+# directions.table[which(directions.table[,12] < 0.05), 1:10]
+# 
+# directions.table[which(directions.table[,13] < 0.05), 1:10]
+# directions.table[which(directions.table[,14] < 0.05), 1:10]
 
 
 x <- array(dim = c(replicates, 14, nrow(directions.table) / replicates))
