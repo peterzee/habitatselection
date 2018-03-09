@@ -20,10 +20,10 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
 sim <- pop.habitatselection(POP.SIZE = 250,
                             LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.0,
-                            PERCEPTION = 0.1,
-                            MVT = 3,
+                            PERCEPTION = 0.2,
+                            MVT = 1,
                             MVT.MOD = 0,
-                            MEM.DEPTH = 10,
+                            MEM.DEPTH = 5,
                             MEM.WEIGHT = 0.1)
 
 ## Community simulations
