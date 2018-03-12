@@ -21,9 +21,9 @@ waveSynth2 <- function(dim, varFun, ..., wavelet = "haar") {
 charGauss <- function(x, sigma) exp(-sigma ^ 2 * x ^ 2 / 2)
 
 
-landscape.size <- 128 * 4
+landscape.size <- 128
 
-E <- 6
+E <- 4
 y <- waveSynth2(landscape.size, charGauss, exp(E), wavelet = "la8")
 
 #rescale environment to range from 0-100
@@ -46,6 +46,29 @@ y2[y2 < 0] <- -1
 
 y2
 levelplot(y2)
+
+
+
+### Convert landscape to 0,1,2 scale
+
+tmp.y2 <- y2
+
+matrix.index <- which(y2 == -1)
+live.index <- which(y2 > -1)
+
+wav.risk.index <- which(y2[live.index] >= mean(y2[live.index]))
+wav.safe.index <- which(y2[live.index] < mean(y2[live.index]))
+
+tmp.y2[matrix.index] <- 0
+tmp.y2[wav.safe.index] <- 1
+tmp.y2[wav.risk.index] <- 2
+
+
+
+levelplot(tmp.y2)
+
+
+
 
 # 
 # #To create original intact landscapes & then create fragmented reserves of different sizes
