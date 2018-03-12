@@ -12,12 +12,12 @@ source('plotEggs.R')
 ##############################################################################
 structure.vec <- c(TRUE)
 shuffle.vec <- c(TRUE)
-risk.vec <- c(0, 0.3)
-perception.vec <- c(0.1, 0.6)
+risk.vec <- c(0, 0.2)
+perception.vec <- c(0.7)
 mvt.vec <- c(1)
 mvt.mod.vec <- c(0)
 mem.depth.vec <- c(10)
-mem.weight.vec <- c(0, 0.1)
+mem.weight.vec <- c(0, 0.025, 0.05, 0.075, 0.1)
 
 
 replicates <- 100
@@ -48,6 +48,8 @@ colnames(directions.table) <- c('id',
                              'local.p.value',
                              'regional.coef',
                              'regional.p.value')
+
+number.of.eggs <- rep(NA, nrow(directions.table))
 
 count <- 0
 ##############################################################################
@@ -106,7 +108,7 @@ module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
                                   MOD.INDEX = a$mod.index)
 
 
-
+number.of.eggs[ count ] <- sum(sim$egg.landscape)
 
 fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
 summary(fit.local)
@@ -256,3 +258,6 @@ for (i in 1:16){
   abline(v = 0, col = 2, lwd = 2)
 }
 
+boxplot(array(number.of.eggs, dim = c(replicates, length(number.of.eggs)/replicates)),
+        col = rgb(0,1,0.5,0.5),
+        main = "number of eggs laid")
