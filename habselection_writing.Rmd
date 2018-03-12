@@ -18,7 +18,6 @@ How does perception and choice among individuals influence patterns of colonizat
 ### Model
 ####  Landscapes
 
-
 -amount of uninhabitable matrix
 
 -proportions of risky and safe patches
