@@ -1,3 +1,5 @@
+source('plotLandscape_function.R')
+  
 library(waveslim)
 library(lattice)
 
@@ -21,24 +23,26 @@ waveSynth2 <- function(dim, varFun, ..., wavelet = "haar") {
 charGauss <- function(x, sigma) exp(-sigma ^ 2 * x ^ 2 / 2)
 
 
-landscape.size <- 128
+landscape.size <- 128/2
 
-E <- 4
+E <- 5
 y <- waveSynth2(landscape.size, charGauss, exp(E), wavelet = "la8")
 
 #rescale environment to range from 0-100
 y <- y - min(y)
 y <- y * 99.9999/max(y)
 
-F <- 3
+F <- 1
 x <- waveSynth2(landscape.size, charGauss, exp(F), wavelet = "la8")
 
 #-1 indicates matrix, which is 75% of landscape
-prop.matrix <- 0.50
-
-x[x < quantile(x, prop.matrix)] <- -1
-x[x > quantile(x, prop.matrix)] <- 1
-
+prop.matrix <- 0.0
+if (prop.matrix == 0){
+  x[1:length(x)] <- 1
+} else {
+  x[x < quantile(x, prop.matrix)] <- -1
+  x[x > quantile(x, prop.matrix)] <- 1
+}
 
 #combine the reserve mask and the underlying environmental grid
 y2 <- x * y
@@ -53,55 +57,15 @@ levelplot(y2)
 
 tmp.y2 <- y2
 
-matrix.index <- which(y2 == -1)
-live.index <- which(y2 > -1)
-
-wav.risk.index <- which(y2[live.index] >= mean(y2[live.index]))
-wav.safe.index <- which(y2[live.index] < mean(y2[live.index]))
-
-tmp.y2[matrix.index] <- 0
-tmp.y2[wav.safe.index] <- 1
-tmp.y2[wav.risk.index] <- 2
+tmp.y2[y2 == -1] <- 0
+tmp.y2[y2 > 0 & y2 <= median(y2[y2>0])] <- 1
+tmp.y2[y2 > mean(y2[y2>0])] <- 2
 
 
-
-levelplot(tmp.y2)
-
+hist(tmp.y2)
 
 
-
-# 
-# #To create original intact landscapes & then create fragmented reserves of different sizes
-# for(E in c(-Inf,0:6)){ #a range of different scales of spatial environmental autocorrelation
-#   
-#   #this makes the habitat
-#   y <- waveSynth2(128, charGauss, exp(E), wavelet = "la8")
-#   
-#   #rescale environment to range from 0-100
-#   y <- y - min(y)
-#   y <- y * 99.9999/max(y)
-#   
-#   #save intact landscape
-#   name <- paste('E_exp', E, 'orig_set1.csv', sep='') 
-#   # write.csv(y,name, row.names=FALSE)
-#   
-#   for(F in c(-Inf,0:6)){ #create a range of different reserve sizes for the same underlying landscape
-#     
-#     #surface used to denote reserves
-#     x <- waveSynth2(128, charGauss, exp(F), wavelet = "la8")
-#     
-#     #-1 indicates matrix, which is 75% of landscape
-#     x[x < quantile(x, 0.75)] <- -1
-#     x[x > quantile(x, 0.75)] <- 1
-#     #combine the reserve mask and the underlying environmental grid
-#     y2 <- x*y
-#     y2[y2 < 0] <- -1
-#     
-#     #saves the post-habitat loss landscape
-#     name2 <- paste('E_exp',E,'_F_exp',F,'_set1.csv',sep='')
-#     # write.csv(y2,name2,row.names=FALSE)
-#   }
-# }
+plotLandscape(tmp.y2)
 
 
 
