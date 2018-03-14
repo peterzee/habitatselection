@@ -23,16 +23,16 @@ waveSynth2 <- function(dim, varFun, ..., wavelet = "haar") {
 charGauss <- function(x, sigma) exp(-sigma ^ 2 * x ^ 2 / 2)
 
 
-landscape.size <- 128/2
+landscape.size <- 128/4
 
-E <- 5
+E <- 2
 y <- waveSynth2(landscape.size, charGauss, exp(E), wavelet = "la8")
 
 #rescale environment to range from 0-100
 y <- y - min(y)
 y <- y * 99.9999/max(y)
 
-F <- 1
+F <- 3
 x <- waveSynth2(landscape.size, charGauss, exp(F), wavelet = "la8")
 
 #-1 indicates matrix, which is 75% of landscape
@@ -47,6 +47,8 @@ if (prop.matrix == 0){
 #combine the reserve mask and the underlying environmental grid
 y2 <- x * y
 y2[y2 < 0] <- -1
+y2[y2 == 0] <- 1
+
 
 y2
 levelplot(y2)
@@ -58,12 +60,13 @@ levelplot(y2)
 tmp.y2 <- y2
 
 tmp.y2[y2 == -1] <- 0
-tmp.y2[y2 > 0 & y2 <= median(y2[y2>0])] <- 1
-tmp.y2[y2 > mean(y2[y2>0])] <- 2
+tmp.y2[tmp.y2 > 0 & tmp.y2 <= median(tmp.y2[tmp.y2 > 0])] <- 1
+tmp.y2[tmp.y2 > mean(tmp.y2[tmp.y2 > 0])] <- 2
 
 
 hist(tmp.y2)
 
+plotLandscape(y)
 
 plotLandscape(tmp.y2)
 
