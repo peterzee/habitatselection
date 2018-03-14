@@ -6,6 +6,7 @@ source('population_function.R')
 source('moore_function.R')
 source('module_neighborhood_function.R')
 source('plotEggs.R')
+source('wavelet_landscape_single.R')
 
 
 ##############################################################################

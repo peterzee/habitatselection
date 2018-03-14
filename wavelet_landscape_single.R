@@ -3,9 +3,9 @@ source('plotLandscape_function.R')
 library(waveslim)
 library(lattice)
 
+generateWavelet_landscape <- function(LANDSCAPE.SIZE = 128, ENV, FRAG, PROP.MATRIX = 0, RISK.QUANTILE = 0.5){
 
 ### code modified from Lasky and Keitt 2015 Am Nat
-
 #function to re-scale wavelet coefficients
 waveSynth2 <- function(dim, varFun, ..., wavelet = "haar") {
   require(waveslim)
@@ -24,20 +24,21 @@ waveSynth2 <- function(dim, varFun, ..., wavelet = "haar") {
 
 charGauss <- function(x, sigma) exp(-sigma ^ 2 * x ^ 2 / 2)
 
-landscape.size <- 128 * 2
+landscape.size <- LANDSCAPE.SIZE
 
-E <- 2
+E <- ENV
 y <- waveSynth2(landscape.size, charGauss, exp(E), wavelet = "la8")
 
 #rescale environment to range from 0-100
 y <- y - min(y)
 y <- y * 99.9999/max(y)
 
-F <- 3
+F <- FRAG
 x <- waveSynth2(landscape.size, charGauss, exp(F), wavelet = "la8")
 
 #-1 indicates matrix, which is 75% of landscape
-prop.matrix <- 0.25
+prop.matrix <- PROP.MATRIX
+
 if (prop.matrix == 0){
   x[1:length(x)] <- 1
 } else {
@@ -54,20 +55,23 @@ y2[y2 == 0] <- 1
 
 tmp.y2 <- y2
 
-risk.quantile <- 0.8
+risk.quantile <- RISK.QUANTILE
 
-hist(tmp.y2)
-abline(v = quantile(tmp.y2[tmp.y2 > 0], risk.quantile), col = 'red', lwd = 2)
+# hist(tmp.y2)
+# abline(v = quantile(tmp.y2[tmp.y2 > 0], risk.quantile), col = 'red', lwd = 2)
 
 tmp.y2[y2 == -1] <- 0
 tmp.y2[tmp.y2 > 0 & tmp.y2 <= quantile(tmp.y2[tmp.y2 > 0], risk.quantile)] <- 1
 tmp.y2[tmp.y2 > quantile(tmp.y2[tmp.y2 > 0], risk.quantile)] <- 2
 
+wavelet_landscape <- tmp.y2
+
+return(wavelet_landscape)
+}
 
 
-plotLandscape(y)
-
-plotLandscape(tmp.y2)
+# a <- generateWavelet_landscape(ENV = 3, FRAG = 2)
+# plotLandscape(a)
 
 
 
