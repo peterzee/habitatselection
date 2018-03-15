@@ -21,7 +21,7 @@ mem.depth.vec <- c(10)
 mem.weight.vec <- c(0, 0.05, 0.1)
 
 
-replicates <- 100
+replicates <- 10
 
 directions.table <- array(dim = c( length(structure.vec)*
                                    length(shuffle.vec)*
