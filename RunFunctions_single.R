@@ -18,7 +18,7 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
 # 
 # ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
-                            LANDSCAPE = blah,#a$module.landscape,
+                            LANDSCAPE = a$module.landscape,
                             RISK.MAG = 0.0,
                             PERCEPTION = 0.2,
                             MVT = 1,
