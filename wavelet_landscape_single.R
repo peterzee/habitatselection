@@ -70,8 +70,7 @@ return(wavelet_landscape)
 }
 
 
-# a <- generateWavelet_landscape(ENV = 3, FRAG = 2)
+# a <- generateWavelet_landscape(LANDSCAPE.SIZE = 32, ENV = 4, FRAG = 2, PROP.MATRIX = 0.2, RISK.QUANTILE = 0.9)
 # plotLandscape(a)
-
 
 
