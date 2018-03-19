@@ -12,7 +12,7 @@ source('eggHatching.R')
 ## Generate the landscape
 a <- generateModuleLandscape(MATRIX.SIZE = 0, 
                              PATCH.DIM = 4, 
-                             MODULE.DIM = 10, 
+                             MODULE.DIM = 6, 
                              STRUCTURE = TRUE,
                              SHUFFLE = TRUE)
 # 
