@@ -6,6 +6,7 @@ source('population_function.R')
 source('moore_function.R')
 source('module_neighborhood_function.R')
 source('plotEggs.R')
+source('wavelet_landscape_single.R')
 
 
 ##############################################################################
@@ -17,10 +18,10 @@ perception.vec <- c(0.7)
 mvt.vec <- c(1)
 mvt.mod.vec <- c(0)
 mem.depth.vec <- c(10)
-mem.weight.vec <- c(0, 0.025, 0.05, 0.075, 0.1)
+mem.weight.vec <- c(0, 0.05, 0.1)
 
 
-replicates <- 100
+replicates <- 10
 
 directions.table <- array(dim = c( length(structure.vec)*
                                    length(shuffle.vec)*
