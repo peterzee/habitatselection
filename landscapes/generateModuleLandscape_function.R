@@ -104,7 +104,7 @@ generateModuleLandscape <- function(MATRIX.SIZE, PATCH.DIM, MODULE.DIM, STRUCTUR
 return(out)
 }
 
-# #
-# a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = TRUE)
-# a$module.landscape
-# plotLandscape(a$module.landscape)
+
+a <- generateModuleLandscape(MATRIX.SIZE = 2, PATCH.DIM = 4, MODULE.DIM = 6, STRUCTURE = TRUE, SHUFFLE = TRUE)
+a$module.landscape
+plotLandscape(a$module.landscape)
