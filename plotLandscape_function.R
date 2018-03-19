@@ -1,4 +1,3 @@
-# qq <- generateLandscape(25, 100, 25)
 plotLandscape <- function(landscape){
   
   A <- landscape
@@ -22,8 +21,4 @@ plotLandscape <- function(landscape){
     }
   box()
   
-  
-  
 }
-
-# plotLandscape(qq$landscape)

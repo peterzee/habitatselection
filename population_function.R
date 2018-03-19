@@ -82,7 +82,7 @@
       mem.depth <- MEM.DEPTH
       mem.weight <- MEM.WEIGHT
       
-    
+      ### START OF TIME LOOP
       for (i in 2:time){
         
         mvt.par <- MVT
