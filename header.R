@@ -9,3 +9,7 @@ library()
 
 ## Directories
 
+
+## Sourcing
+
+source('functions.R')

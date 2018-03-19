@@ -6,7 +6,7 @@
       
       patch.breakdown <- c(nrow(A)^2, sum(A==0), sum(A == 1), sum(A==2))
       names(patch.breakdown) <- c('total', 'empty', 'safe', 'risky')
-      patch.breakdown
+      # patch.breakdown
       
       index <- matrix(1:dim(A)[1]^2, ncol = dim(A)[1])
       
@@ -220,7 +220,9 @@
                      RISK.MAG = RISK.MAG,
                      PERCEPTION = PERCEPTION,
                      MVT = MVT,
-                     MVT.MOD = MVT.MOD)
+                     MVT.MOD = MVT.MOD,
+                     MEM.DEPTH = MEM.DEPTH,
+                     MEM.WEIGHT = MEM.WEIGHT)
       
       output <- list(inputs = inputs,
                      A = A,
@@ -232,13 +234,15 @@
       
       return(output)
    }
-# 
-# 
+# # 
+# # 
 #    sim <- pop.habitatselection(POP.SIZE = 100,
-#                                LANDSCAPE = a$module.landscape,
+#                                LANDSCAPE = wavescape,
 #                                RISK.MAG = 0.9,
 #                                PERCEPTION = 0.1,
 #                                MVT = 0.5,
 #                                MVT.MOD = 0.1,
-#                                RANDOM.START = FALSE)
-# 
+#                                MEM.DEPTH = 0,
+#                                MEM.WEIGHT = 0, 
+#                                RANDOM.START = TRUE)
+# # 
