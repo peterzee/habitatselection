@@ -18,16 +18,13 @@ a <- generateModuleLandscape(MATRIX.SIZE = 0,
 # 
 # ## Simulation the population
 sim <- pop.habitatselection(POP.SIZE = 250,
-                            LANDSCAPE = a$module.landscape,
-                            RISK.MAG = 0.0,
-                            PERCEPTION = 0.2,
-                            MVT = 1,
+                            LANDSCAPE = wavescape, #a$module.landscape,
                             RISK.MAG = 0.7,
                             PERCEPTION = 0.1,
                             MVT = 5,
                             MVT.MOD = 0,
                             MEM.DEPTH = 5,
-                            MEM.WEIGHT = 0.0)
+                            MEM.WEIGHT = 0.1)
 
 ## Community simulations
 # comm.out <- community.habselection(NUM.SPP = 10,
@@ -38,17 +35,17 @@ sim <- pop.habitatselection(POP.SIZE = 250,
 #                                    MVT = 1,
 #                                    MVT.MOD = -4)
 
-# ## Moore neighborhoods
-# moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
-#                            EGG.LANDSCAPE = sim$egg.landscape,
-#                            MOORE.RANGE = 3)
+## Moore neighborhoods
+moore.out <- moore.summary(LANDSCAPE = wavescape, #a$module.landscape,
+                           EGG.LANDSCAPE = sim$egg.landscape,
+                           MOORE.RANGE = 2)
 # 
-# Module neighborhoods
-module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
-                                  EGG.LANDSCAPE = sim$egg.landscape,
-                                  MODULE.DIM = a$inputs$MODULE.DIM,
-                                  MOD.EXTRACT = a$module.extract,
-                                  MOD.INDEX = a$mod.index)
+# # Module neighborhoods
+# module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
+#                                   EGG.LANDSCAPE = sim$egg.landscape,
+#                                   MODULE.DIM = a$inputs$MODULE.DIM,
+#                                   MOD.EXTRACT = a$module.extract,
+#                                   MOD.INDEX = a$mod.index)
 
 #
 
