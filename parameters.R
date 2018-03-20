@@ -1,27 +1,27 @@
 ### Parameters for running simulations
 
 ## Lanscape parameters
-params_landscape <- list(LANDSCAPE.SIZE = 64,
-                         ENV = 6,
+params_landscape <- list(LANDSCAPE.SIZE = 32,
+                         ENV = 2,
                          FRAG = 1, 
                          PROP.MATRIX = 0, 
-                         RISK.QUANTILE = 0.5)
+                         RISK.QUANTILE = 0.6)
 
 ## Population parameters
 params_population <- list(POP.SIZE = 250,
                           LANDSCAPE = NA,
-                          RISK.MAG = 0.1,
-                          PERCEPTION = 0.7,
+                          RISK.MAG = 0.3,
+                          PERCEPTION = 0.5,
                           MVT = 0.1,
                           MVT.MOD = 0.0,
-                          MEM.DEPTH = 10,
-                          MEM.WEIGHT = 0.1, 
+                          MEM.DEPTH = 0,
+                          MEM.WEIGHT = 0.0, 
                           RANDOM.START = TRUE)
 
 ## Moore parameters
 params_moore <- list(LANDSCAPE = NA,
                      EGG.LANDSCAPE = NA,
-                     MOORE.RANGE = 1)
+                     MOORE.RANGE = 4)
 
 
 
