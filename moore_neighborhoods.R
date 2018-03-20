@@ -35,6 +35,7 @@ colnames(neighborhood.totals) <- c('patch.type',
 for (j in 1:length(range.vec)){
   for (i in 1:length(c(A))){
     
+    ### Moore neighborhoods
     ROW <- which(index == i, arr.ind = TRUE)[1]
     COL <- which(index == i, arr.ind = TRUE)[2]
     
@@ -55,6 +56,8 @@ for (j in 1:length(range.vec)){
     moore <- A[v.range, h.range]
     moore[range+1, range+1] <- NA
     
+    
+    ### Within neighborhood breakdowns
     moore.empty <- sum(moore == 0, na.rm = TRUE)
     moore.safe <- sum(moore == 1, na.rm = TRUE)
     moore.risk <- sum(moore == 2, na.rm = TRUE)
@@ -67,7 +70,7 @@ for (j in 1:length(range.vec)){
     big.table[i,7,j] <- risk.score
     big.table[i, 8, j] <- E[ROW, COL]    #eggs
 
-    #####
+    ### Eggs in neighborhood
     tmp.moore <- A[v.range, h.range]
     egg.moore <- E[v.range, h.range]
     
@@ -75,10 +78,7 @@ for (j in 1:length(range.vec)){
     egg.moore.safe <- egg.moore[tmp.moore == 1]
     egg.moore.risk <- egg.moore[tmp.moore == 2]
     
-    ## mean eggs
-
-    
-    #### fill in  neighborhood table
+    #### Fill in  neighborhood table
     neighborhood.totals[i, 2:3, j] <- which(index == i, arr.ind=TRUE)
     neighborhood.totals[i, 4, j] <- sum(egg.moore.safe, na.rm = TRUE)
     neighborhood.totals[i, 5, j] <- sum(egg.moore.risk, na.rm = TRUE)

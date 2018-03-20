@@ -1,5 +1,6 @@
 ## Run everything together (habitat selection)
-source('install_packages.R')
+
+# source('install_packages.R')
 source('header.R')
 
 ## Parameter values
@@ -9,9 +10,9 @@ source('header.R')
 source('landscapes/wavelet_landscape.R')
 
 wavescape <- generateWavelet_landscape(LANDSCAPE.SIZE = 64,
-                                       ENV = 2,
-                                       FRAG = 1, 
-                                       PROP.MATRIX = 0, 
+                                       ENV = 5,
+                                       FRAG = 2, 
+                                       PROP.MATRIX = 0.5, 
                                        RISK.QUANTILE = 0.5)
 
 ## Run simulations

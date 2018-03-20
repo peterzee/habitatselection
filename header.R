@@ -1,11 +1,13 @@
 ### Header for habitat selection
-
+## Clear everything
 rm(list = ls())
 
-
 ## Libraries
-library()
-
+library(waveslim)
+library(lattice)
+library(vegan)
+library(tidyverse)
+library(philentropy)
 
 ## Directories
 
@@ -13,3 +15,6 @@ library()
 ## Sourcing
 
 source('functions.R')
+source('movement/dispersalKernal.R')
+source('movement/kernalPlot.R')
+source('movement/traceMovement.R')

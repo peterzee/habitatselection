@@ -49,7 +49,7 @@ disp.kernal <- function(N, MVT.PAR, MVT.MOD, LANDSCAPE){
     tmp.mvt[tmp.mvt > (nrow(A))] <- tmp.mvt[tmp.mvt > (nrow(A))] + 1
     
     mod.locations <- cbind(tmp.mvt[,1] %% (ncol(A) + 1),
-                             tmp.mvt[,2] %% (nrow(A) + 1))
+                           tmp.mvt[,2] %% (nrow(A) + 1))
     
     ## change invidiauls landing at '0' index to the edge
     mod.locations[which(mod.locations == 0)] <- sample(length(which(mod.locations==0)), c(1, nrow(A)))
@@ -61,6 +61,5 @@ disp.kernal <- function(N, MVT.PAR, MVT.MOD, LANDSCAPE){
     return(kernal.out)   
 }
 
-# 
-# x <- disp.kernal(100, 0.9, 0.2)
+# x <- disp.kernal(100, 0.9, 0.2, wavescape)
 # x

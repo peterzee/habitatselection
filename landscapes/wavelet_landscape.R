@@ -2,8 +2,8 @@
 
 # source('plotLandscape_function.R')
   
-library(waveslim)
-library(lattice)
+# library(waveslim)
+# library(lattice)
 
 generateWavelet_landscape <- function(LANDSCAPE.SIZE = 128, ENV, FRAG, PROP.MATRIX = 0, RISK.QUANTILE = 0.5){
   
