@@ -6,15 +6,19 @@ source('header.R')
 ## Parameter values
 source('parameters.R')
 
-## Generate landscape(s)
-landscape <- do.call(generateWavelet_landscape, params_landscape)
+## 1/ Generate landscape(s)
+landscape <- do.call(generateWavelet_landscape, 
+                     params_landscape)
 
-## Run simulations
+## 2/ Run simulations
 params_population$LANDSCAPE <- landscape
-sim <- do.call(pop.habitatselection, params_population)
+sim <- do.call(pop.habitatselection, 
+               params_population)
 
-## Moore neighborhoods
+## 3/ Moore neighborhoods
 params_moore$LANDSCAPE <- landscape
 params_moore$EGG.LANDSCAPE <- sim$egg.landscape
-moore <- do.call(moore.summary, params_moore)
+moore <- do.call(moore.summary, 
+                 params_moore)
+
 
