@@ -7,6 +7,8 @@ A <- LANDSCAPE
 ## egg landscape
 E <- EGG.LANDSCAPE
 
+
+index <- array(1:length(A), dim = dim(A))
 ## big table of neighborhood characteristics, and outputs (eggs)
 range.vec <- 1:MOORE.RANGE
 

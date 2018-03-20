@@ -4,28 +4,17 @@
 source('header.R')
 
 ## Parameter values
-# source('parameters.R')
+source('parameters.R')
 
 ## Generate landscape(s)
-source('landscapes/wavelet_landscape.R')
-
-wavescape <- generateWavelet_landscape(LANDSCAPE.SIZE = 64,
-                                       ENV = 5,
-                                       FRAG = 2, 
-                                       PROP.MATRIX = 0.5, 
-                                       RISK.QUANTILE = 0.5)
+landscape <- do.call(generateWavelet_landscape, params_landscape)
 
 ## Run simulations
-source('population_function.R')
-sim <- pop.habitatselection(POP.SIZE = 100,
-                            LANDSCAPE = wavescape,
-                            RISK.MAG = 0.9,
-                            PERCEPTION = 0.1,
-                            MVT = 0.5,
-                            MVT.MOD = 0.1,
-                            MEM.DEPTH = 0,
-                            MEM.WEIGHT = 0, 
-                            RANDOM.START = TRUE)
+params_population$LANDSCAPE <- landscape
+sim <- do.call(pop.habitatselection, params_population)
 
+## Moore neighborhoods
+params_moore$LANDSCAPE <- landscape
+params_moore$EGG.LANDSCAPE <- sim$egg.landscape
+moore <- do.call(moore.summary, params_moore)
 
-## Analyze output
