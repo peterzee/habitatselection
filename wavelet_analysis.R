@@ -1,7 +1,7 @@
 
-
-qq <- as_data_frame(moore$big.table[,,4])
-ww <- as_data_frame(moore$neighborhood.totals[,,4])
+r_moore <- 2
+qq <- as_data_frame(moore$big.table[,,r_moore])
+ww <- as_data_frame(moore$neighborhood.totals[,,r_moore])
 
 
 
@@ -22,7 +22,7 @@ x <- ww %>%
 
 plotLandscape(landscape)
 dev.off()
-plot(jitter(x$n.risk.patches, 0),x$mean.eggs.safe)
+plot(jitter(x$n.risk.patches),x$mean.eggs.safe)
 
 
 
