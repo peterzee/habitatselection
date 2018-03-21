@@ -1,10 +1,18 @@
 # plotLandscape(landscape)
 # dev.off()
 
-r_moore <- 1
+r_moore <- 2
 qq <- as_data_frame(moore$big.table[,,r_moore])
 ww <- as_data_frame(moore$neighborhood.totals[,,r_moore])
 
+blah <- qq %>% 
+  filter(patch.type == 1) %>% 
+  select(risk.score, n.eggs) %>% 
+  lm(n.eggs ~ risk.score, data = .) %>% 
+  summary()
+
+blah$coefficients[2,1]
+blah$coefficients[2,4]
 
 
 qq %>% 
@@ -30,9 +38,15 @@ y <- ww %>%
 plot(y$n.risk.patches, y$n)
 
 
-z <- ww %>% 
+
+zz <- ww %>% 
   filter(patch.type == 1) %>% 
   select(n.risk.patches, mean.eggs.safe)
+plot(jitter(zz$n.risk.patches, 0), zz$mean.eggs.safe)
 
-plot(jitter(z$n.risk.patches), z$mean.eggs.safe)
+z <- ww %>% 
+  filter(patch.type == 1) %>% 
+  select(n.risk.patches, mean.eggs.safe) %>% 
+  lm(mean.eggs.safe ~ n.risk.patches, data = .) %>% 
+  summary()
 
