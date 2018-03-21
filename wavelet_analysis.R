@@ -1,5 +1,7 @@
+# plotLandscape(landscape)
+# dev.off()
 
-r_moore <- 2
+r_moore <- 1
 qq <- as_data_frame(moore$big.table[,,r_moore])
 ww <- as_data_frame(moore$neighborhood.totals[,,r_moore])
 
@@ -17,12 +19,20 @@ ww %>%
   
 x <- ww %>% 
   select(n.risk.patches, mean.eggs.safe)
-  
 
-
-plotLandscape(landscape)
-dev.off()
 plot(jitter(x$n.risk.patches),x$mean.eggs.safe)
+# boxplot(x$mean.eggs.safe ~ x$n.risk.patches)
+
+y <- ww %>% 
+  select(n.risk.patches, mean.eggs.safe) %>% 
+  count(n.risk.patches)
+
+plot(y$n.risk.patches, y$n)
 
 
+z <- ww %>% 
+  filter(patch.type == 1) %>% 
+  select(n.risk.patches, mean.eggs.safe)
+
+plot(jitter(z$n.risk.patches), z$mean.eggs.safe)
 
