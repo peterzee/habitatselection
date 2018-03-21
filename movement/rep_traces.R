@@ -1,4 +1,3 @@
-source('movement/traceMovement.R')
 rep_traces <- function(x){
   y <- params_population$POP.SIZE
   ind <- sample(y, x)
