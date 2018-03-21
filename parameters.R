@@ -2,7 +2,7 @@
 
 ## Lanscape parameters
 params_landscape <- list(LANDSCAPE.SIZE = 32,
-                         ENV = 2,
+                         ENV = 0,
                          FRAG = 1, 
                          PROP.MATRIX = 0.0, 
                          RISK.QUANTILE = 0.6)
@@ -21,7 +21,7 @@ params_population <- list(POP.SIZE = 500,
 ## Moore parameters
 params_moore <- list(LANDSCAPE = NA,
                      EGG.LANDSCAPE = NA,
-                     MOORE.RANGE = 3)
+                     MOORE.RANGE = 2)
 
 
 
