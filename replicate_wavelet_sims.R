@@ -9,7 +9,7 @@ frag_vec <- c(0)
 prop_matrix_vec <- c(0)
 risk_quantile_vec <- c(0.75, 1)
 
-popsize_vec <- c(500)
+popsize_vec <- c(250)
 landscape_vec <- c(NA)
 risk_mag_vec <- c(0, 0.4)
 perception_vec <- c(0.1, 0.5)
