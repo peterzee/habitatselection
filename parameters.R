@@ -1,11 +1,11 @@
 ### Parameters for running simulations
 
 ## Lanscape parameters
-params_landscape <- list(LANDSCAPE.SIZE = 32,
-                         ENV = 0,
+params_landscape <- list(LANDSCAPE.SIZE = 64,
+                         ENV = 2,
                          FRAG = 1, 
                          PROP.MATRIX = 0.0, 
-                         RISK.QUANTILE = 0.6)
+                         RISK.QUANTILE = 0.7)
 
 ## Population parameters
 params_population <- list(POP.SIZE = 500,
