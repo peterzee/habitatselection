@@ -13,7 +13,11 @@ for (i in c(0,6,12,15)){
           c(c(rep(0,fff), cumsum(x[(fff+1):length(x)])), rep(0,length(cumsum(x)))),
           col = rgb(1,0,0,0.25))
   
-  
+  polygon(c(1:length(cumsum(x)), length(cumsum(x)):1),
+          c(c(rep(0,fff), cumsum(x[(fff+1):length(x)]))* 0.6, rep(0,length(cumsum(x)))),
+          col = rgb(1,1,1,0.5), border = FALSE)
+  # points(1:length(cumsum(x)),c(c(rep(0,fff), cumsum(x[(fff+1):length(x)]))) * 0.4,
+         # type ='l',lty=3)
 }
 
 

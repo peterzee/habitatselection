@@ -1,12 +1,12 @@
 ### run functions
-source('generateModuleLandscape_function.R')
-source('plotLandscape_function.R')
-source('shuffleLandscape.R')
+source('landscapes/generateModuleLandscape_function.R')
+source('landscapes/plotLandscape_function.R')
+source('landscapes/shuffleLandscape.R')
 source('population_function.R')
 source('moore_function.R')
 source('module_neighborhood_function.R')
 source('plotEggs.R')
-source('wavelet_landscape_single.R')
+source('landscapes/wavelet_landscape_single.R')
 
 
 ##############################################################################
