@@ -14,7 +14,7 @@ landscape <- do.call(generateWavelet_landscape,
 params_population$LANDSCAPE <- landscape
 sim <- do.call(pop.habitatselection, 
                params_population)
-
+  
 ## 3/ Moore neighborhoods
 params_moore$LANDSCAPE <- landscape
 params_moore$EGG.LANDSCAPE <- sim$egg.landscape
@@ -22,3 +22,7 @@ moore <- do.call(moore.summary,
                  params_moore)
 
 
+
+ 
+##### Plots #####
+plotLandscape(landscape)

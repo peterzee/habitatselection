@@ -70,10 +70,10 @@ generateWavelet_landscape <- function(LANDSCAPE.SIZE = 128, ENV, FRAG, PROP.MATR
   return(wavelet_landscape)
 }
 
-# 
-# wavescape <- generateWavelet_landscape(LANDSCAPE.SIZE = 64,
-#                                        ENV = 2,
-#                                        FRAG = 2,
-#                                        PROP.MATRIX = 0.0,
-#                                        RISK.QUANTILE = 0.6)
-# plotLandscape(wavescape)
+
+wavescape <- generateWavelet_landscape(LANDSCAPE.SIZE = 64,
+                                       ENV = 2,
+                                       FRAG = 2,
+                                       PROP.MATRIX = 0.0,
+                                       RISK.QUANTILE = 0.6)
+plotLandscape(wavescape)
