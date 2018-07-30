@@ -21,7 +21,7 @@ mem.depth.vec <- c(10)
 mem.weight.vec <- c(0, 0.1)
 
 
-replicates <- 2
+replicates <- 1
 
 directions.table <- array(dim = c( length(env.vec)*
                                      length(frag.vec)*
@@ -64,7 +64,7 @@ for (ay in 1:length(env.vec) ) {
     #                              MODULE.DIM = 6,
     #                              STRUCTURE = structure.vec[ ay ],
     #                              SHUFFLE = shuffle.vec[ be ])
-    a <- generateWavelet_landscape(LANDSCAPE.SIZE = 64,
+    a <- generateWavelet_landscape(LANDSCAPE.SIZE = 32,
                                  ENV = env.vec[ ay ],
                                  FRAG = frag.vec[ be ],
                                  PROP.MATRIX = 0.0,
@@ -101,17 +101,20 @@ for (ay in 1:length(env.vec) ) {
                                               MEM.DEPTH = mem.depth.vec[ ach ],
                                               MEM.WEIGHT = mem.weight.vec[ eye ])
                   
-                  ## Moore neighborhoods
-                  # moore.out <- moore.summary(LANDSCAPE = a$module.landscape,
-                  #                            EGG.LANDSCAPE = sim$egg.landscape,
-                  #                            MOORE.RANGE = 3)
+                  # ## Moore neighborhoods
+                  moore.out <- moore.summary(LANDSCAPE = a,
+                                             EGG.LANDSCAPE = sim$egg.landscape,
+                                             MOORE.RANGE = 3)
+
+                  # Module neighborhoods
+                  # module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
+                  #                                   EGG.LANDSCAPE = sim$egg.landscape, 
+                  #                                   MODULE.DIM = a$inputs$MODULE.DIM,
+                  #                                   MOD.EXTRACT = a$module.extract, 
+                  #                                   MOD.INDEX = a$mod.index)
+                  # 
                   
-                  ## Module neighborhoods
-                  module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
-                                                    EGG.LANDSCAPE = sim$egg.landscape, 
-                                                    MODULE.DIM = a$inputs$MODULE.DIM,
-                                                    MOD.EXTRACT = a$module.extract, 
-                                                    MOD.INDEX = a$mod.index)
+                  
                   
                   
                   number.of.eggs[ count ] <- sum(sim$egg.landscape)
@@ -144,13 +147,6 @@ for (ay in 1:length(env.vec) ) {
 
 
 
-# directions.table[which(directions.table[,11] < 0), 1:10]
-# directions.table[which(directions.table[,12] < 0.05), 1:10]
-# 
-# directions.table[which(directions.table[,13] < 0.05), 1:10]
-# directions.table[which(directions.table[,14] < 0.05), 1:10]
-
-
 x <- array(dim = c(replicates, 14, nrow(directions.table) / replicates))
 count <- 0
 for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
@@ -160,7 +156,6 @@ for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
 colnames(x) <-colnames(directions.table)
 
 ######
-# par(mfrow=c(1,2))
 local.estimates <- x[,11,]
 local.pvalues <- x[,12,]
 local.sig.ind <- which(local.pvalues <= 0.05, arr.ind = TRUE)
