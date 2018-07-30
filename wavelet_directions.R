@@ -104,7 +104,7 @@ for (ay in 1:length(env.vec) ) {
                   # ## Moore neighborhoods
                   moore.out <- moore.summary(LANDSCAPE = a,
                                              EGG.LANDSCAPE = sim$egg.landscape,
-                                             MOORE.RANGE = 3)
+                                             MOORE.RANGE = 2)
 
                   # Module neighborhoods
                   # module.out <- module.neighborhood(LANDSCAPE = a$module.landscape,
@@ -119,7 +119,9 @@ for (ay in 1:length(env.vec) ) {
                   
                   number.of.eggs[ count ] <- sum(sim$egg.landscape)
                   
-                  fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
+                  # fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
+                  # summary(fit.local)
+                  fit.local <- lm(moore.out$big.table[,"mean.egg.safe",1] ~ moore.out$big.table[,"risk.score",1])
                   summary(fit.local)
                   
                   directions.table[count, 11:12] <- c(summary(fit.local)$coef[2,1], summary(fit.local)$coef[2,4])
