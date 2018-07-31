@@ -11,17 +11,17 @@ source('landscapes/wavelet_landscape.R')
 
 ##############################################################################
 ##############################################################################
-env.vec <- c(1,3)
-frag.vec <- c(1,3)
+env.vec <- c(1,3,4)
+frag.vec <- c(1)
 risk.vec <- c(0, 0.2)
-perception.vec <- c(0.7)
-mvt.vec <- c(1)
-mvt.mod.vec <- c(0)
-mem.depth.vec <- c(10)
+perception.vec <- c(0.3, 0.7)
+mvt.vec <- c(1, 5)
+mvt.mod.vec <- c(0, 2)
+mem.depth.vec <- c(5)
 mem.weight.vec <- c(0, 0.1)
 
 
-replicates <- 1
+replicates <- 25
 
 directions.table <- array(dim = c( length(env.vec)*
                                      length(frag.vec)*
@@ -81,14 +81,16 @@ for (ay in 1:length(env.vec) ) {
                 for (ge in 1:replicates){
                   
                   count <- count + 1            
-                  directions.table[count, 1:8] <- c(count, 
+                  directions.table[count, 1:10] <- c(count, 
                                                     ge,
                                                     env.vec[ ay ] * 1, 
                                                     frag.vec[ be ] * 1, 
                                                     risk.vec[ ce ], 
                                                     perception.vec[ de ], 
                                                     mvt.vec[ ee ], 
-                                                    mvt.mod.vec[ ef ]) 
+                                                    mvt.mod.vec[ ef ],
+                                                    mem.depth.vec[ ach ],
+                                                    mem.weight.vec[ eye ]) 
                   
                   
                   ## Simulation the population
@@ -121,18 +123,24 @@ for (ay in 1:length(env.vec) ) {
                   
                   # fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
                   # summary(fit.local)
-                  fit.local <- lm(moore.out$big.table[,"mean.egg.safe",1] ~ moore.out$big.table[,"risk.score",1])
+                  fit.local <- lm(moore.out$big.table[,"n.eggs",1] ~ moore.out$big.table[,"risk.score",1])
                   summary(fit.local)
                   
                   directions.table[count, 11:12] <- c(summary(fit.local)$coef[2,1], summary(fit.local)$coef[2,4])
                   
                   
-                  if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
-                    fit.regional <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$mean.module.risk)
+                  # if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
+                  #   fit.regional <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$mean.module.risk)
+                  #   summary(fit.regional)
+                  #   
+                  #   directions.table[count, 13:14] <- c(summary(fit.regional)$coef[2,1], summary(fit.regional)$coef[2,4])
+                  # }
+                  # if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
+                    fit.regional <- lm(moore.out$big.table[,"n.eggs",2] ~ moore.out$big.table[,"risk.score",2])
                     summary(fit.regional)
                     
                     directions.table[count, 13:14] <- c(summary(fit.regional)$coef[2,1], summary(fit.regional)$coef[2,4])
-                  }
+                  # }
                   
                   
                   print(count / nrow(directions.table))
@@ -264,3 +272,4 @@ for (i in 1:16){
 boxplot(array(number.of.eggs, dim = c(replicates, length(number.of.eggs)/replicates)),
         col = rgb(0,1,0.5,0.5),
         main = "number of eggs laid")
+
