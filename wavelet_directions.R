@@ -11,17 +11,17 @@ source('landscapes/wavelet_landscape.R')
 
 ##############################################################################
 ##############################################################################
-env.vec <- c(1,3,4)
+env.vec <- c(1,4)
 frag.vec <- c(1)
 risk.vec <- c(0, 0.2)
 perception.vec <- c(0.3, 0.7)
 mvt.vec <- c(1, 5)
-mvt.mod.vec <- c(0, 2)
-mem.depth.vec <- c(5)
+mvt.mod.vec <- c(0, 4)
+mem.depth.vec <- c(0)
 mem.weight.vec <- c(0, 0.1)
 
 
-replicates <- 25
+replicates <- 10
 
 directions.table <- array(dim = c( length(env.vec)*
                                      length(frag.vec)*
@@ -50,7 +50,11 @@ colnames(directions.table) <- c('id',
                                 'regional.coef',
                                 'regional.p.value')
 
-number.of.eggs <- rep(NA, nrow(directions.table))
+safe.directions <- directions.table
+risk.directions <- directions.table
+
+
+number.of.eggs <- array(NA, dim = c(nrow(directions.table), 2))
 
 count <- 0
 ##############################################################################
@@ -92,6 +96,8 @@ for (ay in 1:length(env.vec) ) {
                                                     mem.depth.vec[ ach ],
                                                     mem.weight.vec[ eye ]) 
                   
+                  safe.directions[count, 1:10] <- directions.table[count, 1:10]
+                  risk.directions[count, 1:10] <- directions.table[count, 1:10]
                   
                   ## Simulation the population
                   sim <- pop.habitatselection(POP.SIZE = 250,
@@ -117,12 +123,10 @@ for (ay in 1:length(env.vec) ) {
                   # 
                   
                   
+
+                  number.of.eggs[ count, 1 ] <- sum(sim$egg.landscape)
+                  number.of.eggs[ count, 2 ] <- sum(moore.out$big.table[which(moore.out$big.table[,'patch.type',1] == 1),'n.eggs',1])
                   
-                  
-                  number.of.eggs[ count ] <- sum(sim$egg.landscape)
-                  
-                  # fit.local <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$module.table[,"n.risky"])
-                  # summary(fit.local)
                   fit.local <- lm(moore.out$big.table[,"n.eggs",1] ~ moore.out$big.table[,"risk.score",1])
                   summary(fit.local)
                   
@@ -130,18 +134,35 @@ for (ay in 1:length(env.vec) ) {
                   
                   
                   # if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
-                  #   fit.regional <- lm(module.out$module.table[,"mean.egg.safe"] ~ module.out$mean.module.risk)
-                  #   summary(fit.regional)
-                  #   
-                  #   directions.table[count, 13:14] <- c(summary(fit.regional)$coef[2,1], summary(fit.regional)$coef[2,4])
-                  # }
-                  # if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
                     fit.regional <- lm(moore.out$big.table[,"n.eggs",2] ~ moore.out$big.table[,"risk.score",2])
                     summary(fit.regional)
                     
                     directions.table[count, 13:14] <- c(summary(fit.regional)$coef[2,1], summary(fit.regional)$coef[2,4])
                   # }
-                  
+
+                      ### Safe patches ###
+                      SAFE <- which(moore.out$big.table[,'patch.type',1] == 1)
+                      
+                      safe.fit.local <- lm(moore.out$big.table[SAFE,"n.eggs",1] ~ moore.out$big.table[SAFE,"risk.score",1])
+                      safe.directions[count, 11:12] <- c(summary(safe.fit.local)$coef[2,1], summary(safe.fit.local)$coef[2,4])
+                      
+                      safe.fit.regional <- lm(moore.out$big.table[SAFE,"n.eggs",2] ~ moore.out$big.table[SAFE,"risk.score",2])
+                      safe.directions[count, 13:14] <- c(summary(safe.fit.regional)$coef[2,1], summary(safe.fit.regional)$coef[2,4])
+
+                    
+                      ### Risk patches ###                   
+                      RISK <- which(moore.out$big.table[,'patch.type',1] == 2)
+                      
+                      risk.fit.local <- lm(moore.out$big.table[RISK,"n.eggs",1] ~ moore.out$big.table[RISK,"risk.score",1])
+                      risk.directions[count, 11:12] <- c(summary(risk.fit.local)$coef[2,1], summary(risk.fit.local)$coef[2,4])
+                      
+                      risk.fit.regional <- lm(moore.out$big.table[RISK,"n.eggs",2] ~ moore.out$big.table[RISK,"risk.score",2])
+                      risk.directions[count, 13:14] <- c(summary(risk.fit.regional)$coef[2,1], summary(risk.fit.regional)$coef[2,4])
+                      
+                    
+                    
+                    
+                                    
                   
                   print(count / nrow(directions.table))
                   
@@ -162,7 +183,7 @@ count <- 0
 for (i in seq(1, nrow(directions.table), by = dim(x)[1])){
   count <- count + 1
   x[,,count] <- directions.table[i:(i + (dim(x)[1] - 1)),]
-}
+  }
 colnames(x) <-colnames(directions.table)
 
 ######
@@ -273,3 +294,17 @@ boxplot(array(number.of.eggs, dim = c(replicates, length(number.of.eggs)/replica
         col = rgb(0,1,0.5,0.5),
         main = "number of eggs laid")
 
+###########
+prop.safe.eggs <- number.of.eggs[,2]/number.of.eggs[,1]
+
+plot(directions.table[,'local.coef'], prop.safe.eggs, 
+     cex = number.of.eggs[,1]/max(number.of.eggs[,1]), 
+     xlab = 'Slope', ylab = 'Proportion of eggs in safe patch')
+
+plot(directions.table[,'regional.coef'],prop.safe.eggs, 
+     cex = number.of.eggs[,1]/max(number.of.eggs[,1]), col = 'red')
+abline(v = 0, lty=2)
+
+
+
+boxplot(array(prop.safe.eggs, dim = c(replicates, length(prop.safe.eggs)/replicates)), ylim = c(0,1))
