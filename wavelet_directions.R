@@ -18,7 +18,7 @@ perception.vec <- c(0.3, 0.7)
 mvt.vec <- c(1, 5)
 mvt.mod.vec <- c(0, 4)
 mem.depth.vec <- c(0)
-mem.weight.vec <- c(0, 0.1)
+mem.weight.vec <- c(0)
 
 
 replicates <- 10
