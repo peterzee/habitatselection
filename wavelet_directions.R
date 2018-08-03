@@ -11,7 +11,7 @@ source('landscapes/wavelet_landscape.R')
 
 ##############################################################################
 ##############################################################################
-env.vec <- c(1,4)
+env.vec <- c(1, 2, 4)
 frag.vec <- c(1)
 risk.vec <- c(0, 0.2)
 perception.vec <- c(0.3, 0.7)
@@ -134,12 +134,10 @@ for (ay in 1:length(env.vec) ) {
                   directions.table[count, 11:12] <- c(summary(fit.local)$coef[2,1], summary(fit.local)$coef[2,4])
                   
                   
-                  # if (perception.vec[ de ] + risk.vec[ ce ] < 1) {
                     fit.regional <- glm(moore.out$big.table[,"n.eggs",2] ~ moore.out$big.table[,"risk.score",2], family = poisson(link = 'log'))
                     summary(fit.regional)
                     
                     directions.table[count, 13:14] <- c(summary(fit.regional)$coef[2,1], summary(fit.regional)$coef[2,4])
-                  # }
 
                       ### Safe patches ###
                       SAFE <- which(moore.out$big.table[,'patch.type',1] == 1)
@@ -162,9 +160,7 @@ for (ay in 1:length(env.vec) ) {
                       
                     
                     
-                    
-                                    
-                  
+                  ## print % of way to completion
                   print(count / nrow(directions.table))
                   
                 }

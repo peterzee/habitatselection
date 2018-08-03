@@ -91,16 +91,15 @@
           if (is.na(drop.dead[j,1])){
             egg.check <- 0
             
-            
+            ## Memory
             if ((i - mem.depth) < 1){
               tmp.memory <- encounter[ 1:i, j ]
             } else {
               tmp.memory <- encounter[ (i-mem.depth):i, j ]
             }
             
-            
             memory.mod <- mem.weight * (sum(tmp.memory == 2))
-            # print(memory.mod)
+            
             
             ### perceiving through time 
             risk.signals.time[i-1,j] <- risk.landscape[locations[i-1,1,j], locations[i-1,2,j]]
@@ -235,14 +234,14 @@
       return(output)
    }
 # # 
-# # 
-#    sim <- pop.habitatselection(POP.SIZE = 100,
-#                                LANDSCAPE = wavescape,
-#                                RISK.MAG = 0.9,
-#                                PERCEPTION = 0.1,
-#                                MVT = 0.5,
-#                                MVT.MOD = 0.1,
-#                                MEM.DEPTH = 0,
-#                                MEM.WEIGHT = 0, 
-#                                RANDOM.START = TRUE)
+#
+   # sim <- pop.habitatselection(POP.SIZE = 100,
+   #                             LANDSCAPE = wavescape,
+   #                             RISK.MAG = 0.9,
+   #                             PERCEPTION = 0.1,
+   #                             MVT = 0.5,
+   #                             MVT.MOD = 0.1,
+   #                             MEM.DEPTH = 0,
+   #                             MEM.WEIGHT = 0,
+   #                             RANDOM.START = TRUE)
 # # 
