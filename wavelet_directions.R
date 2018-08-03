@@ -13,14 +13,14 @@ source('landscapes/wavelet_landscape.R')
 ##############################################################################
 env.vec <- c(1, 2, 4)
 frag.vec <- c(1)
-risk.vec <- c(0, 0.2)
+risk.vec <- c(0.2)
 perception.vec <- c(0.3, 0.7)
-mvt.vec <- c(1, 5)
+mvt.vec <- c(0.01, 1, 5)
 mvt.mod.vec <- c(0, 4)
 mem.depth.vec <- c(0,10)
-mem.weight.vec <- c(0.05)
+mem.weight.vec <- c(0.1)
 
-replicates <- 10
+replicates <- 25
 
 directions.table <- array(dim = c( length(env.vec)*
                                      length(frag.vec)*
@@ -293,7 +293,7 @@ plot(boxplot(full.local.estimates)$stats[3,],
 #   abline(v = 0, col = 2, lwd = 2)
 # }
 
-boxplot(array(number.of.eggs, dim = c(replicates, length(number.of.eggs)/replicates)),
+boxplot(array(number.of.eggs[,1], dim = c(replicates, length(number.of.eggs)/replicates)),
         col = rgb(0,1,0.5,0.5),
         main = "number of eggs laid")
 
