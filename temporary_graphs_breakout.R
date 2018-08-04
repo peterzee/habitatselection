@@ -1,6 +1,6 @@
-# xxx <- directions.table
+xxx <- directions.table
 # xxx <- safe.directions
-xxx <- risk.directions
+# xxx <- risk.directions
 
 
 # plot(xxx[,11], xxx[,13], ylim=c(-5,5), xlim=c(-5,5))
