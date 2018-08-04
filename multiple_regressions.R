@@ -71,3 +71,15 @@ summary(full.eggs.fit)
 par(mar=c(25,5,1,1))
 barplot(sort(summary(full.eggs.fit)$coef[,1]), las = 2)
 
+
+
+
+
+
+
+
+
+
+
+
+

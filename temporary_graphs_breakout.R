@@ -1,11 +1,26 @@
 xxx <- directions.table
 # xxx <- safe.directions
+<<<<<<< HEAD
 # xxx <- risk.directions
+=======
+<<<<<<< HEAD
+# xxx <- risk.directions
+=======
+xxx <- risk.directions
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
+>>>>>>> eea2f926bd255862b02d52103a0b045c15d0616d
 
 
 # plot(xxx[,11], xxx[,13], ylim=c(-5,5), xlim=c(-5,5))
 # points(yyy[,11], yyy[,13], col = 'dodgerblue')
 # points(zzz[,11], zzz[,13], col = 'tomato')
+
+plot(directions.table[which(xxx[,'mem.depth.vec'] == 10),'local.coef'], prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10)],
+     xlim = c(-5,1), ylim = c(0,1), lwd = 0.5)
+points(directions.table[which(xxx[,'mem.depth.vec'] == 0),'local.coef'], prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0)], col=4, lwd =0.5)
+
+
+
 
 par(mfrow=c(2,3))
 boxplot(
@@ -193,7 +208,11 @@ boxplot(
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
@@ -207,11 +226,56 @@ boxplot(
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
   prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
   col = rep(c(1,2,3), each =12)
+<<<<<<< HEAD
+)
+=======
   )
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
 
 
 # 
 boxplot(
+<<<<<<< HEAD
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  col = rep(c(1,2,3), each =12)
+=======
 prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
 prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
 prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
@@ -251,6 +315,7 @@ prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'
 prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
 prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
 col = rep(c(1,2,3), each =12)
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
 )
 
 
@@ -268,7 +333,11 @@ col = rep(c(1,2,3), each =12)
 ###########
 ###########
 ###########
+<<<<<<< HEAD
+par(mfrow = c(1,2))
+=======
 par(mfrow = c(2,2))
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
 
 boxplot(
   xxx[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
@@ -310,6 +379,144 @@ boxplot(
   xxx[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
   xxx[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
   col = rep(c(1,2,3), each = 12)
+<<<<<<< HEAD
+)
+abline(h=0, lty=2)
+
+
+boxplot(
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4), 'local.coef'],
+  
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  xxx[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4),'local.coef'],
+  col = rep(c(1,2,3), each =12)
+)
+abline(h=0, lty=2)
+
+
+
+
+
+boxplot(
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)], 
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 0 &xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  col = rep(c(1,2,3), each =12)
+)
+
+
+# 
+boxplot(
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 1 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 2 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.3 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 0)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 0.01 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 1 & xxx[,'mvt.mod.vec'] == 4)],
+  prop.safe.eggs[which(xxx[,'mem.depth.vec'] == 10 & xxx[,'env.vec'] == 4 & xxx[,'perception.vec'] == 0.7 & xxx[,'mvt.vec'] == 5 & xxx[,'mvt.mod.vec'] == 4)],
+  col = rep(c(1,2,3), each =12)
+=======
+>>>>>>> 61c1c9e25df8aabc085e05ff294bdbc91c0d8b65
 )
 abline(h=0, lty=2)
 
