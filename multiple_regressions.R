@@ -13,7 +13,7 @@ memweight<- directions.table[,'mem.weight.vec']
 
 lm(LOCAL_COEF ~ env)
 # lm(LOCAL_COEF ~ frag)
-lm(LOCAL_COEF ~ risk)
+# lm(LOCAL_COEF ~ risk)
 lm(LOCAL_COEF ~ perc)
 lm(LOCAL_COEF ~ move)
 lm(LOCAL_COEF ~ movemod)

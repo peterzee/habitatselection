@@ -17,7 +17,7 @@ risk.vec <- c(0.2)
 perception.vec <- c(0.3, 0.7)
 mvt.vec <- c(0.01, 1, 5)
 mvt.mod.vec <- c(0, 4)
-mem.depth.vec <- c(0,10)
+mem.depth.vec <- c(0, 10)
 mem.weight.vec <- c(0.1)
 
 replicates <- 25
