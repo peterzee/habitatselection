@@ -13,7 +13,7 @@ memweight<- directions.table[,'mem.weight.vec']
 
 lm(LOCAL_COEF ~ env)
 # lm(LOCAL_COEF ~ frag)
-lm(LOCAL_COEF ~ risk)
+# lm(LOCAL_COEF ~ risk)
 lm(LOCAL_COEF ~ perc)
 lm(LOCAL_COEF ~ move)
 lm(LOCAL_COEF ~ movemod)
@@ -25,7 +25,7 @@ lm(LOCAL_COEF ~ memdepth)
 
 
 full.fit <- lm(LOCAL_COEF ~  env + 
-                             risk * 
+                             # risk * 
                              memdepth*
                              perc + 
                              move * 
@@ -59,7 +59,7 @@ lm(SAFE_EGGS ~ memdepth)
 
 
 full.eggs.fit <- lm(SAFE_EGGS ~  env * 
-                            risk * 
+                            # risk * 
                             perc * 
                             move * 
                             movemod * 
