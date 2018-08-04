@@ -25,7 +25,7 @@ lm(LOCAL_COEF ~ memdepth)
 
 
 full.fit <- lm(LOCAL_COEF ~  env + 
-                             risk * 
+                             # risk * 
                              memdepth*
                              perc + 
                              move * 
@@ -59,7 +59,7 @@ lm(SAFE_EGGS ~ memdepth)
 
 
 full.eggs.fit <- lm(SAFE_EGGS ~  env * 
-                            risk * 
+                            # risk * 
                             perc * 
                             move * 
                             movemod * 
@@ -70,4 +70,16 @@ summary(full.eggs.fit)
 
 par(mar=c(25,5,1,1))
 barplot(sort(summary(full.eggs.fit)$coef[,1]), las = 2)
+
+
+
+
+
+
+
+
+
+
+
+
 

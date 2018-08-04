@@ -311,3 +311,9 @@ abline(v = 0, lty=2)
 
 
 boxplot(array(prop.safe.eggs, dim = c(replicates, length(prop.safe.eggs)/replicates)), ylim = c(0,1))
+
+
+
+
+
+
